@@ -4,11 +4,16 @@ using UnityEngine;
 
 namespace Kaiju
 {
+    public enum GameMode
+    {
+        Easy, Normal, Hard
+    }
     public class SpawnManager : MonoBehaviour
     {
         #region Variables
         [Tooltip("Script")]
         [SerializeField] private TrackManager trackManager;
+        [SerializeField] private GameMode gameMode;
 
         [Header("Set Timer")]
         [SerializeField] private float timeToSpawnCoin;
@@ -24,11 +29,16 @@ namespace Kaiju
         [SerializeField] private List<GameObject> Items;
         [SerializeField] private List<GameObject> Obstacles;
         [SerializeField] private GameObject Coin;
+
+        [Tooltip("Set Variable")]
+        [HideInInspector] private int numberDamageObject;
         #endregion
         // Start is called before the first frame update
         void Start()
         {
+            SetLevel();
             StartCoroutine(SpawnCoin());
+            StartCoroutine(SpawnObstacle());
         }
 
         private IEnumerator SpawnCoin()
@@ -58,6 +68,34 @@ namespace Kaiju
 
             yield return new WaitForSeconds(.5f);
             StartCoroutine(SpawnCoin());
+        }
+
+        private void SetLevel()
+        {
+            switch (gameMode)
+            {
+                case GameMode.Normal:
+                    numberDamageObject = 1;
+                    break;
+                case GameMode.Hard:
+                    numberDamageObject = 2;
+                    break;
+                default:
+                    numberDamageObject = 1;
+                    break;
+            }
+        }
+        private IEnumerator SpawnObstacle()
+        {
+            for (int i = 0; i < numberDamageObject; i++)
+            {
+                foreach (GameObject obstacle in Obstacles)
+                {
+                    Instantiate(obstacle, spawnObject.transform.position, Quaternion.identity, transformParent);
+                    yield return new WaitForSeconds(timeToSpawnObstacle);
+                }
+            }
+            StartCoroutine(SpawnObstacle());
         }
     }
 }

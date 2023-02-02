@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Kaiju
 {
@@ -12,6 +13,10 @@ namespace Kaiju
         [SerializeField] private float leftRightSpeed = 20;
         [SerializeField] private float[] xPos;
         [SerializeField] private int xPositionIndex = 1;
+
+        [Header("Move Button")]
+        [SerializeField] private Button MoveLeft;
+        [SerializeField] private Button MoveRight;
 
         [Tooltip("Get Object")]
         [SerializeField] private GameObject player;
@@ -30,6 +35,20 @@ namespace Kaiju
         {
             InputController();
             ChangePosition();
+        }
+
+
+        public void TapToMoveLeft()
+        {
+            xPositionIndex--;
+            if (xPositionIndex < 0) xPositionIndex = 0;
+            Debug.Log("Tap Left");
+        }
+        public void TapToMoveRight()
+        {
+            xPositionIndex++;
+            if (xPositionIndex > xPos.Length - 1) xPositionIndex = xPos.Length - 1;
+            Debug.Log("Tap Right");
         }
 
         private void InputController()
