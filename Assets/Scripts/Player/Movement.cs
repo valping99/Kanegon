@@ -4,21 +4,20 @@ using UnityEngine;
 
 namespace Kaiju
 {
-    public enum Swipe
-    {
-        Left, Mid, Right
-    }
     public class Movement : MonoBehaviour
     {
-        [SerializeField] private GameObject player;
-        private Rigidbody rb;
-        private bool firstJump = false;
-        private Swipe changeLane;
+        [Header("Set Value to player")]
         [SerializeField] private float jumpForce;
         [SerializeField] private float speed;
         [SerializeField] private float leftRightSpeed = 20;
         [SerializeField] private float[] xPos;
         [SerializeField] private int xPositionIndex = 1;
+
+        [Tooltip("Get Object")]
+        [SerializeField] private GameObject player;
+        private Rigidbody rb;
+
+        private bool firstJump = false;
 
         // Start is called before the first frame update
         void Start()
@@ -31,9 +30,6 @@ namespace Kaiju
         {
             InputController();
             ChangePosition();
-            Vector3 moveForward = transform.forward * speed * Time.deltaTime;
-            rb.MovePosition(rb.position + moveForward);
-            // player.transform.position = Vector3.MoveTowards(player.transform.position, new Vector3(xPos[xPositionIndex], 5f, player.transform.position.z), Time.deltaTime * speed);
         }
 
         private void InputController()
@@ -52,6 +48,11 @@ namespace Kaiju
                 xPositionIndex++;
                 if (xPositionIndex > xPos.Length - 1) xPositionIndex = xPos.Length - 1;
             }
+
+            //? Move forward
+            // Vector3 moveForward = transform.forward * speed * Time.deltaTime;
+            // rb.MovePosition(rb.position + moveForward);
+            //? 
         }
         void ChangePosition()
         {
@@ -59,7 +60,7 @@ namespace Kaiju
             {
                 player.transform.localPosition = Vector3.Lerp(player.transform.localPosition, new Vector3(-1.5f, 0, 0), leftRightSpeed * Time.deltaTime);
             }
-            else if (xPositionIndex == 2)
+            else if (xPositionIndex == xPos.Length - 1)
             {
                 player.transform.localPosition = Vector3.Lerp(player.transform.localPosition, new Vector3(1.5f, 0, 0), leftRightSpeed * Time.deltaTime);
             }

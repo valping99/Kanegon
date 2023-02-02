@@ -7,6 +7,7 @@ namespace Kaiju
     public class CharacterManager : MonoBehaviour
     {
         public int coin;
+        public int healthPoint;
         // Start is called before the first frame update
         void Start()
         {

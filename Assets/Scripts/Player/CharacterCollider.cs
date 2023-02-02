@@ -7,12 +7,11 @@ namespace Kaiju
     public class CharacterCollider : MonoBehaviour
     {
         [SerializeField] private CharacterManager charManager;
-        protected const int k_CoinsLayerIndex = 8;
-        protected const int k_ObstacleLayerIndex = 9;
+        [SerializeField] private SpawnTrack spawnTrack;
         // Start is called before the first frame update
         void Start()
         {
-
+            Initialize();
         }
 
         // Update is called once per frame
@@ -21,13 +20,42 @@ namespace Kaiju
 
         }
 
+        private void Initialize()
+        {
+        }
+        private void Damaged()
+        {
+            if (charManager.healthPoint <= 0)
+            {
+                Debug.Log("FinishGame");
+                spawnTrack.StopMovement();
+            }
+            else
+            {
+                charManager.healthPoint -= 1;
+            }
+        }
+
         void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.GetComponent<CollectCoin>())
             {
                 charManager.coin += 1;
-                Debug.Log("Coin++");
+                Debug.Log($"Coin: {charManager.coin}");
+            }
+
+            if (other.gameObject.CompareTag("SpawnRoad"))
+            {
+                spawnTrack.SpawnRoadTrigger();
+            }
+
+            if (other.gameObject.CompareTag("Damage"))
+            {
+                Destroy(other.gameObject);
+                Damaged();
             }
         }
+
+
     }
 }
