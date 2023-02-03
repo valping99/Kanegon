@@ -42,13 +42,11 @@ namespace Kaiju
         {
             xPositionIndex--;
             if (xPositionIndex < 0) xPositionIndex = 0;
-            Debug.Log("Tap Left");
         }
         public void TapToMoveRight()
         {
             xPositionIndex++;
             if (xPositionIndex > xPos.Length - 1) xPositionIndex = xPos.Length - 1;
-            Debug.Log("Tap Right");
         }
 
         private void InputController()

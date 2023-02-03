@@ -9,7 +9,6 @@ namespace Kaiju
         void OnTriggerEnter(Collider other)
         {
             Destroy(other.gameObject);
-            Debug.Log("Destroy");
         }
     }
 }

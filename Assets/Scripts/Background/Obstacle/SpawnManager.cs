@@ -43,18 +43,21 @@ namespace Kaiju
 
         private IEnumerator SpawnCoin()
         {
-            int randomLane = Random.Range(0, 2);
+            int randomLane = Random.Range(0, 3);
             float location;
             switch (randomLane)
             {
                 case 0:
                     location = trackManager.laneLocation[0];
+                    Debug.Log("Left");
                     break;
                 case 2:
                     location = trackManager.laneLocation.Length - 1;
+                    Debug.Log("Right");
                     break;
                 default:
                     location = 0;
+                    Debug.Log("Mid");
                     break;
             }
             spawnObject.transform.position = new Vector3(location, 1, spawnObject.transform.position.z);
