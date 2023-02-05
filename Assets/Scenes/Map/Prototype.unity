@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44655913, g: 0.496396, b: 0.57482225, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1917,11 +1917,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 575130105}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -2.3999999}
+  m_LocalScale: {x: 0.2, y: 1, z: 0.04}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1935284292}
+  m_Father: {fileID: 1827461616}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &591582866
@@ -1992,6 +1992,11 @@ MonoBehaviour:
   - -1.7
   - 0
   - 1.7
+  x_Axis: 0
+  y_Axis: 0
+  timeToCurved: 2
+  materials:
+  - {fileID: 2100000, guid: 5c6f0bedb6026e246a0129e253413744, type: 2}
 --- !u!114 &591582870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2008,7 +2013,7 @@ MonoBehaviour:
   gameMode: 0
   timeToSpawnCoin: 0.4
   timeToSpawnItem: 1
-  timeToSpawnObstacle: 4
+  timeToSpawnObstacle: 100
   numberToSpawnCoin: 5
   spawnObject: {fileID: 1865355687}
   transformParent: {fileID: 1882166260}
@@ -4242,6 +4247,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2089550311}
+  - {fileID: 575130106}
   m_Father: {fileID: 402476527}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4467,7 +4473,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1935284292}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1935284289
 GameObject:
@@ -4537,7 +4543,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 402476527}
-  - {fileID: 575130106}
   - {fileID: 1882166260}
   m_Father: {fileID: 235965751}
   m_RootOrder: 0

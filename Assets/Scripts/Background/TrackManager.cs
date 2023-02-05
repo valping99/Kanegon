@@ -10,6 +10,12 @@ namespace Kaiju
         [SerializeField] private GameObject moveTrack;
         [HideInInspector] public bool movement;
         [SerializeField] public float[] laneLocation;
+
+        [Header("Curved Shader")]
+        [SerializeField][Range(-1f, 1f)] private float x_Axis = 0.000005f;
+        [SerializeField][Range(-1f, 1f)] private float y_Axis = -0.00004f;
+        [SerializeField] private float timeToCurved;
+        [SerializeField] private Material[] materials;
         // Start is called before the first frame update
         void Start()
         {
@@ -19,8 +25,18 @@ namespace Kaiju
         // Update is called once per frame
         void Update()
         {
-            if(movement) TrackMovement();
+            if (movement) TrackMovement();
         }
+
+        void LateUpdate()
+        {
+            foreach (var m in materials)
+            {
+                m.SetFloat(Shader.PropertyToID("X_Axis"), x_Axis);
+                m.SetFloat(Shader.PropertyToID("Y_Axis"), y_Axis);
+            }
+        }
+
 
         private void TrackMovement()
         {
