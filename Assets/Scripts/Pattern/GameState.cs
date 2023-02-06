@@ -45,15 +45,22 @@ namespace Kanegon
             gameMovement.InputController();
             gameMovement.ChangePosition();
 
-            //! Skill Script
-            skillBar.OnChangedSlider(skillPoint);
-            skillBar.EnableSkill(skillPoint);
 
             //! Get Score Script
             getScore.SetScore();
             if (skillPoint >= skillBar.numberToActiveSkill)
             {
                 skillPoint = skillBar.numberToActiveSkill;
+            }
+            if (skillCharacter.activeSkill)
+            {
+                skillBar.CountDownSkill();
+            }
+            else
+            {
+                //! Skill Script
+                skillBar.OnChangedSlider(skillPoint);
+                skillBar.EnableSkill(skillPoint);
             }
         }
         public override void Enter(State from)
@@ -97,6 +104,6 @@ namespace Kanegon
             skillPoint = 0;
             coin = 0;
         }
-        
+
     }
 }

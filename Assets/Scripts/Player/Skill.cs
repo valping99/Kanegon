@@ -66,7 +66,7 @@ namespace Kanegon
 
         private void ActiveSkill()
         {
-            skillButton.interactable = false;
+            skillButton.GetComponent<Button>().enabled = false;
             StartCoroutine(CountDownSkill());
         }
 

@@ -29,14 +29,20 @@ namespace Kanegon
         {
             if (skillPoint >= numberToActiveSkill)
             {
-                skillButton.interactable = true;
+                skillButton.GetComponent<Button>().enabled = true;
                 skillButton.image.sprite = enableSkillButton;
             }
             else
             {
-                skillButton.interactable = false;
+                skillButton.GetComponent<Button>().enabled = false;
                 skillButton.image.sprite = disableSkillButton;
             }
+        }
+
+        public void CountDownSkill()
+        {
+            sliderLeft.value -= Time.deltaTime;
+            sliderRight.value -= Time.deltaTime;
         }
     }
 }
