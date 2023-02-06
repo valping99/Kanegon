@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-namespace Kaiju
+namespace Kanegon
 {
     public class GetScore : MonoBehaviour
     {

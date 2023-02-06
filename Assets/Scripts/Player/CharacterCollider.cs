@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Kaiju
+namespace Kanegon
 {
     public class CharacterCollider : MonoBehaviour
     {
         [SerializeField] private CharacterManager charManager;
+        [SerializeField] private Skill skillCharacter;
         [SerializeField] private GetScore getScore;
         [SerializeField] private UIManager uiManager;
         [SerializeField] private SpawnTrack spawnTrack;
+        [SerializeField] private Mediator m_Mediator;
         // Start is called before the first frame update
         void Start()
         {
@@ -46,7 +48,11 @@ namespace Kaiju
             {
                 charManager.coin += 1;
                 getScore.SetScore();
-                // Debug.Log($"Coin: {charManager.coin}");
+                for (var i = skillCharacter.magnetCoin.Count - 1; i > -1; i--)
+                {
+                    if (skillCharacter.magnetCoin[i] == null)
+                        skillCharacter.magnetCoin.RemoveAt(i);
+                }
             }
 
             if (other.gameObject.CompareTag("SpawnRoad"))

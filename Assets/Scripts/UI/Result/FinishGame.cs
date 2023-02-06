@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-namespace Kaiju
+namespace Kanegon
 {
     public class FinishGame : MonoBehaviour
     {
@@ -32,7 +32,6 @@ namespace Kaiju
         {
             numberScore.text = $"¥{getScore.newPoint.ToString()}";
             numberOfCoin.text = getScore.coin.ToString() + "枚";
-
         }
         // private void SetRanking()
         // {

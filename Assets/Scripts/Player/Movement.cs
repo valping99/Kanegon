@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Kaiju
+namespace Kanegon
 {
     public class Movement : MonoBehaviour
     {

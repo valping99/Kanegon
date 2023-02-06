@@ -4,10 +4,8 @@ using UnityEngine;
 
 namespace Kanegon
 {
-    public class CharacterManager : MonoBehaviour
+    public class OverState : MonoBehaviour
     {
-        public int coin;
-        public int healthPoint;
         // Start is called before the first frame update
         void Start()
         {

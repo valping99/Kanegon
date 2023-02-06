@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Kaiju
+namespace Kanegon
 {
     public enum GameMode
     {
@@ -49,15 +49,12 @@ namespace Kaiju
             {
                 case 0:
                     location = trackManager.laneLocation[0];
-                    Debug.Log("Left");
                     break;
                 case 2:
                     location = trackManager.laneLocation.Length - 1;
-                    Debug.Log("Right");
                     break;
                 default:
                     location = 0;
-                    Debug.Log("Mid");
                     break;
             }
             spawnObject.transform.position = new Vector3(location, 1, spawnObject.transform.position.z);

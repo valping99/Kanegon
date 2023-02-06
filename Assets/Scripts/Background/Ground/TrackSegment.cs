@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Kaiju
+namespace Kanegon
 {
     public class TrackSegment : MonoBehaviour
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Kaiju
+namespace Kanegon
 {
     public class LoadScene : MonoBehaviour
     {

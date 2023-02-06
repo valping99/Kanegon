@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44655913, g: 0.496396, b: 0.57482225, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1717,6 +1717,7 @@ GameObject:
   m_Component:
   - component: {fileID: 470274365}
   - component: {fileID: 470274366}
+  - component: {fileID: 470274367}
   m_Layer: 5
   m_Name: GamePlaying
   m_TagString: Untagged
@@ -1763,6 +1764,20 @@ MonoBehaviour:
   factor: 40
   coin: 0
   newPoint: 0
+--- !u!114 &470274367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470274364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac652b0de119214fb6d4341665a7aaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  scoreText: {fileID: 14343900}
 --- !u!1 &515905878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1937,6 +1952,7 @@ GameObject:
   - component: {fileID: 591582869}
   - component: {fileID: 591582870}
   - component: {fileID: 591582871}
+  - component: {fileID: 591582872}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -2041,6 +2057,20 @@ MonoBehaviour:
   gameOver: 0
   couponCode: 0
   backToTop: {fileID: 919047657}
+--- !u!114 &591582872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591582866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f35c1a1c5784054996f26acf241afd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  states:
+  - {fileID: 470274367}
 --- !u!1 &606077477
 GameObject:
   m_ObjectHideFlags: 0
@@ -3212,6 +3242,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1406848257}
   m_CullTransparentMesh: 1
+--- !u!1 &1414814381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1414814382}
+  - component: {fileID: 1414814384}
+  - component: {fileID: 1414814383}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1414814382
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414814381}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1718278206}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1414814383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414814381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 413f2b655d864a846a7244ff8eefb9e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charManager: {fileID: 591582867}
+  playerCollider: {fileID: 1718278205}
+  magnetCoin: []
+  coin: 0
+  numberToActiveSkill: 0
+  activeSkill: 0
+  magnetSpeed: 5
+--- !u!135 &1414814384
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414814381}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1473190327
 GameObject:
   m_ObjectHideFlags: 0
@@ -3951,6 +4046,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6934081608843324219}
+  - {fileID: 1414814382}
   m_Father: {fileID: 1733863951}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3988,9 +4084,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charManager: {fileID: 591582867}
+  skillCharacter: {fileID: 1414814383}
   getScore: {fileID: 470274366}
   uiManager: {fileID: 591582871}
   spawnTrack: {fileID: 1935284290}
+  m_Mediator: {fileID: 0}
 --- !u!1 &1733863947
 GameObject:
   m_ObjectHideFlags: 0
@@ -4862,7 +4960,7 @@ GameObject:
   - component: {fileID: 6944974307732094963}
   - component: {fileID: 7018309511007279681}
   m_Layer: 0
-  m_Name: bee
+  m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
