@@ -8,8 +8,8 @@ namespace Kanegon
     {
         public GameManager manager;
 
-        // public abstract void Enter(State from);
-        // public abstract void Exit(State to);
+        public abstract void Enter(State from);
+        public abstract void Exit(State to);
         public abstract void Tick();
 
         public abstract string GetName();

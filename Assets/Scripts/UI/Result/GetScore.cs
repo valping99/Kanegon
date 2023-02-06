@@ -8,7 +8,7 @@ namespace Kanegon
 {
     public class GetScore : MonoBehaviour
     {
-        [SerializeField] private CharacterManager charManager;
+        [SerializeField] private GameState gameState;
         [SerializeField] private TextMeshProUGUI score;
         [SerializeField] private float factor;
         [HideInInspector] public float coin;
@@ -16,7 +16,7 @@ namespace Kanegon
 
         public void SetScore()
         {
-            coin = charManager.coin;
+            coin = gameState.coin;
             newPoint = coin * factor;
             score.text = newPoint.ToString();
         }

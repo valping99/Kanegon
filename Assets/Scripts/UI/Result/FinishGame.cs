@@ -8,7 +8,7 @@ namespace Kanegon
 {
     public class FinishGame : MonoBehaviour
     {
-        [SerializeField] private UIManager manager;
+        [SerializeField] private OverState overState;
         [SerializeField] private GetScore getScore;
         [SerializeField] private TextMeshProUGUI numberScore;
         // [SerializeField] private TextMeshProUGUI rankScore;
@@ -31,7 +31,12 @@ namespace Kanegon
         public void ShowResult()
         {
             numberScore.text = $"¥{getScore.newPoint.ToString()}";
-            numberOfCoin.text = getScore.coin.ToString() + "枚";
+            numberOfCoin.text = getScore.coin.ToString() + "$";
+        }
+
+        public void EnableMysteryBox()
+        {
+            
         }
         // private void SetRanking()
         // {

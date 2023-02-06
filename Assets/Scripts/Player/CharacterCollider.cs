@@ -6,39 +6,23 @@ namespace Kanegon
 {
     public class CharacterCollider : MonoBehaviour
     {
-        [SerializeField] private CharacterManager charManager;
+        #region Variables
         [SerializeField] private Skill skillCharacter;
         [SerializeField] private GetScore getScore;
-        [SerializeField] private UIManager uiManager;
+        [SerializeField] private OverState overState;
+        [SerializeField] private GameState gameState;
         [SerializeField] private SpawnTrack spawnTrack;
-        [SerializeField] private Mediator m_Mediator;
-        // Start is called before the first frame update
-        void Start()
-        {
-            Initialize();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
-        private void Initialize()
-        {
-        }
+        #endregion
         private void Damaged()
         {
-            if (charManager.healthPoint <= 0)
+            if (gameState.healthPoint <= 0)
             {
                 spawnTrack.StopMovement();
-                uiManager.gameOver = true;
-                uiManager.GameOver();
-                uiManager.pause = true;
+                overState.GameOver();
             }
             else
             {
-                charManager.healthPoint -= 1;
+                gameState.healthPoint -= 1;
             }
         }
 
@@ -46,7 +30,7 @@ namespace Kanegon
         {
             if (other.gameObject.GetComponent<CollectCoin>())
             {
-                charManager.coin += 1;
+                gameState.coin += 1;
                 getScore.SetScore();
                 for (var i = skillCharacter.magnetCoin.Count - 1; i > -1; i--)
                 {
