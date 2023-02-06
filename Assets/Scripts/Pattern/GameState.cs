@@ -95,6 +95,12 @@ namespace Kanegon
             //! Track Manager Script
             trackManager.movement = true;
 
+            //! Skill Script
+            skillBar.sliderLeft.value = 0;
+            skillBar.sliderRight.value = 0;
+            skillCharacter.activeSkill = false;
+
+
 
             canvas.gameObject.SetActive(true);
             gameOver = false;
