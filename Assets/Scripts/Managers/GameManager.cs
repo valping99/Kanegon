@@ -7,9 +7,11 @@ namespace Kanegon
     public class GameManager : MonoBehaviour
     {
         #region Variables
+        [Tooltip("Game Manager Instance")]
         static public GameManager instance { get { return s_Instance; } }
         static protected GameManager s_Instance;
 
+        [Tooltip("State")]
         public State[] states;
         public State topState { get { if (m_StateStack.Count == 0) return null; return m_StateStack[m_StateStack.Count - 1]; } }
         protected List<State> m_StateStack = new List<State>();
@@ -49,6 +51,7 @@ namespace Kanegon
         #endregion
 
         #region Class
+        //? Get State by name
         public void PushState(string name)
         {
             State state;
@@ -69,7 +72,7 @@ namespace Kanegon
             }
             m_StateStack.Add(state);
         }
-        // State management
+        //? State management
         public void SwitchState(string newState)
         {
             State state = FindState(newState);

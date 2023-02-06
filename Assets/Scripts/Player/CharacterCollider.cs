@@ -18,7 +18,7 @@ namespace Kanegon
             if (gameState.healthPoint <= 0)
             {
                 spawnTrack.StopMovement();
-                overState.GameOver();
+                gameState.GameOver();
             }
             else
             {
@@ -28,9 +28,10 @@ namespace Kanegon
 
         void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.GetComponent<CollectCoin>())
+            if (other.gameObject.GetComponent<CollectCoin>() && other.gameObject.CompareTag("Coin"))
             {
                 gameState.coin += 1;
+                gameState.skillPoint += 1;
                 getScore.SetScore();
                 for (var i = skillCharacter.magnetCoin.Count - 1; i > -1; i--)
                 {

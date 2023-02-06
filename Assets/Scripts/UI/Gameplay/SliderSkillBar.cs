@@ -8,22 +8,35 @@ namespace Kanegon
 {
     public class SliderSkillBar : MonoBehaviour
     {
-        public TextMeshProUGUI valueText;
-        // Start is called before the first frame update
-        void Start()
-        {
+        #region Variables
+        public Slider sliderLeft;
+        public Slider sliderRight;
+        public int numberToActiveSkill;
+        [SerializeField] private Button skillButton;
+        [SerializeField] private Sprite enableSkillButton;
+        [SerializeField] private Sprite disableSkillButton;
+        #endregion
 
+        public void OnChangedSlider(int skillPoint)
+        {
+            sliderLeft.value = skillPoint;
+            sliderLeft.maxValue = numberToActiveSkill;
+            sliderRight.value = skillPoint;
+            sliderRight.maxValue = numberToActiveSkill;
         }
 
-        // Update is called once per frame
-        void Update()
+        public void EnableSkill(int skillPoint)
         {
-
-        }
-
-        public void OnChangedSlider(float value)
-        {
-
+            if (skillPoint >= numberToActiveSkill)
+            {
+                skillButton.interactable = true;
+                skillButton.image.sprite = enableSkillButton;
+            }
+            else
+            {
+                skillButton.interactable = false;
+                skillButton.image.sprite = disableSkillButton;
+            }
         }
     }
 }

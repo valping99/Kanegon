@@ -8,8 +8,11 @@ namespace Kanegon
 {
     public class LoadOutState : State
     {
-        [SerializeField] private Canvas canvas;
+        [SerializeField] private Canvas loadOutCanvas;
+        [SerializeField] private Canvas gamePlayCanvas;
+        [SerializeField] private Canvas resultCanvas;
         [SerializeField] private Button btn_Start;
+        [SerializeField] private Transform obstacleParent;
 
         void Start()
         {
@@ -21,17 +24,36 @@ namespace Kanegon
         }
         public override void Tick()
         {
-
+            ClearObstacles();
         }
         public override void Enter(State from)
         {
-            canvas.gameObject.SetActive(true);
+            InitializedCreate();
         }
         public override void Exit(State to)
         {
-            canvas.gameObject.SetActive(false);
+            loadOutCanvas.gameObject.SetActive(false);
+        }
+        private void InitializedCreate()
+        {
+            loadOutCanvas.gameObject.SetActive(true);
+            gamePlayCanvas.gameObject.SetActive(false);
+            resultCanvas.gameObject.SetActive(false);
+            Debug.Log("Load Out Game");
         }
 
+        private void ClearObstacles()
+        {
+            Transform[] allObstacles = obstacleParent.GetComponentsInChildren<Transform>();
+
+            if (allObstacles.Length > 1)
+            {
+                for (int i = 1; i < allObstacles.Length; i++)
+                {
+                    Destroy(allObstacles[i].gameObject);
+                }
+            }
+        }
         private void StartGame()
         {
             manager.SwitchState("GamePlaying");

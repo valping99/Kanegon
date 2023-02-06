@@ -12,7 +12,7 @@ namespace Kanegon
         [SerializeField] private float speed;
         [SerializeField] private float leftRightSpeed = 20;
         [SerializeField] private float[] xPos;
-        [SerializeField] private int xPositionIndex = 1;
+        [SerializeField] public int xPositionIndex = 1;
 
         [Header("Move Button")]
         [SerializeField] private Button MoveLeft;
@@ -30,12 +30,6 @@ namespace Kanegon
             rb = this.GetComponent<Rigidbody>();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            InputController();
-            ChangePosition();
-        }
 
 
         public void TapToMoveLeft()
@@ -49,7 +43,7 @@ namespace Kanegon
             if (xPositionIndex > xPos.Length - 1) xPositionIndex = xPos.Length - 1;
         }
 
-        private void InputController()
+        public void InputController()
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
@@ -71,7 +65,7 @@ namespace Kanegon
             // rb.MovePosition(rb.position + moveForward);
             //? 
         }
-        void ChangePosition()
+        public void ChangePosition()
         {
             if (xPositionIndex == 0)
             {

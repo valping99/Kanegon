@@ -17,10 +17,7 @@ namespace Kanegon
         [SerializeField] private float timeToCurved;
         [SerializeField] private Material[] materials;
         // Start is called before the first frame update
-        void Start()
-        {
-            movement = true;
-        }
+        
 
         // Update is called once per frame
         void Update()
@@ -28,7 +25,7 @@ namespace Kanegon
             if (movement) TrackMovement();
         }
 
-        void LateUpdate()
+        public void CurvedTrack()
         {
             foreach (var m in materials)
             {
@@ -38,7 +35,7 @@ namespace Kanegon
         }
 
 
-        private void TrackMovement()
+        public void TrackMovement()
         {
             Vector3 moveForward = transform.forward * -trackSegment.speed * Time.deltaTime;
             moveTrack.transform.position = moveTrack.transform.position + moveForward;

@@ -32,70 +32,81 @@ namespace Kanegon
 
         [Tooltip("Set Variable")]
         [HideInInspector] private int numberDamageObject;
+        [SerializeField] public bool gameStart;
         #endregion
         // Start is called before the first frame update
-        void Start()
+        public void InitializedSpawn()
         {
+            gameStart = true;
             SetLevel();
             StartCoroutine(SpawnCoin());
             StartCoroutine(SpawnObstacle());
         }
 
-        private IEnumerator SpawnCoin()
+        public IEnumerator SpawnCoin()
         {
-            int randomLane = Random.Range(0, 3);
-            float location;
-            switch (randomLane)
+            if (gameStart)
             {
-                case 0:
-                    location = trackManager.laneLocation[0];
-                    break;
-                case 2:
-                    location = trackManager.laneLocation.Length - 1;
-                    break;
-                default:
-                    location = 0;
-                    break;
-            }
-            spawnObject.transform.position = new Vector3(location, 1, spawnObject.transform.position.z);
-
-            int randomSpawnNumber = Random.RandomRange(numberToSpawnCoin - 2, numberToSpawnCoin + 1);
-            for (int i = 0; i < randomSpawnNumber; i++)
-            {
-                Instantiate(Coin, spawnObject.transform.position, Quaternion.identity, transformParent);
-                yield return new WaitForSeconds(timeToSpawnCoin);
-            }
-
-            yield return new WaitForSeconds(.5f);
-            StartCoroutine(SpawnCoin());
-        }
-
-        private void SetLevel()
-        {
-            switch (gameMode)
-            {
-                case GameMode.Normal:
-                    numberDamageObject = 1;
-                    break;
-                case GameMode.Hard:
-                    numberDamageObject = 2;
-                    break;
-                default:
-                    numberDamageObject = 1;
-                    break;
-            }
-        }
-        private IEnumerator SpawnObstacle()
-        {
-            for (int i = 0; i < numberDamageObject; i++)
-            {
-                foreach (GameObject obstacle in Obstacles)
+                int randomLane = Random.Range(0, 3);
+                float location;
+                switch (randomLane)
                 {
-                    Instantiate(obstacle, spawnObject.transform.position, Quaternion.identity, transformParent);
-                    yield return new WaitForSeconds(timeToSpawnObstacle);
+                    case 0:
+                        location = trackManager.laneLocation[0];
+                        break;
+                    case 2:
+                        location = trackManager.laneLocation.Length - 1;
+                        break;
+                    default:
+                        location = 0;
+                        break;
+                }
+                spawnObject.transform.position = new Vector3(location, 1, spawnObject.transform.position.z);
+
+                int randomSpawnNumber = Random.RandomRange(numberToSpawnCoin - 2, numberToSpawnCoin + 1);
+                for (int i = 0; i < randomSpawnNumber; i++)
+                {
+                    Instantiate(Coin, spawnObject.transform.position, Quaternion.identity, transformParent);
+                    yield return new WaitForSeconds(timeToSpawnCoin);
+                }
+
+                yield return new WaitForSeconds(.5f);
+                StartCoroutine(SpawnCoin());
+            }
+        }
+
+        public void SetLevel()
+        {
+            if (gameStart)
+            {
+                switch (gameMode)
+                {
+                    case GameMode.Normal:
+                        numberDamageObject = 1;
+                        break;
+                    case GameMode.Hard:
+                        numberDamageObject = 2;
+                        break;
+                    default:
+                        numberDamageObject = 1;
+                        break;
                 }
             }
-            StartCoroutine(SpawnObstacle());
+        }
+        public IEnumerator SpawnObstacle()
+        {
+            if (gameStart)
+            {
+                for (int i = 0; i < numberDamageObject; i++)
+                {
+                    foreach (GameObject obstacle in Obstacles)
+                    {
+                        Instantiate(obstacle, spawnObject.transform.position, Quaternion.identity, transformParent);
+                        yield return new WaitForSeconds(timeToSpawnObstacle);
+                    }
+                }
+                StartCoroutine(SpawnObstacle());
+            }
         }
     }
 }

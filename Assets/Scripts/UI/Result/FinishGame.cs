@@ -8,6 +8,7 @@ namespace Kanegon
 {
     public class FinishGame : MonoBehaviour
     {
+        #region Variables
         [SerializeField] private OverState overState;
         [SerializeField] private GetScore getScore;
         [SerializeField] private TextMeshProUGUI numberScore;
@@ -15,7 +16,9 @@ namespace Kanegon
         [SerializeField] private TextMeshProUGUI numberOfCoin;
         [SerializeField] private List<Image> rankImage;
         [SerializeField] private List<float> rankScoreNumber;
+        #endregion
 
+        #region Unity_Method
         // Start is called before the first frame update
         void Start()
         {
@@ -27,7 +30,9 @@ namespace Kanegon
         {
 
         }
+        #endregion
 
+        #region Class
         public void ShowResult()
         {
             numberScore.text = $"¥{getScore.newPoint.ToString()}";
@@ -36,7 +41,7 @@ namespace Kanegon
 
         public void EnableMysteryBox()
         {
-            
+
         }
         // private void SetRanking()
         // {
@@ -50,5 +55,6 @@ namespace Kanegon
         //         }
         //     }
         // }
+        #endregion
     }
 }
