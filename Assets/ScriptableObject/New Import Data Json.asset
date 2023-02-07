@@ -13,21 +13,21 @@ MonoBehaviour:
   m_Name: New Import Data Json
   m_EditorClassIdentifier: 
   settings:
-    runningSpeedBase: 0
-    SpeedUpPerSec: 0
-    slideMoveSpeed: 0
-    coinLimitSkillGuage: 0
-    skillTime: 0
-    skillScoreBonusPerCoin: 0
-    itemTime: 0
-    itemScoreBonusPerCoin: 0
-    itemGenerateProbability: 0
-    coinScore: 0
-    codeThresholdScore: 0
-    obstacleGenerateProbabilityBase: 0
-    obstacleGenerateProbabilityAddPerSec: 0
-    kanegonBronzeScore: 0
-    kanegonGoldScore: 0
-    rankS: 0
-    rankA: 0
-    rankB: 0
+    runningSpeedBase: 1
+    SpeedUpPerSec: 0.1
+    slideMoveSpeed: 0.1
+    coinLimitSkillGuage: 80
+    skillTime: 15
+    skillScoreBonusPerCoin: 20
+    itemTime: 20
+    itemScoreBonusPerCoin: 20
+    itemGenerateProbability: 0.1
+    coinScore: 40
+    codeThresholdScore: 3000
+    obstacleGenerateProbabilityBase: 0.1
+    obstacleGenerateProbabilityAddPerSec: 0.1
+    kanegonBronzeScore: 1000
+    kanegonGoldScore: 3520
+    rankS: 5000
+    rankA: 3000
+    rankB: 1000

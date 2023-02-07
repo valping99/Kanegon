@@ -46,9 +46,11 @@ namespace Kanegon
             SetLevel();
             StartCoroutine(SpawnCoin());
             StartCoroutine(SpawnObstacle());
+            StartCoroutine(SpawnItem());
         }
 
 
+        //? Random Location To Spawn Obstacle
         private void RandomSpawnLocation()
         {
             int randomLane = Random.Range(0, 3);
@@ -67,6 +69,8 @@ namespace Kanegon
             }
             spawnObject.transform.position = new Vector3(location, 1, spawnObject.transform.position.z);
         }
+
+        //? Random Location To Spawn Items
         private void RandomSpawnItemsLocation()
         {
             int randomLane = Random.Range(0, 3);
@@ -85,40 +89,9 @@ namespace Kanegon
             }
             spawnItemsObject.transform.position = new Vector3(location, 1, spawnItemsObject.transform.position.z);
         }
-        private IEnumerator SpawnCoin()
-        {
-            if (gameStart)
-            {
-                float randomRate = Random.Range(0, 100);
-                RandomSpawnItemsLocation();
 
-                if (randomRate < rateToSpawnCoin)
-                {
 
-                    int randomSpawnNumber = Random.RandomRange(numberToSpawnCoin - 2, numberToSpawnCoin + 1);
-                    for (int i = 0; i < randomSpawnNumber; i++)
-                    {
-                        Instantiate(Coin, spawnItemsObject.transform.position, Quaternion.identity, transformParent);
-                        SpawnMultiItemsLocation();
-                        Instantiate(Coin, spawnItemsObject.transform.position, Quaternion.identity, transformParent);
-                        yield return new WaitForSeconds(timeToSpawnCoin);
-                    }
-                }
-                else
-                {
-                    int randomSpawnNumber = Random.RandomRange(numberToSpawnCoin - 2, numberToSpawnCoin + 1);
-                    for (int i = 0; i < randomSpawnNumber; i++)
-                    {
-                        Instantiate(Coin, spawnItemsObject.transform.position, Quaternion.identity, transformParent);
-                        yield return new WaitForSeconds(timeToSpawnCoin);
-                    }
-                }
-
-                yield return new WaitForSeconds(.6f);
-                if (gameStart) StartCoroutine(SpawnCoin());
-            }
-        }
-
+        //TODO Set Level in gameplay
         public void SetLevel()
         {
             if (gameStart)
@@ -137,62 +110,114 @@ namespace Kanegon
                 }
             }
         }
+
+        //? Check location to spawn multiply obstacle
         private void SpawnMultiLocation()
         {
             currentLocation = spawnObject.transform.position;
             RandomSpawnLocation();
             if (currentLocation == spawnObject.transform.position) SpawnMultiLocation();
         }
+
+        //? Check location to spawn multiply Items
         private void SpawnMultiItemsLocation()
         {
             currentItemsLocation = spawnItemsObject.transform.position;
             RandomSpawnItemsLocation();
             if (currentItemsLocation == spawnItemsObject.transform.position) SpawnMultiItemsLocation();
         }
-        private IEnumerator SpawnObstacle()
+
+
+        //! Spawn Coin
+        private IEnumerator SpawnCoin()
+        {
+            float randomRate = Random.Range(0, 100);
+            RandomSpawnItemsLocation();
+
+            if (randomRate < rateToSpawnCoin)
+            {
+
+                int randomSpawnNumber = Random.RandomRange(numberToSpawnCoin - 2, numberToSpawnCoin + 1);
+                for (int i = 0; i < randomSpawnNumber; i++)
+                {
+                    if (gameStart)
+                    {
+                        Instantiate(Coin, spawnItemsObject.transform.position, Quaternion.identity, transformParent);
+                        SpawnMultiItemsLocation();
+                        Instantiate(Coin, spawnItemsObject.transform.position, Quaternion.identity, transformParent);
+                        yield return new WaitForSeconds(timeToSpawnCoin);
+                    }
+                }
+            }
+            else
+            {
+                int randomSpawnNumber = Random.RandomRange(numberToSpawnCoin - 2, numberToSpawnCoin + 1);
+                for (int i = 0; i < randomSpawnNumber; i++)
+                {
+                    if (gameStart)
+                    {
+                        Instantiate(Coin, spawnItemsObject.transform.position, Quaternion.identity, transformParent);
+                        yield return new WaitForSeconds(timeToSpawnCoin);
+                    }
+                }
+            }
+
+            yield return new WaitForSeconds(.6f);
+            if (gameStart) StartCoroutine(SpawnCoin());
+
+        }
+        //! Spawn Item
+        private IEnumerator SpawnItem()
         {
             if (gameStart)
+            {
+                if (Items != null)
+                {
+                    foreach (GameObject items in Items)
+                    {
+                        yield return new WaitForSeconds(timeToSpawnItem);
+                        if (gameStart) Instantiate(items, spawnItemsObject.transform.position, Quaternion.identity, transformParent);
+                    }
+                }
+                if (gameStart) StartCoroutine(SpawnItem());
+
+            }
+        }
+        //! Spawn Obstacle
+        private IEnumerator SpawnObstacle()
+        {
+            yield return new WaitForSeconds(timeToSpawnObstacle);
+            if (Obstacles != null)
             {
                 float randomRate = Random.Range(0, 100);
                 RandomSpawnLocation();
                 if (randomRate < rateToSpawnObstacle)
                 {
-                    if (Obstacles.Count >= 1)
+                    if (gameStart)
                     {
-                        int randomObstacle = Random.Range(0, Obstacles.Count);
-                        Instantiate(Obstacles[randomObstacle], spawnObject.transform.position, Quaternion.identity, transformParent);
-                        SpawnMultiLocation();
-                        Instantiate(Obstacles[randomObstacle], spawnObject.transform.position, Quaternion.identity, transformParent);
-                    }
-                    else
-                    {
-                        if (Obstacles != null)
+                        foreach (GameObject obstacle in Obstacles)
                         {
-                            Instantiate(Obstacles[0], spawnObject.transform.position, Quaternion.identity, transformParent);
+                            Instantiate(obstacle, spawnObject.transform.position, Quaternion.identity, transformParent);
                             SpawnMultiLocation();
-                            Instantiate(Obstacles[0], spawnObject.transform.position, Quaternion.identity, transformParent);
-
+                            Instantiate(obstacle, spawnObject.transform.position, Quaternion.identity, transformParent);
+                            break;
                         }
                     }
                 }
                 else
                 {
-                    if (Obstacles.Count >= 1)
+                    if (gameStart)
                     {
-                        int randomObstacle = Random.Range(0, Obstacles.Count);
-                        Instantiate(Obstacles[randomObstacle], spawnObject.transform.position, Quaternion.identity, transformParent);
-                    }
-                    else
-                    {
-                        if (Obstacles != null)
+                        foreach (GameObject obstacle in Obstacles)
                         {
-                            Instantiate(Obstacles[0], spawnObject.transform.position, Quaternion.identity, transformParent);
+                            Instantiate(obstacle, spawnObject.transform.position, Quaternion.identity, transformParent);
+                            break;
                         }
                     }
                 }
-                yield return new WaitForSeconds(timeToSpawnObstacle);
-                if (gameStart) StartCoroutine(SpawnObstacle());
             }
+            if (gameStart) StartCoroutine(SpawnObstacle());
+
         }
     }
 }

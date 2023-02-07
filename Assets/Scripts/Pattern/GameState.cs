@@ -18,9 +18,10 @@ namespace Kanegon
         [SerializeField] private TrackManager trackManager;
         [SerializeField] private SpawnManager spawnManager;
         [SerializeField] private SliderSkillBar skillBar;
+        [SerializeField] private SkinCharacter skinCharacter;
         [Header("Value")]
-        [SerializeField] private TextMeshProUGUI scoreText;
         [HideInInspector] public int coin;
+        [HideInInspector] public int point;
         [HideInInspector] public int skillPoint;
         [SerializeField] public int healthPoint;
         [SerializeField] public float countDownSkill;
@@ -49,6 +50,8 @@ namespace Kanegon
             //! Get Score Script
             getScore.SetScore();
 
+            //! Skin Character
+            skinCharacter.ChangeSkinCharacter(point);
 
             //! Skill Script
             if (skillPoint >= skillBar.numberToActiveSkill)
@@ -74,13 +77,13 @@ namespace Kanegon
         public override void Exit(State to)
         {
             canvas.gameObject.SetActive(false);
+            spawnManager.GetComponent<SpawnManager>().enabled = false;
         }
 
         public void GameOver()
         {
             gameOver = true;
             pause = true;
-
             if (gameOver)
             {
                 // finishGame.ShowResult();
@@ -92,6 +95,7 @@ namespace Kanegon
         private void GameStart()
         {
             //! Spawn Manager Script
+            spawnManager.GetComponent<SpawnManager>().enabled = true;
             spawnManager.InitializedSpawn();
 
             //! Track Manager Script
@@ -102,6 +106,7 @@ namespace Kanegon
             skillBar.sliderRight.value = 0;
             skillCharacter.activeSkill = false;
 
+            skinCharacter.ResetCharacter();
 
 
             canvas.gameObject.SetActive(true);
@@ -111,6 +116,7 @@ namespace Kanegon
             healthPoint = 0;
             skillPoint = 0;
             coin = 0;
+            point = 0;
         }
 
     }

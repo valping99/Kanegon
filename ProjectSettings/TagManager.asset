@@ -12,6 +12,7 @@ TagManager:
   - Skill
   - Item
   - Bonus
+  - Character
   layers:
   - Default
   - TransparentFX

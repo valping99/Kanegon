@@ -2,17 +2,71 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkinCharacter : MonoBehaviour
+namespace Kanegon
 {
-    // Start is called before the first frame update
-    void Start()
+    public class SkinCharacter : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private List<GameObject> characterModel;
+        [SerializeField] private GameObject defaultCharacter;
+        [SerializeField] private List<int> scores;
+        [SerializeField] private Transform transformParent;
+        [SerializeField] public bool upgradeCharacter;
+        [SerializeField] public bool maximumUpgradeCharacter;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void ChangeSkinCharacter(int currentPoint)
+        {
+            if (currentPoint > scores[scores.Count - 1] && !maximumUpgradeCharacter)
+            {
+                Debug.Log(scores.Count);
+                foreach (Transform currentChar in transformParent.transform)
+                {
+                    if (currentChar.CompareTag("Character"))
+                    {
+                        Vector3 newPos = currentChar.transform.position;
+                        Destroy(currentChar.gameObject);
+                        int maxUpgrade = characterModel.Count - 1;
+                        Instantiate(characterModel[maxUpgrade], newPos, Quaternion.identity, transformParent);
+                        maximumUpgradeCharacter = true;
+                        break;
+                    }
+                }
+
+            }
+            if (!upgradeCharacter)
+            {
+                for (int i = 0; i < scores.Count; i++)
+                {
+                    if (currentPoint > scores[i])
+                    {
+                        foreach (Transform currentChar in transformParent.transform)
+                        {
+                            if (currentChar.CompareTag("Character"))
+                            {
+                                Vector3 newPos = currentChar.transform.position;
+                                Destroy(currentChar.gameObject);
+                                Instantiate(characterModel[i], newPos, Quaternion.identity, transformParent);
+                                upgradeCharacter = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        public void ResetCharacter()
+        {
+            upgradeCharacter = false;
+            maximumUpgradeCharacter = false;
+            foreach (Transform currentChar in transformParent.transform)
+            {
+                if (currentChar.CompareTag("Character"))
+                {
+                    Vector3 newPos = currentChar.transform.position;
+                    Destroy(currentChar.gameObject);
+                    Instantiate(defaultCharacter, newPos, Quaternion.identity, transformParent);
+                    break;
+                }
+            }
+        }
     }
 }

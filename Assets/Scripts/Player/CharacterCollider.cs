@@ -32,7 +32,8 @@ namespace Kanegon
             {
                 gameState.coin += 1;
                 gameState.skillPoint += 1;
-                // getScore.SetScore();
+                if(getScore.isBonus) gameState.point += (int)(getScore.number + getScore.bonusNumber);
+                else gameState.point += (int) getScore.number;
                 for (var i = skillCharacter.magnetCoin.Count - 1; i > -1; i--)
                 {
                     if (skillCharacter.magnetCoin[i] == null)

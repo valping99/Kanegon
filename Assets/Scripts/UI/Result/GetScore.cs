@@ -17,26 +17,17 @@ namespace Kanegon
         [SerializeField] public float number;
         [SerializeField] public float bonusNumber;
         [SerializeField] public float bonusTimer;
-        [HideInInspector] private bool isBonus;
+        [HideInInspector] public bool isBonus;
 
         [Tooltip("Fix Point")]
         [HideInInspector] public float coin;
-        [HideInInspector] public float newPoint;
+        [HideInInspector] public float point;
 
         public void SetScore()
         {
-            if (!isBonus)
-            {
-                coin = gameState.coin;
-                newPoint = coin * number;
-                score.text = newPoint.ToString();
-            }
-            else
-            {
-                coin = gameState.coin;
-                newPoint = (coin * number) * bonusNumber;
-                score.text = newPoint.ToString();
-            }
+            point = gameState.point;
+            coin = gameState.coin;
+            score.text = gameState.point.ToString();
         }
 
         public IEnumerator BonusCoin()
