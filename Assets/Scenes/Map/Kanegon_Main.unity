@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44655913, g: 0.496396, b: 0.57482225, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1718,6 +1718,60 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327635746}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &344841931
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 344841932}
+  - component: {fileID: 344841934}
+  - component: {fileID: 344841933}
+  m_Layer: 0
+  m_Name: SpawnItem
+  m_TagString: Spawn
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &344841932
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344841931}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 70}
+  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1651067182}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &344841933
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344841931}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &344841934
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344841931}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &386795431
 GameObject:
   m_ObjectHideFlags: 0
@@ -2044,7 +2098,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: {fileID: 470274367}
   score: {fileID: 14343900}
-  factor: 40
+  number: 40
+  bonusNumber: 1.5
+  bonusTimer: 15
   coin: 0
   newPoint: 0
 --- !u!114 &470274367
@@ -2502,16 +2558,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackManager: {fileID: 591582869}
   gameMode: 0
-  timeToSpawnCoin: 0.1
-  timeToSpawnItem: 1
+  timeToSpawnCoin: 0.2
+  timeToSpawnItem: 30
   timeToSpawnObstacle: 5
-  numberToSpawnCoin: 10
   spawnObject: {fileID: 1865355687}
+  spawnItemsObject: {fileID: 344841931}
   transformParent: {fileID: 1882166260}
-  Items: []
+  Items:
+  - {fileID: 4477527306952485110, guid: 38fa374958dee7247ac9c3060c762cdf, type: 3}
   Obstacles:
   - {fileID: 5710962383582921851, guid: e42021a5cb1624f4cbb3ec820f172679, type: 3}
   Coin: {fileID: 5826701521396229285, guid: fb6b9cb29c5c53645b94f64d91c874de, type: 3}
+  numberToSpawnCoin: 6
+  rateToSpawnObstacle: 25
+  rateToSpawnCoin: 0
   gameStart: 0
 --- !u!114 &591582872
 MonoBehaviour:
@@ -5825,6 +5885,7 @@ Transform:
   m_Children:
   - {fileID: 1865355688}
   - {fileID: 1614737070}
+  - {fileID: 344841932}
   m_Father: {fileID: 1733863951}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

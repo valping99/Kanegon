@@ -48,6 +48,9 @@ namespace Kanegon
 
             //! Get Score Script
             getScore.SetScore();
+
+
+            //! Skill Script
             if (skillPoint >= skillBar.numberToActiveSkill)
             {
                 skillPoint = skillBar.numberToActiveSkill;
@@ -58,7 +61,6 @@ namespace Kanegon
             }
             else
             {
-                //! Skill Script
                 skillBar.OnChangedSlider(skillPoint);
                 skillBar.EnableSkill(skillPoint);
             }

@@ -32,12 +32,17 @@ namespace Kanegon
             {
                 gameState.coin += 1;
                 gameState.skillPoint += 1;
-                getScore.SetScore();
+                // getScore.SetScore();
                 for (var i = skillCharacter.magnetCoin.Count - 1; i > -1; i--)
                 {
                     if (skillCharacter.magnetCoin[i] == null)
                         skillCharacter.magnetCoin.RemoveAt(i);
                 }
+            }
+
+            if (other.gameObject.CompareTag("Bonus") && other.gameObject.layer == 7)
+            {
+                StartCoroutine(getScore.BonusCoin());
             }
 
             if (other.gameObject.CompareTag("SpawnRoad"))
