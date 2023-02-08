@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bdd5eceef2ef7e44bb09776e2f98437, type: 3}
+  m_Name: New Import Data Json
+  m_EditorClassIdentifier: 
+  settings:
+    runningSpeedBase: 1
+    SpeedUpPerSec: 0.1
+    slideMoveSpeed: 0.1
+    coinLimitSkillGuage: 80
+    skillTime: 15
+    skillScoreBonusPerCoin: 20
+    itemTime: 20
+    itemScoreBonusPerCoin: 20
+    itemGenerateProbability: 0.1
+    coinScore: 40
+    codeThresholdScore: 3000
+    obstacleGenerateProbabilityBase: 0.1
+    obstacleGenerateProbabilityAddPerSec: 0.1
+    kanegonBronzeScore: 1000
+    kanegonGoldScore: 3520
+    rankS: 5000
+    rankA: 3000
+    rankB: 1000

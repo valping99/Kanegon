@@ -16,13 +16,16 @@ namespace Kanegon
         [SerializeField] private TextMeshProUGUI numberOfCoin;
         [SerializeField] private List<Image> rankImage;
         [SerializeField] private List<float> rankScoreNumber;
+        [SerializeField] private GameObject mysteryBoxScreen;
+        [SerializeField] private GameObject showResultScreen;
+        [SerializeField] private Button entryButton;
         #endregion
 
         #region Unity_Method
         // Start is called before the first frame update
         void Start()
         {
-
+            entryButton.onClick.AddListener(EnableMysteryBox);
         }
 
         // Update is called once per frame
@@ -41,7 +44,8 @@ namespace Kanegon
 
         public void EnableMysteryBox()
         {
-
+            showResultScreen.gameObject.SetActive(false);
+            mysteryBoxScreen.gameObject.SetActive(true);
         }
         // private void SetRanking()
         // {
