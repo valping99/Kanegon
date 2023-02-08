@@ -43,14 +43,15 @@ namespace Kanegon
             }
 
             _Instance = this;
-            _AudioSFX.CueBgm = CueBGM.Bgm_Outgame;
+            _AudioSFX.CueBgm = CueBGM.Bgm_Title;
+            _AudioSFX.CueSe = CueSE.None;
             _AudioSFX?.Play();
         }
         //? Active Background Music
         public static void ActiveBGM(CueBGM SEOrder)
         {
             _SoundSFX.CueBgm = SEOrder;
-            if (SEOrder == CueBGM.Bgm_Outgame || SEOrder == CueBGM.Bgm_Ingame)
+            if (SEOrder == CueBGM.Bgm_Outgame || SEOrder == CueBGM.Bgm_Ingame || SEOrder == CueBGM.Bgm_Title)
             {
                 GameObject[] names = GameObject.FindGameObjectsWithTag("BGM_Audio");
 
@@ -80,13 +81,13 @@ namespace Kanegon
 
             _SoundSFX?.Play();
         }
-        //? Resume BGM After active Sound Effect
-        public static IEnumerator ResumeAudioBGM(AudioSource audio)
-        {
-            yield return new WaitForSeconds(9f);
-            audio.Play();
-            AudioManager.ActiveBGM(CueBGM.Bgm_Ingame);
-        }
+        // //? Resume BGM After active Sound Effect
+        // public static IEnumerator ResumeAudioBGM(AudioSource audio)
+        // {
+        //     yield return new WaitForSeconds(9f);
+        //     audio.Play();
+        //     AudioManager.ActiveBGM(CueBGM.Bgm_Ingame);
+        // }
 
         //? Get BGM AudioSource
         void ChangeBGMAudio()

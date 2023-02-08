@@ -60,7 +60,7 @@ namespace Kanegon
             }
             if (skillCharacter.activeSkill)
             {
-                skillBar.CountDownSkill();
+                skillBar.CountDownSkill(skillCharacter.countDownSkill);
             }
             else
             {
@@ -71,6 +71,8 @@ namespace Kanegon
         public override void Enter(State from)
         {
             GameStart();
+            
+            // AudioManager.ActiveBGM(CueBGM.Bgm_Ingame);
 
             Debug.Log("Gameplay");
         }
@@ -82,6 +84,7 @@ namespace Kanegon
 
         public void GameOver()
         {
+            AudioManager.ActiveBGM(CueBGM.Bgm_Outgame);
             gameOver = true;
             pause = true;
             if (gameOver)

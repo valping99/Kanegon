@@ -195,6 +195,7 @@ namespace Kanegon
                 //     AudioManagerSO._Instance.StartCoroutine(AudioManagerSO.ResumeAudioBGM(_AudioSource));
                 // }
                 Destroy(source.gameObject, source.clip.length / source.pitch);
+                Debug.Log("Destroy");
             }
 
 

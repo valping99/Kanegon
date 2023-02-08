@@ -37,6 +37,7 @@ namespace Kanegon
         public override void Enter(State from)
         {
             canvas.gameObject.SetActive(true);
+            
             Debug.Log("Result");
             ShowResult();
         }
@@ -52,6 +53,7 @@ namespace Kanegon
 
         private void LoadOut()
         {
+            AudioManager.ActiveBGM(CueBGM.Bgm_Title);
             manager.SwitchState("LoadOut");
         }
     }

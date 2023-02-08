@@ -12,13 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59cbde4af2aa0db40822edea34f6b6e7, type: 3}
   m_Name: AudioSO
   m_EditorClassIdentifier: 
-  _AudioClips: []
-  volumn: {x: 0.5, y: 0.5}
-  pitch: {x: 1, y: 1}
-  volumnInit: 0
-  pitchInit: 0
-  playIndex: 0
+  _AudioClips:
+  - {fileID: 8300000, guid: 2bfb12922b4f33d48a808a2f83ebd8f8, type: 3}
+  - {fileID: 8300000, guid: e8e7298e085be2d45a40cf0c37844fbe, type: 3}
+  - {fileID: 8300000, guid: 6c7500e7f26acf34fb5f3d547637d224, type: 3}
+  - {fileID: 8300000, guid: b36178ecbf1e3594ab9baa2d92154b0d, type: 3}
+  - {fileID: 8300000, guid: 4519e5c2af88aa54db7c79535e5669f8, type: 3}
+  - {fileID: 8300000, guid: 7985122bb8c3bbf4bbfa8bc319b0f77f, type: 3}
+  - {fileID: 8300000, guid: 968cd0d9daa7db340af25c649587ea77, type: 3}
+  volumn: {x: 1, y: 1}
+  pitch: {x: 0.5, y: 0.5}
+  volumnInit: 1
+  pitchInit: 1
+  playIndex: 4
   CueBgm: 0
-  CueSe: 0
+  CueSe: 2
   useSemitones: 0
   semitones: {x: 0, y: 0}

@@ -14,7 +14,7 @@ namespace Kanegon
 
         void Rotation()
         {
-            Vector3 rotate = new Vector3(0, speedRotate * Time.deltaTime , 0);
+            Vector3 rotate = new Vector3(0, speedRotate * Time.deltaTime, 0);
             this.gameObject.transform.Rotate(rotate);
         }
         void OnTriggerEnter(Collider other)

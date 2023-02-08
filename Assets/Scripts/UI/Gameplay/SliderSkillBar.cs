@@ -39,10 +39,11 @@ namespace Kanegon
             }
         }
 
-        public void CountDownSkill()
+        public void CountDownSkill(float timeCD)
         {
-            sliderLeft.value -= Time.deltaTime;
-            sliderRight.value -= Time.deltaTime;
+            float timeCountDown = numberToActiveSkill / timeCD;
+            sliderLeft.value -= (Time.deltaTime * timeCountDown);
+            sliderRight.value -= (Time.deltaTime * timeCountDown);
         }
     }
 }

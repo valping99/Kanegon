@@ -13,6 +13,9 @@ TagManager:
   - Item
   - Bonus
   - Character
+  - AudioController
+  - BGM_Audio
+  - SE_BGM
   layers:
   - Default
   - TransparentFX

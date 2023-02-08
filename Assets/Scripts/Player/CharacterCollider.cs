@@ -30,10 +30,11 @@ namespace Kanegon
         {
             if (other.gameObject.GetComponent<CollectCoin>() && other.gameObject.CompareTag("Coin"))
             {
+                AudioManager.ActiveSoundEffect(CueSE.Se_Collect_Coin);
                 gameState.coin += 1;
                 gameState.skillPoint += 1;
-                if(getScore.isBonus) gameState.point += (int)(getScore.number + getScore.bonusNumber);
-                else gameState.point += (int) getScore.number;
+                if (getScore.isBonus) gameState.point += (int)(getScore.number + getScore.bonusNumber);
+                else gameState.point += (int)getScore.number;
                 for (var i = skillCharacter.magnetCoin.Count - 1; i > -1; i--)
                 {
                     if (skillCharacter.magnetCoin[i] == null)
@@ -43,6 +44,7 @@ namespace Kanegon
 
             if (other.gameObject.CompareTag("Bonus") && other.gameObject.layer == 7)
             {
+                AudioManager.ActiveSoundEffect(CueSE.Se_Collect_Item);
                 StartCoroutine(getScore.BonusCoin());
             }
 
@@ -53,6 +55,7 @@ namespace Kanegon
 
             if (other.gameObject.CompareTag("Damage"))
             {
+                AudioManager.ActiveSoundEffect(CueSE.Se_Hit_Obstacle);
                 Destroy(other.gameObject);
                 Damaged();
             }
