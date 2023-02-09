@@ -22,6 +22,7 @@ namespace Kanegon
         [HideInInspector] public bool isSkill;
         [HideInInspector] public List<int> listPoint;
         [SerializeField] public List<TextMeshProUGUI> numberSlot;
+        [SerializeField] public List<Animator> numberAnim;
 
         [Tooltip("Fix Point")]
         [HideInInspector] public float coin;
@@ -50,7 +51,12 @@ namespace Kanegon
             {
                 newNumber.Split("", newNumber.Length);
                 string textNumber = newNumber[i].ToString();
-                numberSlot[newNumber.Length - i].text = textNumber.ToString();
+                if (textNumber != numberSlot[newNumber.Length - (i + 1)].text)
+                {
+                    numberAnim[newNumber.Length - (i + 1)].SetBool("Change",true);
+                    Debug.Log(textNumber + " Number");
+                }
+                numberSlot[newNumber.Length - (i + 1)].text = textNumber.ToString();
             }
         }
 
