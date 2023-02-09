@@ -8,7 +8,7 @@ namespace Kanegon
     {
         [SerializeField] private List<GameObject> characterModel;
         [SerializeField] private GameObject defaultCharacter;
-        [SerializeField] private List<int> scores;
+        [SerializeField] public List<float> scores;
         [SerializeField] private Transform transformParent;
         [SerializeField] public bool upgradeCharacter;
         [SerializeField] public bool maximumUpgradeCharacter;
@@ -17,7 +17,6 @@ namespace Kanegon
         {
             if (currentPoint > scores[scores.Count - 1] && !maximumUpgradeCharacter)
             {
-                Debug.Log(scores.Count);
                 foreach (Transform currentChar in transformParent.transform)
                 {
                     if (currentChar.CompareTag("Character"))

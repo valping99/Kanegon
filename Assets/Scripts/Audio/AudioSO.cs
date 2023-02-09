@@ -90,10 +90,10 @@ namespace Kanegon
                 case CueSE.Se_Collect_Item:
                     playIndex = 6;
                     break;
-                case CueSE.Se_Skill_Button:
+                case CueSE.Se_Move:
                     playIndex = 7;
                     break;
-                case CueSE.Se_Move:
+                case CueSE.Se_Skill_Button:
                     playIndex = 8;
                     break;
                 case CueSE.Se_Ui_Increase:
@@ -195,7 +195,6 @@ namespace Kanegon
                 //     AudioManagerSO._Instance.StartCoroutine(AudioManagerSO.ResumeAudioBGM(_AudioSource));
                 // }
                 Destroy(source.gameObject, source.clip.length / source.pitch);
-                Debug.Log("Destroy");
             }
 
 

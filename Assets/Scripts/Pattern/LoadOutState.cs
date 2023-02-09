@@ -17,7 +17,6 @@ namespace Kanegon
         void Start()
         {
             btn_Start.onClick.AddListener(StartGame);
-            // AudioManager.ActiveBGM(CueBGM.Bgm_Title);
         }
         public override string GetName()
         {
@@ -40,7 +39,6 @@ namespace Kanegon
             loadOutCanvas.gameObject.SetActive(true);
             gamePlayCanvas.gameObject.SetActive(false);
             resultCanvas.gameObject.SetActive(false);
-            Debug.Log("Load Out Game");
         }
 
         private void ClearObstacles()

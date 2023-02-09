@@ -33,6 +33,7 @@ namespace Kanegon
                 AudioManager.ActiveSoundEffect(CueSE.Se_Collect_Coin);
                 gameState.coin += 1;
                 gameState.skillPoint += 1;
+                if (getScore.isSkill) gameState.point += (int)getScore.bonusNumberBySkill;
                 if (getScore.isBonus) gameState.point += (int)(getScore.number + getScore.bonusNumber);
                 else gameState.point += (int)getScore.number;
                 for (var i = skillCharacter.magnetCoin.Count - 1; i > -1; i--)
@@ -40,6 +41,7 @@ namespace Kanegon
                     if (skillCharacter.magnetCoin[i] == null)
                         skillCharacter.magnetCoin.RemoveAt(i);
                 }
+                getScore.UpdateScore();
             }
 
             if (other.gameObject.CompareTag("Bonus") && other.gameObject.layer == 7)

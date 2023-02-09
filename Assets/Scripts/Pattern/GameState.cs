@@ -23,11 +23,11 @@ namespace Kanegon
         [HideInInspector] public int coin;
         [HideInInspector] public int point;
         [HideInInspector] public int skillPoint;
-        [SerializeField] public int healthPoint;
-        [SerializeField] public float countDownSkill;
+        [HideInInspector] public int healthPoint;
 
         [Tooltip("Check value")]
         [HideInInspector] public bool pause;
+        [HideInInspector] public bool pauseGame;
         [HideInInspector] public bool gameOver;
         [HideInInspector] public bool couponCode;
         #endregion
@@ -48,7 +48,8 @@ namespace Kanegon
 
 
             //! Get Score Script
-            getScore.SetScore();
+            // getScore.SetScore();
+            getScore.isSkill = skillCharacter.activeSkill;
 
             //! Skin Character
             skinCharacter.ChangeSkinCharacter(point);
@@ -56,7 +57,7 @@ namespace Kanegon
             //! Skill Script
             if (skillPoint >= skillBar.numberToActiveSkill)
             {
-                skillPoint = skillBar.numberToActiveSkill;
+                skillPoint = (int)skillBar.numberToActiveSkill;
             }
             if (skillCharacter.activeSkill)
             {
@@ -68,13 +69,10 @@ namespace Kanegon
                 skillBar.EnableSkill(skillPoint);
             }
         }
+
         public override void Enter(State from)
         {
             GameStart();
-            
-            // AudioManager.ActiveBGM(CueBGM.Bgm_Ingame);
-
-            Debug.Log("Gameplay");
         }
         public override void Exit(State to)
         {
@@ -89,7 +87,6 @@ namespace Kanegon
             pause = true;
             if (gameOver)
             {
-                // finishGame.ShowResult();
                 gameMovement.xPositionIndex = 1;
                 spawnManager.gameStart = false;
                 manager.SwitchState("GameOver");
@@ -103,11 +100,14 @@ namespace Kanegon
 
             //! Track Manager Script
             trackManager.movement = true;
+            trackManager.Initialized();
 
             //! Skill Script
             skillBar.sliderLeft.value = 0;
             skillBar.sliderRight.value = 0;
             skillCharacter.activeSkill = false;
+
+            getScore.ResetPoint();
 
             skinCharacter.ResetCharacter();
 

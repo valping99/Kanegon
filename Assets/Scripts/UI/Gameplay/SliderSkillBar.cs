@@ -11,13 +11,13 @@ namespace Kanegon
         #region Variables
         public Slider sliderLeft;
         public Slider sliderRight;
-        public int numberToActiveSkill;
+        public float numberToActiveSkill;
         [SerializeField] private Button skillButton;
         [SerializeField] private Sprite enableSkillButton;
         [SerializeField] private Sprite disableSkillButton;
         #endregion
 
-        public void OnChangedSlider(int skillPoint)
+        public void OnChangedSlider(float skillPoint)
         {
             sliderLeft.value = skillPoint;
             sliderLeft.maxValue = numberToActiveSkill;

@@ -16,6 +16,7 @@ TagManager:
   - AudioController
   - BGM_Audio
   - SE_BGM
+  - Road
   layers:
   - Default
   - TransparentFX

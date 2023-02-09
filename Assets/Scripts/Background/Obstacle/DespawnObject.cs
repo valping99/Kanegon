@@ -8,7 +8,10 @@ namespace Kanegon
     {
         void OnTriggerEnter(Collider other)
         {
-            Destroy(other.gameObject);
+            if (!other.CompareTag("Road"))
+            {
+                Destroy(other.gameObject);
+            }
         }
     }
 }

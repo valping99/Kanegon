@@ -12,10 +12,11 @@ namespace Kanegon
         [SerializeField] private OverState overState;
         [SerializeField] private GetScore getScore;
         [SerializeField] private TextMeshProUGUI numberScore;
+        [SerializeField] private Image rankImage;
         // [SerializeField] private TextMeshProUGUI rankScore;
         [SerializeField] private TextMeshProUGUI numberOfCoin;
-        [SerializeField] private List<Image> rankImage;
-        [SerializeField] private List<float> rankScoreNumber;
+        [SerializeField] private List<Sprite> spriteImage;
+        [SerializeField] public List<float> rankScoreNumber;
         [SerializeField] private GameObject mysteryBoxScreen;
         [SerializeField] private GameObject showResultScreen;
         [SerializeField] private Button entryButton;
@@ -47,18 +48,28 @@ namespace Kanegon
             showResultScreen.gameObject.SetActive(false);
             mysteryBoxScreen.gameObject.SetActive(true);
         }
-        // private void SetRanking()
-        // {
-        //     int values = rankScoreNumber.Count;
-        //     float point = (float)managers.currentTime;
-        //     for (int i = 0; i < rankScoreNumber.Count; i++)
-        //     {
-        //         if (i >= rankScoreNumber.Count)
-        //         {
 
-        //         }
-        //     }
-        // }
+        public void ResetScreen()
+        {
+            mysteryBoxScreen.gameObject.SetActive(false);
+            showResultScreen.gameObject.SetActive(true);
+        }
+        public void SetRanking()
+        {
+            int values = rankScoreNumber.Count;
+            float point = (float)getScore.point;
+            for (int i = 0; i < rankScoreNumber.Count; i++)
+            {
+                if (i >= rankScoreNumber.Count)
+                {
+                    values = i - 1;
+                    Debug.Log($"Value: {values}");
+                    return;
+                }
+                if (point >= rankScoreNumber[i]) values = i;
+            }
+            rankImage.sprite = spriteImage[values];
+        }
         #endregion
     }
 }

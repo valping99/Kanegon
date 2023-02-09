@@ -13,12 +13,15 @@ namespace Kanegon
         #region Variables
         [Tooltip("Script")]
         [SerializeField] private TrackManager trackManager;
-        [SerializeField] private GameMode gameMode;
+        [HideInInspector] private GameMode gameMode;
 
         [Header("Set Timer")]
         [SerializeField] private float timeToSpawnCoin;
         [SerializeField] private float timeToSpawnItem;
         [SerializeField] private float timeToSpawnObstacle;
+        [SerializeField] private float spawnCoin;
+        [SerializeField] private float spawnItem;
+        [SerializeField] private float spawnObstacle;
 
         [Header("Spawn & Despawn Location")]
         [SerializeField] private GameObject spawnObject;
@@ -38,17 +41,24 @@ namespace Kanegon
         [HideInInspector] private Vector3 currentLocation;
         [HideInInspector] private Vector3 currentItemsLocation;
         [SerializeField] public bool gameStart;
+        [SerializeField] private bool isSpawnCoin;
+        [SerializeField] private float speedUpCoin;
         #endregion
         // Start is called before the first frame update
         public void InitializedSpawn()
         {
             gameStart = true;
             SetLevel();
-            StartCoroutine(SpawnCoin());
-            StartCoroutine(SpawnObstacle());
-            StartCoroutine(SpawnItem());
+            spawnCoin = timeToSpawnCoin;
+            spawnItem = timeToSpawnItem;
+            spawnObstacle = timeToSpawnObstacle;
+            speedUpCoin = timeToSpawnCoin;
         }
 
+        void Update()
+        {
+            SpawnTiming();
+        }
 
         //? Random Location To Spawn Obstacle
         private void RandomSpawnLocation()
@@ -128,9 +138,38 @@ namespace Kanegon
         }
 
 
+        //!Check Time To Spawn
+        private void SpawnTiming()
+        {
+            if (gameStart)
+            {
+                spawnCoin -= Time.deltaTime;
+                spawnItem -= Time.deltaTime;
+                spawnObstacle -= Time.deltaTime;
+            }
+
+            if (spawnCoin <= 0)
+            {
+                if (!isSpawnCoin) StartCoroutine(SpawnCoin());
+                spawnCoin = timeToSpawnCoin;
+
+            }
+            if (spawnItem <= 0)
+            {
+                SpawnItem();
+                spawnItem = timeToSpawnItem;
+            }
+            if (spawnObstacle <= 0)
+            {
+                SpawnObstacle();
+                spawnObstacle = timeToSpawnObstacle;
+            }
+        }
+
         //! Spawn Coin
         private IEnumerator SpawnCoin()
         {
+            isSpawnCoin = true;
             float randomRate = Random.Range(0, 100);
             RandomSpawnItemsLocation();
 
@@ -145,7 +184,7 @@ namespace Kanegon
                         Instantiate(Coin, spawnItemsObject.transform.position, Quaternion.identity, transformParent);
                         SpawnMultiItemsLocation();
                         Instantiate(Coin, spawnItemsObject.transform.position, Quaternion.identity, transformParent);
-                        yield return new WaitForSeconds(timeToSpawnCoin);
+                        yield return new WaitForSeconds(speedUpCoin);
                     }
                 }
             }
@@ -157,17 +196,17 @@ namespace Kanegon
                     if (gameStart)
                     {
                         Instantiate(Coin, spawnItemsObject.transform.position, Quaternion.identity, transformParent);
-                        yield return new WaitForSeconds(timeToSpawnCoin);
+                        yield return new WaitForSeconds(speedUpCoin);
                     }
                 }
             }
-
-            yield return new WaitForSeconds(.6f);
-            if (gameStart) StartCoroutine(SpawnCoin());
+            isSpawnCoin = false;
+            // yield return new WaitForSeconds(.6f);
+            // if (gameStart) StartCoroutine(SpawnCoin());
 
         }
         //! Spawn Item
-        private IEnumerator SpawnItem()
+        private void SpawnItem()
         {
             if (gameStart)
             {
@@ -175,18 +214,18 @@ namespace Kanegon
                 {
                     foreach (GameObject items in Items)
                     {
-                        yield return new WaitForSeconds(timeToSpawnItem);
+                        // yield return new WaitForSeconds(timeToSpawnItem);
                         if (gameStart) Instantiate(items, spawnItemsObject.transform.position, Quaternion.identity, transformParent);
                     }
                 }
-                if (gameStart) StartCoroutine(SpawnItem());
+                // if (gameStart) StartCoroutine(SpawnItem());
 
             }
         }
         //! Spawn Obstacle
-        private IEnumerator SpawnObstacle()
+        private void SpawnObstacle()
         {
-            yield return new WaitForSeconds(timeToSpawnObstacle);
+            // yield return new WaitForSeconds(timeToSpawnObstacle);
             if (Obstacles != null)
             {
                 float randomRate = Random.Range(0, 100);
@@ -216,7 +255,7 @@ namespace Kanegon
                     }
                 }
             }
-            if (gameStart) StartCoroutine(SpawnObstacle());
+            // if (gameStart) StartCoroutine(SpawnObstacle());
 
         }
     }

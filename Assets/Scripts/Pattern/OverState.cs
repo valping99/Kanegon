@@ -11,7 +11,9 @@ namespace Kanegon
     {
         #region Variables
         [Header("Script")]
+        [SerializeField] private GameState gameState;
         [SerializeField] private FinishGame finishGame;
+        [SerializeField] private Coupon couponCode;
 
         [Header("Canvas")]
         [SerializeField] private Canvas canvas;
@@ -37,8 +39,6 @@ namespace Kanegon
         public override void Enter(State from)
         {
             canvas.gameObject.SetActive(true);
-            
-            Debug.Log("Result");
             ShowResult();
         }
         public override void Exit(State to)
@@ -49,6 +49,9 @@ namespace Kanegon
         private void ShowResult()
         {
             finishGame.ShowResult();
+            finishGame.SetRanking();
+            finishGame.ResetScreen();
+            couponCode.CheckMysteryBox(gameState.point);
         }
 
         private void LoadOut()

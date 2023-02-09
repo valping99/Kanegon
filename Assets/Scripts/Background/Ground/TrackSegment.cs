@@ -10,6 +10,7 @@ namespace Kanegon
         [SerializeField] public TrackManager trackManager;
         [SerializeField] public List<GameObject> tracks;
         [SerializeField] public float speed;
+        [SerializeField] public float speedUpMovement;
         [SerializeField] private float offset = 25f;
 
         // Start is called before the first frame update

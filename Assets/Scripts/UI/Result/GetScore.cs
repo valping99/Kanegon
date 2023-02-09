@@ -16,12 +16,17 @@ namespace Kanegon
         [Header("Set Variables")]
         [SerializeField] public float number;
         [SerializeField] public float bonusNumber;
+        [SerializeField] public float bonusNumberBySkill;
         [SerializeField] public float bonusTimer;
         [HideInInspector] public bool isBonus;
+        [HideInInspector] public bool isSkill;
+        [HideInInspector] public List<int> listPoint;
+        [SerializeField] public List<TextMeshProUGUI> numberSlot;
 
         [Tooltip("Fix Point")]
         [HideInInspector] public float coin;
         [HideInInspector] public float point;
+        [HideInInspector] public float newNumberLength;
 
         public void SetScore()
         {
@@ -37,5 +42,25 @@ namespace Kanegon
             isBonus = false;
         }
 
+        public void UpdateScore()
+        {
+            SetScore();
+            string newNumber = point.ToString();
+            for (int i = 0; i < newNumber.Length; i++)
+            {
+                newNumber.Split("", newNumber.Length);
+                string textNumber = newNumber[i].ToString();
+                numberSlot[newNumber.Length - i].text = textNumber.ToString();
+            }
+        }
+
+        public void ResetPoint()
+        {
+            string defaultVal = "0";
+            for (int i = 0; i < numberSlot.Count; i++)
+            {
+                numberSlot[i].text = defaultVal.ToString();
+            }
+        }
     }
 }

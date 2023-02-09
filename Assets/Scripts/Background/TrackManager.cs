@@ -15,9 +15,14 @@ namespace Kanegon
         [SerializeField][Range(-1f, 1f)] private float x_Axis = 0.000005f;
         [SerializeField][Range(-1f, 1f)] private float y_Axis = -0.00004f;
         [SerializeField] private float timeToCurved;
+        [SerializeField] public float speed;
         [SerializeField] private Material[] materials;
         // Start is called before the first frame update
-        
+
+        void Start()
+        {
+            Initialized();
+        }
 
         // Update is called once per frame
         void Update()
@@ -33,11 +38,15 @@ namespace Kanegon
                 m.SetFloat(Shader.PropertyToID("Y_Axis"), y_Axis);
             }
         }
-
+        public void Initialized()
+        {
+            speed = -trackSegment.speed;
+        }
 
         public void TrackMovement()
         {
-            Vector3 moveForward = transform.forward * -trackSegment.speed * Time.deltaTime;
+            speed -= trackSegment.speedUpMovement * Time.deltaTime;
+            Vector3 moveForward = transform.forward * speed * Time.deltaTime;
             moveTrack.transform.position = moveTrack.transform.position + moveForward;
         }
     }
