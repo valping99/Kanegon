@@ -6,6 +6,7 @@ namespace Kanegon
 {
     public class TrackManager : MonoBehaviour
     {
+        #region Variables
         [SerializeField] private TrackSegment trackSegment;
         [SerializeField] private GameObject moveTrack;
         [HideInInspector] public bool movement;
@@ -17,8 +18,9 @@ namespace Kanegon
         [SerializeField] private float timeToCurved;
         [SerializeField] public float speed;
         [SerializeField] private Material[] materials;
-        // Start is called before the first frame update
+        #endregion
 
+        #region Unity Method
         void Start()
         {
             Initialized();
@@ -30,6 +32,9 @@ namespace Kanegon
             if (movement) TrackMovement();
         }
 
+        #endregion
+
+        #region Class
         public void CurvedTrack()
         {
             foreach (var m in materials)
@@ -49,5 +54,6 @@ namespace Kanegon
             Vector3 moveForward = transform.forward * speed * Time.deltaTime;
             moveTrack.transform.position = moveTrack.transform.position + moveForward;
         }
+        #endregion
     }
 }

@@ -15,6 +15,7 @@ namespace Kanegon
         [SerializeField] private TrackSegment trackSegment;
         [SerializeField] private FinishGame finishGame;
         [SerializeField] private Coupon couponCode;
+        [SerializeField] private Movement characterMovement;
         // Start is called before the first frame update
         void Start()
         {
@@ -26,7 +27,7 @@ namespace Kanegon
             getScore.bonusNumber = importJson.settings.itemScoreBonusPerCoin;
             getScore.bonusTimer = importJson.settings.itemTime;
             getScore.bonusNumberBySkill = importJson.settings.skillScoreBonusPerCoin;
-
+            characterMovement.leftRightSpeed = importJson.settings.slideMoveSpeed;
 
             trackSegment.speedUpMovement = importJson.settings.SpeedUpPerSec;
 

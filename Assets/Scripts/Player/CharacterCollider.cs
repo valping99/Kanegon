@@ -13,6 +13,8 @@ namespace Kanegon
         [SerializeField] private GameState gameState;
         [SerializeField] private SpawnTrack spawnTrack;
         #endregion
+
+        //? Check gameover (By HP)
         private void Damaged()
         {
             if (gameState.healthPoint <= 0)
@@ -28,6 +30,7 @@ namespace Kanegon
 
         void OnTriggerEnter(Collider other)
         {
+            //! Collect coin
             if (other.gameObject.GetComponent<CollectCoin>() && other.gameObject.CompareTag("Coin"))
             {
                 AudioManager.ActiveSoundEffect(CueSE.Se_Collect_Coin);
@@ -44,17 +47,20 @@ namespace Kanegon
                 getScore.UpdateScore();
             }
 
+            //! Collect Item
             if (other.gameObject.CompareTag("Bonus") && other.gameObject.layer == 7)
             {
                 AudioManager.ActiveSoundEffect(CueSE.Se_Collect_Item);
                 StartCoroutine(getScore.BonusCoin());
             }
 
+            //! Change position road
             if (other.gameObject.CompareTag("SpawnRoad"))
             {
                 spawnTrack.SpawnRoadTrigger();
             }
 
+            //! Collect Obstacle
             if (other.gameObject.CompareTag("Damage"))
             {
                 AudioManager.ActiveSoundEffect(CueSE.Se_Hit_Obstacle);

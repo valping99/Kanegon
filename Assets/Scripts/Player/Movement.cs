@@ -7,10 +7,10 @@ namespace Kanegon
 {
     public class Movement : MonoBehaviour
     {
+        #region Variables
         [Header("Set Value to player")]
         [SerializeField] private float jumpForce;
-        [SerializeField] private float speed;
-        [SerializeField] private float leftRightSpeed = 20;
+        [SerializeField] public float leftRightSpeed = 20;
         [SerializeField] private float[] xPos;
         [SerializeField] public int xPositionIndex = 1;
 
@@ -23,15 +23,18 @@ namespace Kanegon
         private Rigidbody rb;
 
         private bool firstJump = false;
+        #endregion
 
-        // Start is called before the first frame update
+
+        #region Unity_Method
         void Start()
         {
             rb = this.GetComponent<Rigidbody>();
         }
+        #endregion
 
-
-
+        #region Class
+        //? Add to Tap button
         public void TapToMoveLeft()
         {
             xPositionIndex--;
@@ -43,12 +46,14 @@ namespace Kanegon
             if (xPositionIndex > xPos.Length - 1) xPositionIndex = xPos.Length - 1;
         }
 
+
+        //? Keyboard input
         public void InputController()
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                rb.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
-            }
+            // if (Input.GetKeyDown(KeyCode.UpArrow))
+            // {
+            //     rb.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
+            // }
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 xPositionIndex--;
@@ -67,6 +72,7 @@ namespace Kanegon
             // rb.MovePosition(rb.position + moveForward);
             //? 
         }
+
         public void ChangePosition()
         {
             if (xPositionIndex == 0)
@@ -83,6 +89,7 @@ namespace Kanegon
             }
 
         }
+        #endregion
 
     }
 

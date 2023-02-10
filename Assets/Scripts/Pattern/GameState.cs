@@ -19,6 +19,7 @@ namespace Kanegon
         [SerializeField] private SpawnManager spawnManager;
         [SerializeField] private SliderSkillBar skillBar;
         [SerializeField] private SkinCharacter skinCharacter;
+        [SerializeField] private Countdown countDown;
         [Header("Value")]
         [HideInInspector] public int coin;
         [HideInInspector] public int point;
@@ -43,7 +44,7 @@ namespace Kanegon
             trackManager.CurvedTrack();
 
             //! Movement Script
-            gameMovement.InputController();
+            if(!pause) gameMovement.InputController();
             gameMovement.ChangePosition();
 
 
@@ -73,6 +74,7 @@ namespace Kanegon
         public override void Enter(State from)
         {
             GameStart();
+            countDown.GameCountDown();
         }
         public override void Exit(State to)
         {
@@ -85,14 +87,24 @@ namespace Kanegon
             AudioManager.ActiveBGM(CueBGM.Bgm_Outgame);
             gameOver = true;
             pause = true;
+            StopGame();
             if (gameOver)
             {
-                gameMovement.xPositionIndex = 1;
-                spawnManager.gameStart = false;
                 manager.SwitchState("GameOver");
             }
         }
-        private void GameStart()
+
+        public void StopGame()
+        {
+            pause = true;
+            if (pause)
+            {
+                trackManager.movement = false;
+                gameMovement.xPositionIndex = 1;
+                spawnManager.gameStart = false;
+            }
+        }
+        public void GameStart()
         {
             //! Spawn Manager Script
             spawnManager.GetComponent<SpawnManager>().enabled = true;

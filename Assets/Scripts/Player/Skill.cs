@@ -8,15 +8,21 @@ namespace Kanegon
     public class Skill : MonoBehaviour
     {
         #region Variables
-        [SerializeField] private GameObject playerCollider;
+        [Header("Game State")]
         [SerializeField] private GameState gameState;
-        [HideInInspector] public List<GameObject> magnetCoin;
-        [SerializeField] public bool activeSkill;
-        [SerializeField] public int skillPoint;
+
+        [Header("Component")]
+        [SerializeField] private GameObject playerCollider;
         [SerializeField] private Button skillButton;
-        public const int k_CoinsLayerIndex = 8;
-        public float countDownSkill;
-        public float magnetSpeed = 5f;
+        [HideInInspector] public List<GameObject> magnetCoin;
+
+        [Header("Value")]
+        [SerializeField] public const int k_CoinsLayerIndex = 8;
+        [SerializeField] public int skillPoint;
+        [SerializeField] public float countDownSkill;
+        [SerializeField] public float magnetSpeed = 5f;
+        [SerializeField] public bool activeSkill;
+
         #endregion  
         // Start is called before the first frame update
 

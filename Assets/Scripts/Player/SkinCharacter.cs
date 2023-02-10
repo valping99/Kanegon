@@ -6,13 +6,20 @@ namespace Kanegon
 {
     public class SkinCharacter : MonoBehaviour
     {
+        #region Variables
+        [Header("Component")]
         [SerializeField] private List<GameObject> characterModel;
         [SerializeField] private GameObject defaultCharacter;
         [SerializeField] public List<float> scores;
         [SerializeField] private Transform transformParent;
-        [SerializeField] public bool upgradeCharacter;
-        [SerializeField] public bool maximumUpgradeCharacter;
 
+        [Tooltip("Check value")]
+        [HideInInspector] public bool upgradeCharacter;
+        [HideInInspector] public bool maximumUpgradeCharacter;
+        #endregion
+
+        #region Class
+        //! Check point to change skin character
         public void ChangeSkinCharacter(int currentPoint)
         {
             if (currentPoint > scores[scores.Count - 1] && !maximumUpgradeCharacter)
@@ -31,6 +38,7 @@ namespace Kanegon
                 }
 
             }
+            //! Change Bronze Character
             if (!upgradeCharacter)
             {
                 for (int i = 0; i < scores.Count; i++)
@@ -52,6 +60,8 @@ namespace Kanegon
                 }
             }
         }
+
+        //! Set default character when start game
         public void ResetCharacter()
         {
             upgradeCharacter = false;
@@ -67,5 +77,6 @@ namespace Kanegon
                 }
             }
         }
+        #endregion
     }
 }

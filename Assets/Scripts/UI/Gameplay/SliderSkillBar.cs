@@ -9,6 +9,7 @@ namespace Kanegon
     public class SliderSkillBar : MonoBehaviour
     {
         #region Variables
+        [Header("Component")]
         public Slider sliderLeft;
         public Slider sliderRight;
         public float numberToActiveSkill;

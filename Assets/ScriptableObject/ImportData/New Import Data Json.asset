@@ -15,7 +15,7 @@ MonoBehaviour:
   settings:
     runningSpeedBase: 1
     SpeedUpPerSec: 0.1
-    slideMoveSpeed: 0.1
+    slideMoveSpeed: 20
     coinLimitSkillGuage: 80
     skillTime: 15
     skillScoreBonusPerCoin: 20

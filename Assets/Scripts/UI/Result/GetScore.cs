@@ -11,24 +11,29 @@ namespace Kanegon
         [Tooltip("State")]
         [SerializeField] private GameState gameState;
 
+        [Header("Component")]
         [SerializeField] private TextMeshProUGUI score;
+        [SerializeField] public List<TextMeshProUGUI> numberSlot;
+        [SerializeField] public List<Animator> numberAnim;
+        [HideInInspector] public List<int> listPoint;
 
         [Header("Set Variables")]
         [SerializeField] public float number;
         [SerializeField] public float bonusNumber;
         [SerializeField] public float bonusNumberBySkill;
         [SerializeField] public float bonusTimer;
+
+        [Tooltip("Check value")]
         [HideInInspector] public bool isBonus;
         [HideInInspector] public bool isSkill;
-        [HideInInspector] public List<int> listPoint;
-        [SerializeField] public List<TextMeshProUGUI> numberSlot;
-        [SerializeField] public List<Animator> numberAnim;
+
 
         [Tooltip("Fix Point")]
         [HideInInspector] public float coin;
         [HideInInspector] public float point;
         [HideInInspector] public float newNumberLength;
 
+        //? Set score to game state
         public void SetScore()
         {
             point = gameState.point;
@@ -36,6 +41,7 @@ namespace Kanegon
             score.text = gameState.point.ToString();
         }
 
+        //? Check bonus coin
         public IEnumerator BonusCoin()
         {
             isBonus = true;
@@ -43,23 +49,28 @@ namespace Kanegon
             isBonus = false;
         }
 
+        //? Update score to UI (Like Slot machine)
         public void UpdateScore()
         {
             SetScore();
             string newNumber = point.ToString();
             for (int i = 0; i < newNumber.Length; i++)
             {
+                if (i == 0)
+                {
+                    numberAnim[0].SetBool("Change", true);
+                }
                 newNumber.Split("", newNumber.Length);
                 string textNumber = newNumber[i].ToString();
                 if (textNumber != numberSlot[newNumber.Length - (i + 1)].text)
                 {
-                    numberAnim[newNumber.Length - (i + 1)].SetBool("Change",true);
-                    Debug.Log(textNumber + " Number");
+                    numberAnim[newNumber.Length - (i + 1)].SetBool("Change", true);
                 }
                 numberSlot[newNumber.Length - (i + 1)].text = textNumber.ToString();
             }
         }
 
+        //? Set initialize score
         public void ResetPoint()
         {
             string defaultVal = "0";
