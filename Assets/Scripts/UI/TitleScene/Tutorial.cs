@@ -8,14 +8,15 @@ namespace Kanegon
 {
     public class Tutorial : MonoBehaviour
     {
-        [SerializeField] private Button tutorialButton;
-        [SerializeField] private Button nextTutorial;
+        #region Variables
         [SerializeField] private List<GameObject> disableGameObject;
-        [SerializeField] private Image imageTutorial;
         [SerializeField] private List<Sprite> listTutorial;
         [SerializeField] private GameObject tutorialGameObject;
+        [SerializeField] private Button tutorialButton;
+        [SerializeField] private Button nextTutorial;
+        [SerializeField] private Image imageTutorial;
         [SerializeField] private int currentSheet;
-
+        #endregion
         void Start()
         {
             tutorialButton.onClick.AddListener(EnableTutorial);
