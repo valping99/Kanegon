@@ -16,6 +16,7 @@ namespace Kanegon
         [SerializeField] private Button skillButton;
         [SerializeField] private Sprite enableSkillButton;
         [SerializeField] private Sprite disableSkillButton;
+        [SerializeField] private Skill skillCharacter;
         #endregion
 
         public void OnChangedSlider(float skillPoint)
@@ -31,12 +32,14 @@ namespace Kanegon
             if (skillPoint >= numberToActiveSkill)
             {
                 skillButton.GetComponent<Button>().enabled = true;
-                skillButton.image.sprite = enableSkillButton;
+                skillButton.GetComponent<Image>().enabled = true;
+                skillCharacter.skillEffect.gameObject.SetActive(true);
+                skillCharacter.skillAnimation.SetBool("Effect", true);
             }
             else
             {
                 skillButton.GetComponent<Button>().enabled = false;
-                skillButton.image.sprite = disableSkillButton;
+                // skillButton.image.sprite = disableSkillButton;
             }
         }
 

@@ -13,7 +13,9 @@ namespace Kanegon
 
         [Header("Component")]
         [SerializeField] private GameObject playerCollider;
+        [SerializeField] public GameObject skillEffect;
         [SerializeField] private Button skillButton;
+        [SerializeField] public Animator skillAnimation;
         [HideInInspector] public List<GameObject> magnetCoin;
 
         [Header("Value")]
@@ -81,6 +83,9 @@ namespace Kanegon
         {
             activeSkill = true;
             yield return new WaitForSeconds(countDownSkill);
+            skillButton.GetComponent<Image>().enabled = false;
+            skillAnimation.SetBool("Effect",false);
+            skillEffect.gameObject.SetActive(false);
             activeSkill = false;
             skillPoint = 0;
             gameState.skillPoint = skillPoint;
