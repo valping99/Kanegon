@@ -19,7 +19,7 @@ namespace Kanegon
         [SerializeField] private float timeToSpawnCoin;
         [SerializeField] private float timeToSpawnItem;
         [SerializeField] private float timeToSpawnObstacle;
-        [SerializeField] private float spawnCoin;
+        [HideInInspector] private float spawnCoin;
         [SerializeField] private float spawnItem;
         [SerializeField] private float spawnObstacle;
 
@@ -36,13 +36,15 @@ namespace Kanegon
         [Tooltip("Set Variable")]
         [SerializeField] private int numberToSpawnCoin;
         [SerializeField] private float rateToSpawnObstacle;
-        [SerializeField] private float rateToSpawnCoin;
+        [HideInInspector] private float rateToSpawnCoin;
         [HideInInspector] private int numberDamageObject;
         [HideInInspector] private Vector3 currentLocation;
         [HideInInspector] private Vector3 currentItemsLocation;
         [SerializeField] public bool gameStart;
         [SerializeField] private bool isSpawnCoin;
-        [SerializeField] private float speedUpCoin;
+        [SerializeField] private bool isSpawnItem;
+        [SerializeField] public float speedUpCoin;
+        [SerializeField] private float baseSpeedUp;
         #endregion
         // Start is called before the first frame update
         public void InitializedSpawn()
@@ -52,7 +54,7 @@ namespace Kanegon
             spawnCoin = timeToSpawnCoin;
             spawnItem = timeToSpawnItem;
             spawnObstacle = timeToSpawnObstacle;
-            speedUpCoin = timeToSpawnCoin;
+            speedUpCoin = baseSpeedUp;
         }
 
         void Update()
@@ -146,6 +148,7 @@ namespace Kanegon
                 spawnCoin -= Time.deltaTime;
                 spawnItem -= Time.deltaTime;
                 spawnObstacle -= Time.deltaTime;
+                speedUpCoin -= (speedUpCoin / 200) * Time.deltaTime;
             }
 
             if (spawnCoin <= 0)
@@ -154,13 +157,13 @@ namespace Kanegon
                 spawnCoin = timeToSpawnCoin;
 
             }
-            if (spawnItem <= 0)
-            {
-                SpawnItem();
-                spawnItem = timeToSpawnItem;
-            }
             if (spawnObstacle <= 0)
             {
+                if (spawnItem <= 0)
+                {
+                    isSpawnItem = true;
+                    spawnItem = timeToSpawnItem;
+                }
                 SpawnObstacle();
                 spawnObstacle = timeToSpawnObstacle;
             }
@@ -205,23 +208,6 @@ namespace Kanegon
             // if (gameStart) StartCoroutine(SpawnCoin());
 
         }
-        //! Spawn Item
-        private void SpawnItem()
-        {
-            if (gameStart)
-            {
-                if (Items != null)
-                {
-                    foreach (GameObject items in Items)
-                    {
-                        // yield return new WaitForSeconds(timeToSpawnItem);
-                        if (gameStart) Instantiate(items, spawnItemsObject.transform.position, Quaternion.identity, transformParent);
-                    }
-                }
-                // if (gameStart) StartCoroutine(SpawnItem());
-
-            }
-        }
         //! Spawn Obstacle
         private void SpawnObstacle()
         {
@@ -230,7 +216,21 @@ namespace Kanegon
             {
                 float randomRate = Random.Range(0, 100);
                 RandomSpawnLocation();
-                if (randomRate < rateToSpawnObstacle)
+                if (isSpawnItem)
+                {
+                    if (gameStart)
+                    {
+                        foreach (GameObject obstacle in Obstacles)
+                        {
+                            Instantiate(Items[0], spawnObject.transform.position, Quaternion.identity, transformParent);
+                            SpawnMultiLocation();
+                            Instantiate(obstacle, spawnObject.transform.position, Quaternion.identity, transformParent);
+                            break;
+                        }
+                    }
+                    isSpawnItem = false;
+                }
+                else if (randomRate < rateToSpawnObstacle)
                 {
                     if (gameStart)
                     {
@@ -255,8 +255,6 @@ namespace Kanegon
                     }
                 }
             }
-            // if (gameStart) StartCoroutine(SpawnObstacle());
-
         }
     }
 }

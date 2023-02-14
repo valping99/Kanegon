@@ -35,6 +35,7 @@ namespace Kanegon
                 skillButton.GetComponent<Image>().enabled = true;
                 skillCharacter.skillEffect.gameObject.SetActive(true);
                 skillCharacter.skillAnimation.SetBool("Effect", true);
+                skillCharacter.EffectSkillAnimation.SetBool("ActivitySkill", true);
             }
             else
             {

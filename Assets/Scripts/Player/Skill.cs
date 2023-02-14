@@ -15,14 +15,16 @@ namespace Kanegon
         [SerializeField] private GameObject playerCollider;
         [SerializeField] public GameObject skillEffect;
         [SerializeField] private Button skillButton;
-        [SerializeField] public Animator skillAnimation;
         [HideInInspector] public List<GameObject> magnetCoin;
+        [SerializeField] public Animator skillAnimation;
+        [SerializeField] public Animator EffectSkillAnimation;
 
         [Header("Value")]
         [SerializeField] public const int k_CoinsLayerIndex = 8;
         [SerializeField] public int skillPoint;
         [SerializeField] public float countDownSkill;
-        [SerializeField] public float magnetSpeed = 5f;
+        [SerializeField] public float magnetSpeed;
+        [SerializeField] public float baseSpeedMagnet = 5f;
         [SerializeField] public bool activeSkill;
 
         #endregion  
@@ -43,6 +45,8 @@ namespace Kanegon
                 activeSkill = !activeSkill;
             }
 #endif
+
+            magnetSpeed += (baseSpeedMagnet / 100) * Time.deltaTime;
             for (int i = 0; i < magnetCoin.Count; i++)
             {
                 if (magnetCoin[i] == null)
@@ -84,7 +88,8 @@ namespace Kanegon
             activeSkill = true;
             yield return new WaitForSeconds(countDownSkill);
             skillButton.GetComponent<Image>().enabled = false;
-            skillAnimation.SetBool("Effect",false);
+            skillAnimation.SetBool("Effect", false);
+            EffectSkillAnimation.SetBool("ActivitySkill", false);
             skillEffect.gameObject.SetActive(false);
             activeSkill = false;
             skillPoint = 0;

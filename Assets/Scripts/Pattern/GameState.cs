@@ -118,6 +118,7 @@ namespace Kanegon
             skillBar.sliderLeft.value = 0;
             skillBar.sliderRight.value = 0;
             skillCharacter.activeSkill = false;
+            skillCharacter.magnetSpeed = skillCharacter.baseSpeedMagnet;
 
             getScore.ResetPoint();
 
