@@ -136,7 +136,14 @@ namespace Kanegon
         {
             currentItemsLocation = spawnItemsObject.transform.position;
             RandomSpawnItemsLocation();
-            if (currentItemsLocation == spawnItemsObject.transform.position) SpawnMultiItemsLocation();
+            if (currentItemsLocation == spawnItemsObject.transform.position)
+            {
+                SpawnMultiItemsLocation();
+            }
+            else if(currentItemsLocation == currentLocation)
+            {
+                SpawnMultiItemsLocation();
+            }
         }
 
 
@@ -154,7 +161,6 @@ namespace Kanegon
             if (spawnCoin <= 0)
             {
                 if (!isSpawnCoin) StartCoroutine(SpawnCoin());
-                spawnCoin = timeToSpawnCoin;
 
             }
             if (spawnObstacle <= 0)
@@ -174,57 +180,37 @@ namespace Kanegon
         {
             isSpawnCoin = true;
             float randomRate = Random.Range(0, 100);
-            RandomSpawnItemsLocation();
+            SpawnMultiLocation();
 
-            if (randomRate < rateToSpawnCoin)
+            for (int i = 0; i < numberToSpawnCoin; i++)
             {
-
-                int randomSpawnNumber = Random.RandomRange(numberToSpawnCoin - 2, numberToSpawnCoin + 1);
-                for (int i = 0; i < randomSpawnNumber; i++)
+                if (gameStart)
                 {
-                    if (gameStart)
-                    {
-                        Instantiate(Coin, spawnItemsObject.transform.position, Quaternion.identity, transformParent);
-                        SpawnMultiItemsLocation();
-                        Instantiate(Coin, spawnItemsObject.transform.position, Quaternion.identity, transformParent);
-                        yield return new WaitForSeconds(speedUpCoin);
-                    }
+                    Instantiate(Coin, spawnObject.transform.position, Quaternion.identity, transformParent);
+                    yield return new WaitForSeconds(speedUpCoin);
                 }
             }
-            else
-            {
-                int randomSpawnNumber = Random.RandomRange(numberToSpawnCoin - 2, numberToSpawnCoin + 1);
-                for (int i = 0; i < randomSpawnNumber; i++)
-                {
-                    if (gameStart)
-                    {
-                        Instantiate(Coin, spawnItemsObject.transform.position, Quaternion.identity, transformParent);
-                        yield return new WaitForSeconds(speedUpCoin);
-                    }
-                }
-            }
+
+            spawnCoin = timeToSpawnCoin;
             isSpawnCoin = false;
-            // yield return new WaitForSeconds(.6f);
-            // if (gameStart) StartCoroutine(SpawnCoin());
-
         }
         //! Spawn Obstacle
         private void SpawnObstacle()
         {
-            // yield return new WaitForSeconds(timeToSpawnObstacle);
             if (Obstacles != null)
             {
                 float randomRate = Random.Range(0, 100);
-                RandomSpawnLocation();
+                RandomSpawnItemsLocation();
                 if (isSpawnItem)
                 {
                     if (gameStart)
                     {
                         foreach (GameObject obstacle in Obstacles)
                         {
-                            Instantiate(Items[0], spawnObject.transform.position, Quaternion.identity, transformParent);
-                            SpawnMultiLocation();
-                            Instantiate(obstacle, spawnObject.transform.position, Quaternion.identity, transformParent);
+                            SpawnMultiItemsLocation();
+                            Instantiate(Items[0], spawnItemsObject.transform.position, Quaternion.identity, transformParent);
+                            SpawnMultiItemsLocation();
+                            Instantiate(obstacle, spawnItemsObject.transform.position, Quaternion.identity, transformParent);
                             break;
                         }
                     }
@@ -236,9 +222,10 @@ namespace Kanegon
                     {
                         foreach (GameObject obstacle in Obstacles)
                         {
-                            Instantiate(obstacle, spawnObject.transform.position, Quaternion.identity, transformParent);
-                            SpawnMultiLocation();
-                            Instantiate(obstacle, spawnObject.transform.position, Quaternion.identity, transformParent);
+                            SpawnMultiItemsLocation();
+                            Instantiate(obstacle, spawnItemsObject.transform.position, Quaternion.identity, transformParent);
+                            SpawnMultiItemsLocation();
+                            Instantiate(obstacle, spawnItemsObject.transform.position, Quaternion.identity, transformParent);
                             break;
                         }
                     }
@@ -249,7 +236,8 @@ namespace Kanegon
                     {
                         foreach (GameObject obstacle in Obstacles)
                         {
-                            Instantiate(obstacle, spawnObject.transform.position, Quaternion.identity, transformParent);
+                            SpawnMultiItemsLocation();
+                            Instantiate(obstacle, spawnItemsObject.transform.position, Quaternion.identity, transformParent);
                             break;
                         }
                     }

@@ -13112,7 +13112,7 @@ MonoBehaviour:
   Obstacles:
   - {fileID: 5710962383582921851, guid: e42021a5cb1624f4cbb3ec820f172679, type: 3}
   Coin: {fileID: 5826701521396229285, guid: fb6b9cb29c5c53645b94f64d91c874de, type: 3}
-  numberToSpawnCoin: 7
+  numberToSpawnCoin: 5
   rateToSpawnObstacle: 25
   gameStart: 0
   isSpawnCoin: 0
@@ -37436,6 +37436,7 @@ GameObject:
   - component: {fileID: 1718278209}
   - component: {fileID: 1718278207}
   - component: {fileID: 1718278210}
+  - component: {fileID: 1718278211}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -37497,6 +37498,19 @@ MonoBehaviour:
   overState: {fileID: 1210302735}
   gameState: {fileID: 470274367}
   spawnTrack: {fileID: 1935284290}
+--- !u!65 &1718278211
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718278205}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 2}
+  m_Center: {x: 0, y: 0, z: -0.5}
 --- !u!1 &1721654259
 GameObject:
   m_ObjectHideFlags: 0
