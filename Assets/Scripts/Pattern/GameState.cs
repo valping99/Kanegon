@@ -20,6 +20,7 @@ namespace Kanegon
         [SerializeField] private SliderSkillBar skillBar;
         [SerializeField] private SkinCharacter skinCharacter;
         [SerializeField] private Countdown countDown;
+        [SerializeField] private SetLocationSpawn location;
         [Header("Value")]
         [HideInInspector] public int coin;
         [HideInInspector] public int point;
@@ -117,8 +118,10 @@ namespace Kanegon
             //! Skill Script
             skillBar.sliderLeft.value = 0;
             skillBar.sliderRight.value = 0;
+            skillBar.skillButton.GetComponent<Image>().enabled = false;
             skillCharacter.activeSkill = false;
             skillCharacter.magnetSpeed = skillCharacter.baseSpeedMagnet;
+            skillCharacter.skillEffect.gameObject.SetActive(false);
 
             getScore.ResetPoint();
 

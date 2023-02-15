@@ -13,7 +13,7 @@ namespace Kanegon
         public Slider sliderLeft;
         public Slider sliderRight;
         public float numberToActiveSkill;
-        [SerializeField] private Button skillButton;
+        [SerializeField] public Button skillButton;
         [SerializeField] private Sprite enableSkillButton;
         [SerializeField] private Sprite disableSkillButton;
         [SerializeField] private Skill skillCharacter;

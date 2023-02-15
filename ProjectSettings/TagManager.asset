@@ -17,6 +17,7 @@ TagManager:
   - BGM_Audio
   - SE_BGM
   - Road
+  - EffectCharacter
   layers:
   - Default
   - TransparentFX
