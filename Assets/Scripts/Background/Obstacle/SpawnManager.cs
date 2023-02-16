@@ -50,7 +50,7 @@ namespace Kanegon
         public void InitializedSpawn()
         {
             gameStart = true;
-            SetLevel();
+            // SetLevel();
             spawnCoin = timeToSpawnCoin;
             spawnItem = timeToSpawnItem;
             spawnObstacle = timeToSpawnObstacle;
@@ -73,7 +73,7 @@ namespace Kanegon
                     location = trackManager.laneLocation[0];
                     break;
                 case 2:
-                    location = trackManager.laneLocation.Length - 1;
+                    location = trackManager.laneLocation[trackManager.laneLocation.Length - 1];
                     break;
                 default:
                     location = 0;
@@ -102,27 +102,14 @@ namespace Kanegon
             spawnItemsObject.transform.position = new Vector3(location, 1, spawnItemsObject.transform.position.z);
         }
 
-
-        //TODO Set Level in gameplay
-        public void SetLevel()
+        private IEnumerator SpawnCoins()
         {
-            if (gameStart)
-            {
-                switch (gameMode)
-                {
-                    case GameMode.Normal:
-                        numberDamageObject = 1;
-                        break;
-                    case GameMode.Hard:
-                        numberDamageObject = 2;
-                        break;
-                    default:
-                        numberDamageObject = 1;
-                        break;
-                }
-            }
+            timeToSpawnCoin /= trackManager.speed;
+            Instantiate(Coin, spawnObject.transform.position, Quaternion.identity, transformParent);
+            yield return new WaitForSeconds(timeToSpawnCoin);
+            StartCoroutine(SpawnCoins());
         }
-
+        
         //? Check location to spawn multiply obstacle
         private void SpawnMultiLocation()
         {
@@ -140,7 +127,7 @@ namespace Kanegon
             {
                 SpawnMultiItemsLocation();
             }
-            else if(currentItemsLocation == currentLocation)
+            else if (currentItemsLocation == currentLocation)
             {
                 SpawnMultiItemsLocation();
             }

@@ -16,11 +16,10 @@ namespace Kanegon
         [SerializeField] private Movement gameMovement;
         [SerializeField] private GetScore getScore;
         [SerializeField] private TrackManager trackManager;
-        [SerializeField] private SpawnManager spawnManager;
+        [SerializeField] private ItemManager spawnManager;
         [SerializeField] private SliderSkillBar skillBar;
         [SerializeField] private SkinCharacter skinCharacter;
         [SerializeField] private Countdown countDown;
-        [SerializeField] private SetLocationSpawn location;
         [Header("Value")]
         [HideInInspector] public int coin;
         [HideInInspector] public int point;
@@ -80,7 +79,7 @@ namespace Kanegon
         public override void Exit(State to)
         {
             canvas.gameObject.SetActive(false);
-            spawnManager.GetComponent<SpawnManager>().enabled = false;
+            spawnManager.GetComponent<ItemManager>().enabled = false;
         }
 
         public void GameOver()
@@ -102,14 +101,14 @@ namespace Kanegon
             {
                 trackManager.movement = false;
                 gameMovement.xPositionIndex = 1;
-                spawnManager.gameStart = false;
+                spawnManager.isGameStart = false;
             }
         }
         public void GameStart()
         {
             //! Spawn Manager Script
-            spawnManager.GetComponent<SpawnManager>().enabled = true;
-            spawnManager.InitializedSpawn();
+            spawnManager.GetComponent<ItemManager>().enabled = true;
+            spawnManager.Initialized();
 
             //! Track Manager Script
             trackManager.movement = true;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Kanegon
 {
-    public class SetLocationSpawn : MonoBehaviour
+    public class SpawnObjectManager : MonoBehaviour
     {
         #region Variables
         [Header("Script")]
