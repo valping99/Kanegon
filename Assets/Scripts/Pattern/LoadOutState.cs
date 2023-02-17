@@ -13,6 +13,7 @@ namespace Kanegon
         [SerializeField] private Canvas resultCanvas;
         [SerializeField] private Button btn_Start;
         [SerializeField] private Transform obstacleParent;
+        [SerializeField] private Movement gameMovement;
 
         void Start()
         {
@@ -25,6 +26,7 @@ namespace Kanegon
         public override void Tick()
         {
             ClearObstacles();
+            gameMovement.ChangePosition();
         }
         public override void Enter(State from)
         {
@@ -36,6 +38,7 @@ namespace Kanegon
         }
         private void InitializedCreate()
         {
+            
             loadOutCanvas.gameObject.SetActive(true);
             gamePlayCanvas.gameObject.SetActive(false);
             resultCanvas.gameObject.SetActive(false);

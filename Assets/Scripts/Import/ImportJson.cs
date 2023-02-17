@@ -8,7 +8,7 @@ namespace Kanegon
     {
         [SerializeField] private ImportDataJson importJson;
         [SerializeField] private GetScore getScore;
-        [SerializeField] private SpawnManager spawnManager;
+        [SerializeField] private ItemManager itemManager;
         [SerializeField] private Skill skillCharacter;
         [SerializeField] private SliderSkillBar sliderSkillBar;
         [SerializeField] private SkinCharacter skinCharacter;
@@ -28,6 +28,9 @@ namespace Kanegon
             getScore.bonusTimer = importJson.settings.itemTime;
             getScore.bonusNumberBySkill = importJson.settings.skillScoreBonusPerCoin;
             characterMovement.leftRightSpeed = importJson.settings.slideMoveSpeed;
+
+            itemManager.baseValueObstacle = importJson.settings.obstacleGenerateProbabilityBase / 0.01f;
+            itemManager.additionalValueObstacle = importJson.settings.obstacleGenerateProbabilityAddPerSec;
 
             trackSegment.speedUpMovement = importJson.settings.SpeedUpPerSec;
 

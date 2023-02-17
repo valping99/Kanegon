@@ -11413,17 +11413,31 @@ MonoBehaviour:
   spawnLocation: {fileID: 1865355687}
   transformParent: {fileID: 1882166260}
   currentLocation: 0
+  currentObstacleLocation: 0
+  listSpawnObstacle:
+  - {fileID: 11400000, guid: c0f86922186c7ba41b73b178c76c5e85, type: 2}
+  - {fileID: 11400000, guid: c07aaf4f944d39f44bbed289a2b6ba6b, type: 2}
+  - {fileID: 11400000, guid: 4c138b303c6ed6d4aafc6c9304e814da, type: 2}
+  - {fileID: 11400000, guid: f8eaaceb03dfbd94c89df27504223555, type: 2}
+  - {fileID: 11400000, guid: 9704959af07c2a5419a1d131ffb60718, type: 2}
+  - {fileID: 11400000, guid: 52c4919aa3944da478530ac2edabd80c, type: 2}
+  - {fileID: 11400000, guid: 5cdb825a44dd8e642a06727fd84f6f0d, type: 2}
+  - {fileID: 11400000, guid: 3c3b59e3ce49e51489477c6064cae65c, type: 2}
+  caseObstacle: 0
   minimumNumber: 5
   additionalValueItem: 0.1
   baseValueObstacle: 0.1
-  additionalValueObstacle: 0.1
+  additionalValueObstacle: 1
   timeToSpawnObject: 0.3
   baseCoolDownItem: 20
+  inLaneNumber: 0
   currentTimeCoolDown: 0
+  currentSpeed: 0
   totalCoinNumber: 0
-  currentTime: 0
+  currentTime: 70
   currentRateItem: 0
   currentRateObstacle: 0
+  obstacleLocation: {x: 0, y: 0, z: 0}
   baseValue: 5
   additionalValue: 10
   collectedCoinNumber: 0
@@ -11432,6 +11446,7 @@ MonoBehaviour:
   isSpawnItem: 0
   isWaitingItem: 0
   isSpawnObject: 0
+  isDoubleObstacle: 0
 --- !u!1 &596086628
 GameObject:
   m_ObjectHideFlags: 0
@@ -12323,7 +12338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   importJson: {fileID: 11400000, guid: cbeda21d61fb2b84c8362541d8d4e82a, type: 2}
   getScore: {fileID: 470274366}
-  spawnManager: {fileID: 0}
+  itemManager: {fileID: 591582873}
   skillCharacter: {fileID: 1414814383}
   sliderSkillBar: {fileID: 1414814385}
   skinCharacter: {fileID: 1733863955}
@@ -28871,6 +28886,7 @@ MonoBehaviour:
   resultCanvas: {fileID: 1210302739}
   btn_Start: {fileID: 776789876}
   obstacleParent: {fileID: 1882166260}
+  gameMovement: {fileID: 1733863954}
 --- !u!114 &1563777830
 MonoBehaviour:
   m_ObjectHideFlags: 0
