@@ -57,6 +57,7 @@ namespace Kanegon
         [SerializeField] private bool isWaitingItem;
         [SerializeField] private bool isSpawnObject;
         [SerializeField] private bool isDoubleObstacle;
+        [SerializeField] public bool isStartSpawnObstacle;
         #endregion
 
         #region Unity Method
@@ -132,20 +133,22 @@ namespace Kanegon
 
         private void SpawnObstacle()
         {
-            float rateObstacle;
-            rateObstacle = Random.Range(0, 100);
-            currentRateObstacle = baseValueObstacle + (additionalValueObstacle * currentTime);
-            if (rateObstacle < currentRateObstacle)
+            if (isStartSpawnObstacle)
             {
-                SetLaneObstacle();
-                Instantiate(obstacle[0], obstacleLocation, Quaternion.identity, transformParent);
+                float rateObstacle;
+                rateObstacle = Random.Range(0, 100);
+                currentRateObstacle = baseValueObstacle + (additionalValueObstacle * currentTime);
+                if (rateObstacle < currentRateObstacle)
+                {
+                    SetLaneObstacle();
+                    Instantiate(obstacle[0], obstacleLocation, Quaternion.identity, transformParent);
+                }
+                if (!isDoubleObstacle)
+                {
+                    isDoubleObstacle = true;
+                    SpawnObstacle();
+                }
             }
-            if (!isDoubleObstacle)
-            {
-                isDoubleObstacle = true;
-                SpawnObstacle();
-            }
-
         }
         private void SpawnItem()
         {
@@ -171,6 +174,7 @@ namespace Kanegon
                     SetLaneLocation();
                     collectedCoinNumber = 0;
                     currentRate = baseValue;
+                    if (!isStartSpawnObstacle) isStartSpawnObstacle = true;
                 }
             }
         }

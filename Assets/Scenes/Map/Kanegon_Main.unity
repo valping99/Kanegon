@@ -11447,6 +11447,7 @@ MonoBehaviour:
   isWaitingItem: 0
   isSpawnObject: 0
   isDoubleObstacle: 0
+  isStartSpawnObstacle: 0
 --- !u!1 &596086628
 GameObject:
   m_ObjectHideFlags: 0
@@ -28887,6 +28888,7 @@ MonoBehaviour:
   btn_Start: {fileID: 776789876}
   obstacleParent: {fileID: 1882166260}
   gameMovement: {fileID: 1733863954}
+  itemManager: {fileID: 591582873}
 --- !u!114 &1563777830
 MonoBehaviour:
   m_ObjectHideFlags: 0

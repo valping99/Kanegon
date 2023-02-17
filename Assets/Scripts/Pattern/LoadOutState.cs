@@ -14,6 +14,7 @@ namespace Kanegon
         [SerializeField] private Button btn_Start;
         [SerializeField] private Transform obstacleParent;
         [SerializeField] private Movement gameMovement;
+        [SerializeField] private ItemManager itemManager;
 
         void Start()
         {
@@ -38,7 +39,7 @@ namespace Kanegon
         }
         private void InitializedCreate()
         {
-            
+            itemManager.isStartSpawnObstacle = false;
             loadOutCanvas.gameObject.SetActive(true);
             gamePlayCanvas.gameObject.SetActive(false);
             resultCanvas.gameObject.SetActive(false);
