@@ -50,10 +50,6 @@ namespace Kanegon
         //? Keyboard input
         public void InputController()
         {
-            // if (Input.GetKeyDown(KeyCode.UpArrow))
-            // {
-            //     rb.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
-            // }
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 xPositionIndex--;
@@ -66,11 +62,6 @@ namespace Kanegon
                 if (xPositionIndex > xPos.Length - 1) xPositionIndex = xPos.Length - 1;
                 AudioManager.ActiveSoundEffect(CueSE.Se_Move);
             }
-
-            //? Move forward
-            // Vector3 moveForward = transform.forward * speed * Time.deltaTime;
-            // rb.MovePosition(rb.position + moveForward);
-            //? 
         }
 
         public void ChangePosition()

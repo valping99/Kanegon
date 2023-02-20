@@ -19,12 +19,8 @@ namespace Kanegon
         [Header("Location")]
         [SerializeField] private GameObject spawnLocation;
         [SerializeField] private Transform transformParent;
-        [SerializeField] private float currentLocation;
+        [SerializeField] private float currentCoinLocation;
         [SerializeField] private float currentObstacleLocation;
-
-        [Header("ScripableObject Obstacle")]
-        [SerializeField] private List<SpawnObstacle> listSpawnObstacle;
-        [SerializeField] private CaseObstacle caseObstacle;
 
         [Header("Base Value")]
         [SerializeField] private int minimumNumber;
@@ -42,7 +38,6 @@ namespace Kanegon
         [SerializeField] public float currentTime;
         [Range(0, 100)][SerializeField] private float currentRateItem;
         [Range(0, 100)][SerializeField] private float currentRateObstacle;
-        [SerializeField] private Vector3 obstacleLocation;
 
 
         [Header("Set rate lane value")]
@@ -56,7 +51,6 @@ namespace Kanegon
         [SerializeField] public bool isSpawnItem;
         [SerializeField] private bool isWaitingItem;
         [SerializeField] private bool isSpawnObject;
-        [SerializeField] private bool isDoubleObstacle;
         [SerializeField] public bool isStartSpawnObstacle;
         #endregion
 
@@ -68,9 +62,11 @@ namespace Kanegon
         #endregion
 
         #region Class
+        //? Set Initialize value
         public void Initialized()
         {
-            currentLocation = 0;
+            currentCoinLocation = 0;
+            currentTimeCoolDown = 0;
             totalCoinNumber = 0;
             currentTime = 0;
             collectedCoinNumber = 0;
@@ -78,11 +74,11 @@ namespace Kanegon
             isSpawnItem = false;
             isWaitingItem = false;
             inLaneNumber = 1;
-            isDoubleObstacle = false;
         }
+
+        //!Spawn Items
         private IEnumerator SpawnItems()
         {
-            // timeToSpawnObject *= trackManager.speed;
             SpawnItem();
             isSpawnObject = true;
             if (isGameStart)
@@ -99,68 +95,15 @@ namespace Kanegon
                     totalCoinNumber++;
                     collectedCoinNumber++;
                 }
-                CheckCase();
-                SpawnObstacle();
                 currentSpeed = -trackManager.speed * 0.1f;
-
-                float nextSpeed;
-                nextSpeed = timeToSpawnObject / currentSpeed;
+                float nextSpeed = timeToSpawnObject / currentSpeed;
                 yield return new WaitForSeconds(nextSpeed);
-                isDoubleObstacle = false;
             }
             ChangeLane();
             isSpawnObject = false;
         }
 
-        private void CheckCase()
-        {
-            caseObstacle = listSpawnObstacle[0].settings.currentCase[0];
-            foreach (SpawnObstacle scri in listSpawnObstacle)
-            {
-                for (int i = 0; i < scri.settings.currentCase.Count; i++)
-                {
-                    if (i == inLaneNumber)
-                    {
-                        scri.settings.currentCase[i] = CaseObstacle.coin;
-                    }
-                    else
-                    {
-                        scri.settings.currentCase[i] = CaseObstacle.empty;
-                    }
-                }
-            }
-        }
-
-        private void SpawnObstacle()
-        {
-            if (isStartSpawnObstacle)
-            {
-                float rateObstacle;
-                rateObstacle = Random.Range(0, 100);
-                currentRateObstacle = baseValueObstacle + (additionalValueObstacle * currentTime);
-                if (rateObstacle < currentRateObstacle)
-                {
-                    SetLaneObstacle();
-                    Instantiate(obstacle[0], obstacleLocation, Quaternion.identity, transformParent);
-                }
-                if (!isDoubleObstacle)
-                {
-                    isDoubleObstacle = true;
-                    SpawnObstacle();
-                }
-            }
-        }
-        private void SpawnItem()
-        {
-            float rateItem;
-            rateItem = Random.Range(0, 100);
-
-            currentRateItem = totalCoinNumber * additionalValueItem;
-            if (rateItem <= currentRateItem)
-            {
-                isSpawnItem = true;
-            }
-        }
+        //! Set Location To Spawn Coins
         private void ChangeLane()
         {
             float rateToChangeLane;
@@ -178,7 +121,6 @@ namespace Kanegon
                 }
             }
         }
-
         private void SetLaneLocation()
         {
             int randomLane = Random.Range(0, 3);
@@ -198,48 +140,70 @@ namespace Kanegon
                     inLaneNumber = 1;
                     break;
             }
-            if (location == currentLocation)
+            if (location == currentCoinLocation)
             {
                 SetLaneLocation();
             }
             else
             {
-                currentLocation = location;
+                currentObstacleLocation = currentCoinLocation;
+                currentCoinLocation = location;
+                SpawnObstacleObject();
                 spawnLocation.transform.position = new Vector3(location, 1, spawnLocation.transform.position.z);
-                // SetLocationObstacle();
             }
         }
 
-        private void SetLaneObstacle()
+        //! Spawn Obstacle
+        private void SpawnObstacleObject()
+        {
+            Vector3 obstacleLocation = new Vector3(currentObstacleLocation, spawnLocation.transform.position.y - 0.7f, spawnLocation.transform.position.z);
+            Instantiate(obstacle[0], obstacleLocation, Quaternion.identity, transformParent);
+            float rateObstacle;
+            rateObstacle = Random.Range(0, 100);
+            currentRateObstacle = baseValueObstacle + (additionalValueObstacle * currentTime);
+            if (rateObstacle < currentRateObstacle)
+            {
+                SetObstacleLocation();
+            }
+        }
+        private void SetObstacleLocation()
         {
             int randomLane = Random.Range(0, 3);
-            float location;
+            float randomLocation;
             switch (randomLane)
             {
                 case 0:
-                    location = trackManager.laneLocation[0];
-                    inLaneNumber = 0;
+                    randomLocation = trackManager.laneLocation[0];
                     break;
                 case 2:
-                    location = trackManager.laneLocation[trackManager.laneLocation.Length - 1];
-                    inLaneNumber = 2;
+                    randomLocation = trackManager.laneLocation[trackManager.laneLocation.Length - 1];
                     break;
                 default:
-                    location = 0;
-                    inLaneNumber = 1;
+                    randomLocation = 0;
                     break;
             }
-            if (location == currentLocation || location == currentObstacleLocation)
+            if (randomLocation == currentCoinLocation || randomLocation == currentObstacleLocation)
             {
-                SetLaneObstacle();
+                SetObstacleLocation();
+                return;
             }
             else
             {
-                currentObstacleLocation = location;
-                obstacleLocation = new Vector3(location, 0.3f, spawnLocation.transform.position.z);
-                // SetLocationObstacle();
+                Vector3 doubleObstacle = new Vector3(randomLocation, spawnLocation.transform.position.y - 0.7f, spawnLocation.transform.position.z);
+                Instantiate(obstacle[0], doubleObstacle, Quaternion.identity, transformParent);
             }
+        }
+        //! Spawn Item
+        private void SpawnItem()
+        {
+            float rateItem;
+            rateItem = Random.Range(0, 100);
 
+            currentRateItem = totalCoinNumber * additionalValueItem;
+            if (rateItem <= currentRateItem)
+            {
+                isSpawnItem = true;
+            }
         }
         private void SetTimeSpawn()
         {
