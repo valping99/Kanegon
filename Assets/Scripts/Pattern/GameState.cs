@@ -79,6 +79,7 @@ namespace Kanegon
         public override void Exit(State to)
         {
             canvas.gameObject.SetActive(false);
+            skinCharacter.ResetCharacter();
             spawnManager.GetComponent<ItemManager>().enabled = false;
         }
 
@@ -124,7 +125,6 @@ namespace Kanegon
 
             getScore.ResetPoint();
 
-            skinCharacter.ResetCharacter();
 
 
             canvas.gameObject.SetActive(true);
