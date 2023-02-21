@@ -50,13 +50,13 @@ namespace Kanegon
         //? Keyboard input
         public void InputController()
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.Z))
             {
                 xPositionIndex--;
                 if (xPositionIndex < 0) xPositionIndex = 0;
                 AudioManager.ActiveSoundEffect(CueSE.Se_Move);
             }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.X))
             {
                 xPositionIndex++;
                 if (xPositionIndex > xPos.Length - 1) xPositionIndex = xPos.Length - 1;
