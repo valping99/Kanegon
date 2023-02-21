@@ -1938,8 +1938,8 @@ RectTransform:
   m_Father: {fileID: 708062088}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7532,7 +7532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &293233673
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9957,7 +9957,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &470274365
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11412,18 +11412,8 @@ MonoBehaviour:
   - {fileID: 47795065003003739, guid: 3af499fbe1f79c94a9b4ac35b03eff58, type: 3}
   spawnLocation: {fileID: 1865355687}
   transformParent: {fileID: 1882166260}
-  currentLocation: 0
+  currentCoinLocation: 0
   currentObstacleLocation: 0
-  listSpawnObstacle:
-  - {fileID: 11400000, guid: c0f86922186c7ba41b73b178c76c5e85, type: 2}
-  - {fileID: 11400000, guid: c07aaf4f944d39f44bbed289a2b6ba6b, type: 2}
-  - {fileID: 11400000, guid: 4c138b303c6ed6d4aafc6c9304e814da, type: 2}
-  - {fileID: 11400000, guid: f8eaaceb03dfbd94c89df27504223555, type: 2}
-  - {fileID: 11400000, guid: 9704959af07c2a5419a1d131ffb60718, type: 2}
-  - {fileID: 11400000, guid: 52c4919aa3944da478530ac2edabd80c, type: 2}
-  - {fileID: 11400000, guid: 5cdb825a44dd8e642a06727fd84f6f0d, type: 2}
-  - {fileID: 11400000, guid: 3c3b59e3ce49e51489477c6064cae65c, type: 2}
-  caseObstacle: 0
   minimumNumber: 5
   additionalValueItem: 0.1
   baseValueObstacle: 0.1
@@ -11437,7 +11427,6 @@ MonoBehaviour:
   currentTime: 70
   currentRateItem: 0
   currentRateObstacle: 0
-  obstacleLocation: {x: 0, y: 0, z: 0}
   baseValue: 5
   additionalValue: 10
   collectedCoinNumber: 0
@@ -11446,7 +11435,6 @@ MonoBehaviour:
   isSpawnItem: 0
   isWaitingItem: 0
   isSpawnObject: 0
-  isDoubleObstacle: 0
   isStartSpawnObstacle: 0
 --- !u!1 &596086628
 GameObject:
@@ -15088,7 +15076,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c52fbbe4ad72eef47b9ef6bfb5539f7a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a208b9979a915ef4b96077eb3be4b0f9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16111,7 +16099,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -18102,8 +18090,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: b71d128af5071b940a70bf8cd71018cd, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -22219,7 +22207,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -675}
-  m_SizeDelta: {x: 250, y: 130}
+  m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1231609119
 MonoBehaviour:
@@ -22278,15 +22266,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.08141923, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: eebad6db83f341946a1401779ce9e41d, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -25592,7 +25580,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1444508439
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30883,7 +30871,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1825738f9c4f25e45960d7721c60f850, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5743a8ab9e6c0a94cb54d54a8bf7ee09, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -32850,7 +32838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1793035102
 RectTransform:
   m_ObjectHideFlags: 0
@@ -38603,7 +38591,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -823}
-  m_SizeDelta: {x: 300, y: 130}
+  m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2112202178
 MonoBehaviour:
@@ -38674,15 +38662,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20000002, g: 1, b: 0.23529413, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 42bb75c0101a64242acb70c91f2b0dc3, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

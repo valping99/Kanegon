@@ -39,13 +39,10 @@ namespace Kanegon
         // Update is called once per frame
         void Update()
         {
-#if UNITY_EDITOR
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.Space) && skillButton.GetComponent<Button>().enabled == true && !activeSkill)
             {
-                activeSkill = !activeSkill;
+                ActiveSkill();
             }
-#endif
-
             magnetSpeed += (baseSpeedMagnet / 100) * Time.deltaTime;
             for (int i = 0; i < magnetCoin.Count; i++)
             {
