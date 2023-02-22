@@ -158,6 +158,7 @@ namespace Kanegon
         {
             Vector3 obstacleLocation = new Vector3(currentObstacleLocation, spawnLocation.transform.position.y - 0.7f, spawnLocation.transform.position.z);
             Instantiate(obstacle[0], obstacleLocation, Quaternion.identity, transformParent);
+            Debug.Log(obstacleLocation);
             float rateObstacle;
             rateObstacle = Random.Range(0, 100);
             currentRateObstacle = baseValueObstacle + (additionalValueObstacle * currentTime);

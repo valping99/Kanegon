@@ -15,6 +15,8 @@ namespace Kanegon
         [SerializeField] private Transform obstacleParent;
         [SerializeField] private Movement gameMovement;
         [SerializeField] private ItemManager itemManager;
+        [SerializeField] private TitleMotion titleMotion;
+        [SerializeField] private MainTitle mainTitle;
 
         void Start()
         {
@@ -35,10 +37,12 @@ namespace Kanegon
         }
         public override void Exit(State to)
         {
-            loadOutCanvas.gameObject.SetActive(false);
+            // loadOutCanvas.gameObject.SetActive(false);
         }
         private void InitializedCreate()
         {
+            mainTitle.InitializedSetup();
+            titleMotion.isRotateCamera = true;
             itemManager.isStartSpawnObstacle = false;
             loadOutCanvas.gameObject.SetActive(true);
             gamePlayCanvas.gameObject.SetActive(false);
@@ -59,6 +63,9 @@ namespace Kanegon
         }
         private void StartGame()
         {
+            mainTitle.DisableButton();
+            mainTitle.StartGame();
+            titleMotion.isRotateCamera = false;
             AudioManager.ActiveBGM(CueBGM.Bgm_Ingame);
             manager.SwitchState("GamePlaying");
         }

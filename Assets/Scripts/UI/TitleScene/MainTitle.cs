@@ -9,24 +9,46 @@ namespace Kanegon
     public class MainTitle : MonoBehaviour
     {
         #region Variables
-        [Header("Button")]
-        [SerializeField] private Button gameStart;
+        [SerializeField] private CanvasGroup _CanvasGroup;
+        [SerializeField] private List<Button> _ListButton;
+        [SerializeField] public bool isFadeUI;
+        [SerializeField] private float _TimeToFadeUI;
+        [SerializeField] private Animator _Animator;
         #endregion
-        // Start is called before the first frame update
-        void Start()
-        {
-            gameStart.onClick.AddListener(StartGame);
-        }
+
 
         // Update is called once per frame
         void Update()
         {
-
+            StartGame();
         }
 
-        private void StartGame()
+        public void InitializedSetup()
         {
-            SceneManager.LoadScene("Prototype", LoadSceneMode.Additive);
+            isFadeUI = false;
+            _Animator.SetBool("FadeOut", false);
+            foreach (Button btn in _ListButton)
+            {
+                btn.GetComponent<Button>().enabled = true;
+            }
+        }
+
+        public void DisableButton()
+        {
+            isFadeUI = true;
+            foreach (Button btn in _ListButton)
+            {
+                btn.GetComponent<Button>().enabled = true;
+            }
+        }
+
+        public void StartGame()
+        {
+            if (isFadeUI)
+            {
+                _Animator.SetBool("FadeOut", true);
+                isFadeUI = false;
+            }
         }
     }
 }
