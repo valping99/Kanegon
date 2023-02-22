@@ -103,6 +103,7 @@ namespace Kanegon
                 trackManager.movement = false;
                 gameMovement.xPositionIndex = 1;
                 spawnManager.isGameStart = false;
+                spawnManager.SetDefaultLocation();
             }
         }
         public void GameStart()

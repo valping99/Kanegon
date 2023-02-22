@@ -158,7 +158,6 @@ namespace Kanegon
         {
             Vector3 obstacleLocation = new Vector3(currentObstacleLocation, spawnLocation.transform.position.y - 0.7f, spawnLocation.transform.position.z);
             Instantiate(obstacle[0], obstacleLocation, Quaternion.identity, transformParent);
-            Debug.Log(obstacleLocation);
             float rateObstacle;
             rateObstacle = Random.Range(0, 100);
             currentRateObstacle = baseValueObstacle + (additionalValueObstacle * currentTime);
@@ -212,6 +211,11 @@ namespace Kanegon
             if (!isSpawnObject) StartCoroutine(SpawnItems());
             if (currentTimeCoolDown > 0) currentTimeCoolDown -= Time.deltaTime;
             else isWaitingItem = false;
+        }
+
+        public void SetDefaultLocation()
+        {
+            spawnLocation.transform.position = new Vector3(0, 1, spawnLocation.transform.position.z);
         }
         #endregion
     }

@@ -42,6 +42,7 @@ namespace Kanegon
         private void InitializedCreate()
         {
             mainTitle.InitializedSetup();
+            titleMotion.animationCamera.SetBool("FadeOut", true);
             titleMotion.isRotateCamera = true;
             itemManager.isStartSpawnObstacle = false;
             loadOutCanvas.gameObject.SetActive(true);
@@ -64,6 +65,7 @@ namespace Kanegon
         private void StartGame()
         {
             mainTitle.DisableButton();
+            titleMotion.animationCamera.SetBool("FadeOut", false);
             mainTitle.StartGame();
             titleMotion.isRotateCamera = false;
             AudioManager.ActiveBGM(CueBGM.Bgm_Ingame);

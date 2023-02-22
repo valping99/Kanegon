@@ -1938,8 +1938,8 @@ RectTransform:
   m_Father: {fileID: 708062088}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7457,7 +7457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -7488,9 +7488,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1733863954}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Kaiju.Movement, Assembly-CSharp
-        m_MethodName: TapToMoveRight
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10133,7 +10133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &470274365
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11603,7 +11603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackManager: {fileID: 591582869}
   item: {fileID: 6031168158867906984, guid: 49d0df55566379f478652b50c75aede5, type: 3}
-  coin: {fileID: 5826701521396229285, guid: fb6b9cb29c5c53645b94f64d91c874de, type: 3}
+  coin: {fileID: 3986752744855251558, guid: 0463252984f29a94ca88b1766df5ac11, type: 3}
   obstacle:
   - {fileID: 47795065003003739, guid: 3af499fbe1f79c94a9b4ac35b03eff58, type: 3}
   spawnLocation: {fileID: 1865355687}
@@ -16556,7 +16556,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -16966,12 +16966,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e244a9f8d6d03ad4baa44dba15d5ec09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _CameraMotion: {fileID: 963194227}
+  _CameraMotion: {fileID: 963194225}
   _CharacterObject: {fileID: 888922474}
   _DefaultObject: {fileID: 1651067181}
   isRotateCamera: 0
   _SpeedRotate: 0.2
   _TimeRotate: 3
+  animationCamera: {fileID: 963194229}
 --- !u!1 &890778690
 GameObject:
   m_ObjectHideFlags: 0
@@ -18469,6 +18470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -18526,14 +18528,34 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.2164396, y: -0, z: -0, w: 0.97629607}
-  m_LocalPosition: {x: 0, y: 4, z: -7}
+  m_LocalRotation: {x: 0.06104851, y: 0, z: 0, w: 0.99813485}
+  m_LocalPosition: {x: 0, y: 1, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 888922475}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 25, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 7, y: 0, z: 0}
+--- !u!95 &963194229
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 773f7c0cb35a7f145872b210cc3b93b0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &968034110
 GameObject:
   m_ObjectHideFlags: 0
@@ -27558,7 +27580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -27589,9 +27611,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1733863954}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Kaiju.Movement, Assembly-CSharp
-        m_MethodName: TapToMoveLeft
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -28925,7 +28947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1563777828
 RectTransform:
   m_ObjectHideFlags: 0
