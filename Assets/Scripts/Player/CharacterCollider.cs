@@ -31,7 +31,7 @@ namespace Kanegon
         void OnTriggerEnter(Collider other)
         {
             //! Collect coin
-            if (other.gameObject.GetComponent<CollectCoin>() && other.gameObject.CompareTag("Coin"))
+            if (other.gameObject.GetComponent<ItemsTrigger>() && other.gameObject.CompareTag("Coin"))
             {
                 AudioManager.ActiveSoundEffect(CueSE.Se_Collect_Coin);
                 gameState.coin += 1;

@@ -4,19 +4,19 @@ using UnityEngine;
 
 namespace Kanegon
 {
-    public class CollectCoin : MonoBehaviour
+    public class ItemsTrigger : MonoBehaviour
     {
-        [SerializeField] private float speedRotate;
+        [SerializeField] private CoinRotation coin;
+        void Start()
+        {
+            coin = FindObjectOfType<CoinRotation>();;
+        }
         void Update()
         {
-            Rotation();
+            this.transform.rotation = coin.transform.rotation;
         }
 
-        void Rotation()
-        {
-            Vector3 rotate = new Vector3(0, speedRotate * Time.deltaTime, 0);
-            this.gameObject.transform.Rotate(rotate);
-        }
+
         void OnTriggerEnter(Collider other)
         {
             if (other.GetComponent<CharacterCollider>())
