@@ -19,16 +19,20 @@ public class ImportDataJson : ScriptableObject
         public float skillScoreBonusPerCoin;
         public float itemTime;
         public float itemScoreBonusPerCoin;
-        public float itemGenerateProbability;
         public int coinScore;
         public float codeThresholdScore;
-        public float obstacleGenerateProbabilityBase;
-        public float obstacleGenerateProbabilityAddPerSec;
         public float kanegonBronzeScore;
         public float kanegonGoldScore;
         public int rankS;
         public int rankA;
         public int rankB;
+        public float coinLaneChangeProbBase;
+        public float coinLaneChangeProbAdd;
+        public int coinLaneChangeSuppress;
+        public float itemGenerateProbability;
+        public float itemGenerateSuppressigTime;
+        public float obstacleGenerateProbabilityBase;
+        public float obstacleGenerateProbabilityAddPerSec;
         
     }
 

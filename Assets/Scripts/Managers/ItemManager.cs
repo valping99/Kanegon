@@ -23,12 +23,12 @@ namespace Kanegon
         [SerializeField] private float currentObstacleLocation;
 
         [Header("Base Value")]
-        [SerializeField] private int minimumNumber;
-        [SerializeField] private float additionalValueItem;
+        [SerializeField] public int minimumNumber;
+        [SerializeField] public float additionalValueItem;
         [SerializeField] public float baseValueObstacle;
         [SerializeField] public float additionalValueObstacle;
         [SerializeField] private float timeToSpawnObject;
-        [SerializeField] private float baseCoolDownItem;
+        [SerializeField] public float baseCoolDownItem;
         [SerializeField] private int inLaneNumber;
 
         [Header("Current Value")]
