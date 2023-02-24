@@ -11,9 +11,9 @@ namespace Kanegon
         [SerializeField] private GameObject openBox;
         [SerializeField] private GameObject closeBox;
         [SerializeField] public float pointToGetBox;
-        [SerializeField] private TextMeshProUGUI _TextMessageCloseBox;
-        [SerializeField] private TextMeshProUGUI _TextMessageOpenBox;
-        [SerializeField] private TextMeshProUGUI _TextMessageLinkResult;
+        [SerializeField] private Text _TextMessageCloseBox;
+        [SerializeField] private Text _TextMessageOpenBox;
+        [SerializeField] private Text _TextMessageLinkResult;
 
         public void CheckMysteryBox(float point)
         {
