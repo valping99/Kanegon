@@ -21,7 +21,7 @@ namespace Kanegon
         {
             // ImportData();
         }
-        private void ImportData()
+        public void ImportData()
         {
             trackSegment.speed = importJson.settings.runningSpeedBase * 10; //! Running Speed Base
             trackSegment.speedUpMovement = importJson.settings.SpeedUpPerSec; //! Speed Up Per Second

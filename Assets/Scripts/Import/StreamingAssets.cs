@@ -9,10 +9,13 @@ namespace Kanegon
 {
     public class StreamingAssets : MonoBehaviour
     {
-        // [SerializeField] private TextMeshProUGUI _text;
-        [SerializeField] private string _fileName = "importJson.json";
+        [Header("File name")]
+        [SerializeField] private string _fileName = "UnityServicesProjectConfiguration.json";
 
-        // [SerializeField] private ImportDataJson importJson;
+        [Header("Data ScriptableObject")]
+        [SerializeField] private ImportDataJson dataJson;
+
+        [Header("Variables")]
         [SerializeField] private GetScore getScore;
         [SerializeField] private ItemManager itemManager;
         [SerializeField] private Skill skillCharacter;
@@ -40,12 +43,12 @@ namespace Kanegon
             if (www.result != UnityWebRequest.Result.Success)
             {
                 Debug.Log("GetJson failed" + www.error);
+                ImportData();
                 yield break;
             }
             // parse json
             var data = JsonConvert.DeserializeObject<GameplaySettings>(www.downloadHandler.text);
             // display data
-            // _text.text = data.runningSpeedBase.ToString();
 
             trackSegment.speed = data.runningSpeedBase * 10; //! Running Speed Base
             trackSegment.speedUpMovement = data.SpeedUpPerSec; //! Speed Up Per Second
@@ -75,6 +78,38 @@ namespace Kanegon
             itemManager.baseCoolDownItem = data.itemGenerateSuppressigTime; //! Item Generate Suppressing Time
             itemManager.baseValueObstacle = data.obstacleGenerateProbabilityBase / 0.01f; //! Obstacle Generate Base
             itemManager.additionalValueObstacle = data.obstacleGenerateProbabilityAddPerSec; //! Obstacle Generate Prob Add
+        }
+
+        private void ImportData()
+        {
+            trackSegment.speed = dataJson.settings.runningSpeedBase * 10; //! Running Speed Base
+            trackSegment.speedUpMovement = dataJson.settings.SpeedUpPerSec; //! Speed Up Per Second
+
+            characterMovement.leftRightSpeed = dataJson.settings.slideMoveSpeed / 0.01f; //! Slide Move Speed
+
+            sliderSkillBar.numberToActiveSkill = dataJson.settings.coinLimitSkillGuage; //! Coin Limit Skill Guage
+            skillCharacter.countDownSkill = dataJson.settings.skillTime; //! Skill Time
+
+            getScore.bonusNumberBySkill = dataJson.settings.skillScoreBonusPerCoin; //! Skill Score Bonus
+            getScore.bonusTimer = dataJson.settings.itemTime;  //! Item time
+            getScore.bonusNumber = dataJson.settings.itemScoreBonusPerCoin; //! Item Score Bonus
+            getScore.number = dataJson.settings.coinScore; //! Coin Score
+
+            couponCode.pointToGetBox = dataJson.settings.codeThresholdScore; //! Code Threshhold Score
+            skinCharacter.scores[0] = dataJson.settings.kanegonBronzeScore; //! Kanegon Broznze Score
+            skinCharacter.scores[1] = dataJson.settings.kanegonGoldScore; //! Kanegon Gold Score
+
+            finishGame.rankScoreNumber[1] = dataJson.settings.rankB; //! Rank S
+            finishGame.rankScoreNumber[2] = dataJson.settings.rankA; //! Rank A
+            finishGame.rankScoreNumber[3] = dataJson.settings.rankS; //! Rank B
+
+            itemManager.baseValue = dataJson.settings.coinLaneChangeProbBase / 0.01f; //! Coin Lane Change Prob Base
+            itemManager.additionalValue = dataJson.settings.coinLaneChangeProbAdd / 0.01f; //! Coin Lane Change Prob Add
+            itemManager.minimumNumber = dataJson.settings.coinLaneChangeSuppress; //! Coin Lane Change Suppress
+            itemManager.additionalValueItem = dataJson.settings.itemGenerateProbability; //! Item Generate Prob
+            itemManager.baseCoolDownItem = dataJson.settings.itemGenerateSuppressigTime; //! Item Generate Suppressing Time
+            itemManager.baseValueObstacle = dataJson.settings.obstacleGenerateProbabilityBase / 0.01f; //! Obstacle Generate Base
+            itemManager.additionalValueObstacle = dataJson.settings.obstacleGenerateProbabilityAddPerSec; //! Obstacle Generate Prob Add
         }
     }
     [System.Serializable]
