@@ -12482,6 +12482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 638487387}
   - component: {fileID: 638487388}
+  - component: {fileID: 638487389}
   m_Layer: 0
   m_Name: ImportJson
   m_TagString: Untagged
@@ -12511,12 +12512,34 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 638487386}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6131efcd3c8afcf418a3777c60490517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   importJson: {fileID: 11400000, guid: cbeda21d61fb2b84c8362541d8d4e82a, type: 2}
+  getScore: {fileID: 470274366}
+  itemManager: {fileID: 591582873}
+  skillCharacter: {fileID: 1414814383}
+  sliderSkillBar: {fileID: 1414814385}
+  skinCharacter: {fileID: 1733863955}
+  trackSegment: {fileID: 1935284291}
+  finishGame: {fileID: 1210302740}
+  couponCode: {fileID: 1210302741}
+  characterMovement: {fileID: 1733863954}
+--- !u!114 &638487389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638487386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2099c399fe1ba64428ff16a596cbc901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fileName: importJson.json
   getScore: {fileID: 470274366}
   itemManager: {fileID: 591582873}
   skillCharacter: {fileID: 1414814383}
@@ -31602,6 +31625,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c80c292a0ad5c1f4cbf6a9f6f39b32e6, type: 3}
       propertyPath: m_Name
       value: Kanegon_setup_230220
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c80c292a0ad5c1f4cbf6a9f6f39b32e6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c80c292a0ad5c1f4cbf6a9f6f39b32e6, type: 3}
