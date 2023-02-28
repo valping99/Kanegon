@@ -74,7 +74,6 @@ namespace Kanegon
             isSpawnItem = false;
             isWaitingItem = false;
             inLaneNumber = 1;
-            currentSpeed = -trackManager.speed * 0.1f;
             currentRateObstacle = baseValueObstacle + (additionalValueObstacle * currentTime);
         }
 
@@ -97,7 +96,6 @@ namespace Kanegon
                     totalCoinNumber++;
                     collectedCoinNumber++;
                 }
-                currentSpeed = -trackManager.speed * 0.1f;
                 float nextSpeed = timeToSpawnObject / currentSpeed;
                 yield return new WaitForSeconds(nextSpeed);
             }
@@ -162,7 +160,6 @@ namespace Kanegon
             Instantiate(obstacle[0], obstacleLocation, Quaternion.identity, transformParent);
             float rateObstacle;
             rateObstacle = Random.Range(0, 100);
-            currentRateObstacle = baseValueObstacle + (additionalValueObstacle * currentTime);
             if (rateObstacle < currentRateObstacle)
             {
                 SetObstacleLocation();
@@ -213,6 +210,9 @@ namespace Kanegon
             if (!isSpawnObject) StartCoroutine(SpawnItems());
             if (currentTimeCoolDown > 0) currentTimeCoolDown -= Time.deltaTime;
             else isWaitingItem = false;
+
+            currentSpeed = -trackManager.speed * 0.1f;
+            currentRateObstacle = baseValueObstacle + (additionalValueObstacle * currentTime);
         }
 
         public void SetDefaultLocation()
