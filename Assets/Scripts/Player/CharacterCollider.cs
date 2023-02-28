@@ -12,6 +12,11 @@ namespace Kanegon
         [SerializeField] private OverState overState;
         [SerializeField] private GameState gameState;
         [SerializeField] private SpawnTrack spawnTrack;
+        [SerializeField] private ParticleSystem itemEffect;
+        [SerializeField] private ParticleSystem coinEffect;
+        [SerializeField] private GameObject coinEffectObject;
+        [SerializeField] private GameObject itemEffectObject;
+        [SerializeField] private Transform transformParent;
         #endregion
 
         //? Check gameover (By HP)
@@ -44,6 +49,7 @@ namespace Kanegon
                     if (skillCharacter.magnetCoin[i] == null)
                         skillCharacter.magnetCoin.RemoveAt(i);
                 }
+                CoinEffect();
                 getScore.UpdateScore();
             }
 
@@ -51,6 +57,7 @@ namespace Kanegon
             if (other.gameObject.CompareTag("Bonus") && other.gameObject.layer == 7)
             {
                 AudioManager.ActiveSoundEffect(CueSE.Se_Collect_Item);
+                ItemEffect();
                 StartCoroutine(getScore.BonusCoin());
             }
 
@@ -67,6 +74,22 @@ namespace Kanegon
                 Destroy(other.gameObject);
                 Damaged();
             }
+        }
+
+        private void CoinEffect()
+        {
+            GameObject coinObj = Instantiate(coinEffectObject, transformParent.position, Quaternion.identity, transformParent);
+            coinEffect = coinEffectObject.GetComponent<ParticleSystem>();
+            coinEffect.Play();
+            Destroy(coinObj, coinEffect.main.duration);
+        }
+
+        private void ItemEffect()
+        {
+            GameObject coinObj = Instantiate(itemEffectObject, transformParent.position, Quaternion.identity, transformParent);
+            itemEffect = coinEffectObject.GetComponent<ParticleSystem>();
+            itemEffect.Play();
+            Destroy(coinObj, coinEffect.main.duration);
         }
 
 

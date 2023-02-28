@@ -27,9 +27,9 @@ namespace Kanegon
 
         private void SetTextMessage()
         {
-            _TextMessageCloseBox.text = $"￥{pointToGetBox}以上を達成すると\n素敵な情報やクーポンコードが\n手に入れるよ！";
-            _TextMessageOpenBox.text = $"￥{pointToGetBox}以上を達成しました！\nクーポンコードをプレゼント！";
-            _TextMessageLinkResult.text = $"￥{pointToGetBox}以上を達成しました！\nお得な情報をご案内。\n連携ページで確認しよう！";
+            _TextMessageCloseBox.text = $"￥{pointToGetBox}以上を達成すると\n素敵な情報やクーポンコードが\n手に入れるよ！".ToString();
+            _TextMessageOpenBox.text = $"￥{pointToGetBox}以上を達成しました！\nクーポンコードをプレゼント！".ToString();
+            _TextMessageLinkResult.text = $"￥{pointToGetBox}以上を達成しました！\nお得な情報をご案内。\n連携ページで確認しよう！".ToString();
         }
     }
 }

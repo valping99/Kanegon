@@ -20,6 +20,7 @@ namespace Kanegon
         [SerializeField] private SliderSkillBar skillBar;
         [SerializeField] private SkinCharacter skinCharacter;
         [SerializeField] private Countdown countDown;
+        [SerializeField] private GlobalStatusContainer globalStatus;
         [Header("Value")]
         [HideInInspector] public int coin;
         [HideInInspector] public int point;
@@ -42,9 +43,10 @@ namespace Kanegon
             //! Track Manager Script
             if (trackManager.movement) trackManager.TrackMovement();
             trackManager.CurvedTrack();
+            globalStatus.DebugValue();
 
             //! Movement Script
-            if(!pause) gameMovement.InputController();
+            if (!pause) gameMovement.InputController();
             gameMovement.ChangePosition();
 
 

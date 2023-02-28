@@ -32,19 +32,19 @@ namespace Kanegon
         [SerializeField] private int inLaneNumber;
 
         [Header("Current Value")]
-        [SerializeField] private float currentTimeCoolDown;
-        [SerializeField] private float currentSpeed;
+        [SerializeField] public float currentTimeCoolDown;
+        [SerializeField] public float currentSpeed;
         [SerializeField] public int totalCoinNumber;
         [SerializeField] public float currentTime;
-        [Range(0, 100)][SerializeField] private float currentRateItem;
-        [Range(0, 100)][SerializeField] private float currentRateObstacle;
+        [Range(0, 100)][SerializeField] public float currentRateItem;
+        [Range(0, 100)][SerializeField] public float currentRateObstacle;
 
 
         [Header("Set rate lane value")]
         [SerializeField] public float baseValue;
         [SerializeField] public float additionalValue;
         [SerializeField] private int collectedCoinNumber;
-        [SerializeField] private float currentRate;
+        [SerializeField] public float currentRate;
 
         [Tooltip("Check value")]
         [SerializeField] public bool isGameStart;
@@ -74,6 +74,8 @@ namespace Kanegon
             isSpawnItem = false;
             isWaitingItem = false;
             inLaneNumber = 1;
+            currentSpeed = -trackManager.speed * 0.1f;
+            currentRateObstacle = baseValueObstacle + (additionalValueObstacle * currentTime);
         }
 
         //!Spawn Items
@@ -207,7 +209,7 @@ namespace Kanegon
         }
         private void SetTimeSpawn()
         {
-            if (isGameStart && currentTime <= 100) currentTime += Time.deltaTime;
+            if (isGameStart) currentTime += Time.deltaTime;
             if (!isSpawnObject) StartCoroutine(SpawnItems());
             if (currentTimeCoolDown > 0) currentTimeCoolDown -= Time.deltaTime;
             else isWaitingItem = false;
