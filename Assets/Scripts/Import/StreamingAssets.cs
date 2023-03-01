@@ -26,6 +26,9 @@ namespace Kanegon
         [SerializeField] private Coupon couponCode;
         [SerializeField] private Movement characterMovement;
 
+        [Header("Global status container")]
+        public static float baseSpeed;
+
         void Start()
         {
             StartCoroutine(GetJson());

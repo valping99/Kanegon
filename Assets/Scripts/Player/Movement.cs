@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Kanegon
@@ -9,14 +10,9 @@ namespace Kanegon
     {
         #region Variables
         [Header("Set Value to player")]
-        [SerializeField] private float jumpForce;
-        [SerializeField] public float leftRightSpeed = 20;
-        [SerializeField] private float[] xPos;
-        [SerializeField] public int xPositionIndex = 1;
-
-        [Header("Move Button")]
-        [SerializeField] private Button MoveLeft;
-        [SerializeField] private Button MoveRight;
+        public float leftRightSpeed = 20;
+        public float[] xPos;
+        public int xPositionIndex = 1;
 
         [Tooltip("Get Object")]
         [SerializeField] private GameObject player;
@@ -30,25 +26,9 @@ namespace Kanegon
         void Start()
         {
             rb = this.GetComponent<Rigidbody>();
-            MoveLeft.onClick.AddListener(TapToMoveLeft);
-            MoveRight.onClick.AddListener(TapToMoveRight);
         }
         #endregion
-
         #region Class
-        //? Add to Tap button
-        public void TapToMoveLeft()
-        {
-            xPositionIndex--;
-            if (xPositionIndex < 0) xPositionIndex = 0;
-        }
-        public void TapToMoveRight()
-        {
-            xPositionIndex++;
-            if (xPositionIndex > xPos.Length - 1) xPositionIndex = xPos.Length - 1;
-        }
-
-
         //? Keyboard input
         public void InputController()
         {
@@ -80,10 +60,7 @@ namespace Kanegon
             {
                 player.transform.localPosition = Vector3.Lerp(player.transform.localPosition, new Vector3(0, 0, 0), leftRightSpeed * Time.deltaTime);
             }
-
         }
         #endregion
-
     }
-
 }
