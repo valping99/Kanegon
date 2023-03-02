@@ -102,6 +102,7 @@ namespace Kanegon
         {
             if (gameOver)
             {
+                gameMovement.xPositionIndex = 1;
                 manager.SwitchState("GameOver");
             }
         }
@@ -112,7 +113,6 @@ namespace Kanegon
             if (pause)
             {
                 trackManager.movement = false;
-                gameMovement.xPositionIndex = 1;
                 spawnManager.isGameStart = false;
                 spawnManager.SetDefaultLocation();
             }

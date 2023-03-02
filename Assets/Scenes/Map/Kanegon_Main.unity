@@ -7081,12 +7081,11 @@ MonoBehaviour:
   countDownImage: {fileID: 1796334804}
   gameState: {fileID: 470274367}
   listCountDownImage:
-  - {fileID: 21300000, guid: 70e3ce8ad01f39248a3ea97a35bcf238, type: 3}
-  - {fileID: 21300000, guid: c8a69ecdf54ac8e4b873466605de27ff, type: 3}
-  - {fileID: 21300000, guid: cdb88fdb0cf46b244a667edaff21c7df, type: 3}
-  - {fileID: 21300000, guid: c9ed6d6ea2f9657409bfa068d4846139, type: 3}
-  - {fileID: 21300000, guid: c9ed6d6ea2f9657409bfa068d4846139, type: 3}
-  timeCountDown: 5
+  - {fileID: 21300000, guid: ee162adc1eba51d48931df5507ba22b7, type: 3}
+  - {fileID: 21300000, guid: d98390f38a443c34a91e50c5763611de, type: 3}
+  - {fileID: 21300000, guid: 9a842a911a73d7a43aa2dbd2d2834b66, type: 3}
+  - {fileID: 21300000, guid: 9a842a911a73d7a43aa2dbd2d2834b66, type: 3}
+  timeCountDown: 4
   currentTime: 0
   isCountDown: 0
   countDownObject: {fileID: 184844418}
@@ -21756,8 +21755,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillCharacter: {fileID: 1414814383}
+  itemManager: {fileID: 591582873}
   getScore: {fileID: 470274366}
-  overState: {fileID: 1210302735}
   gameState: {fileID: 470274367}
   spawnTrack: {fileID: 1935284290}
   itemEffect: {fileID: 0}

@@ -8,6 +8,7 @@ namespace Kanegon
     {
         #region Variables
         [SerializeField] private Skill skillCharacter;
+        [SerializeField] private ItemManager itemManager;
         [SerializeField] private GetScore getScore;
         [SerializeField] private GameState gameState;
         [SerializeField] private SpawnTrack spawnTrack;
@@ -56,6 +57,7 @@ namespace Kanegon
             if (other.gameObject.CompareTag("Bonus") && other.gameObject.layer == 7)
             {
                 AudioManager.ActiveSoundEffect(CueSE.Se_Collect_Item);
+                itemManager.currentTimeCoolDown = itemManager.baseCoolDownItem;
                 ItemEffect();
                 StartCoroutine(getScore.BonusCoin());
             }

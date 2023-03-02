@@ -41,6 +41,7 @@ namespace Kanegon
         }
         private void InitializedCreate()
         {
+            AudioManager.ActiveBGM(CueBGM.Bgm_Title);
             mainTitle.InitializedSetup();
             titleMotion.animationCamera.SetBool("FadeOut", true);
             titleMotion.isRotateCamera = true;
