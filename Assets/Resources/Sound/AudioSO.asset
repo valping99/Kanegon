@@ -16,17 +16,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2bfb12922b4f33d48a808a2f83ebd8f8, type: 3}
   - {fileID: 8300000, guid: e8e7298e085be2d45a40cf0c37844fbe, type: 3}
   - {fileID: 8300000, guid: 6c7500e7f26acf34fb5f3d547637d224, type: 3}
+  - {fileID: 8300000, guid: 6c3c90c4f831df447958e88d4b61363c, type: 3}
+  - {fileID: 8300000, guid: 882270b1088316d459f0ae011da6fa59, type: 3}
+  - {fileID: 8300000, guid: 57bdc3fdcdda2014aaf9a0c7f32be2e5, type: 3}
+  - {fileID: 8300000, guid: e47c3abbb8be0e84ca1c105d49fdf179, type: 3}
   - {fileID: 8300000, guid: b36178ecbf1e3594ab9baa2d92154b0d, type: 3}
-  - {fileID: 8300000, guid: 4519e5c2af88aa54db7c79535e5669f8, type: 3}
-  - {fileID: 8300000, guid: 7985122bb8c3bbf4bbfa8bc319b0f77f, type: 3}
-  - {fileID: 8300000, guid: 968cd0d9daa7db340af25c649587ea77, type: 3}
-  - {fileID: 8300000, guid: b36178ecbf1e3594ab9baa2d92154b0d, type: 3}
+  - {fileID: 8300000, guid: 0d220433933272c4ebab597b5849cc91, type: 3}
   volumn: {x: 1, y: 1}
   pitch: {x: 0.5, y: 0.5}
   volumnInit: 0.5
   pitchInit: 1
-  playIndex: 4
-  CueBgm: 0
-  CueSe: 2
+  playIndex: 1
+  CueBgm: 2
+  CueSe: 0
   useSemitones: 0
   semitones: {x: 0, y: 0}

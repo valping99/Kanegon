@@ -20,6 +20,7 @@ namespace Kanegon
         [SerializeField] private SliderSkillBar skillBar;
         [SerializeField] private SkinCharacter skinCharacter;
         [SerializeField] private Countdown countDown;
+        [SerializeField] private KanegonMotion kanegonMotion;
         [SerializeField] private GlobalStatusContainer globalStatus;
         [Header("Value")]
         [HideInInspector] public int coin;
@@ -55,7 +56,7 @@ namespace Kanegon
             getScore.isSkill = skillCharacter.activeSkill;
 
             //! Skin Character
-            skinCharacter.ChangeSkinCharacter(point);
+            skinCharacter.ChangeSkinCharacter(point, getScore.isBonus);
 
             //! Skill Script
             if (skillPoint >= skillBar.numberToActiveSkill)
@@ -75,6 +76,7 @@ namespace Kanegon
 
         public override void Enter(State from)
         {
+            kanegonMotion._IdleStandby = false;
             GameStart();
             countDown.GameCountDown();
         }
@@ -82,15 +84,22 @@ namespace Kanegon
         {
             canvas.gameObject.SetActive(false);
             skinCharacter.ResetCharacter();
+            getScore.isBonus = false;
             spawnManager.GetComponent<ItemManager>().enabled = false;
         }
 
         public void GameOver()
         {
             AudioManager.ActiveBGM(CueBGM.Bgm_Outgame);
+            kanegonMotion._Running = false;
+            kanegonMotion._IdleStandby = true;
             gameOver = true;
             pause = true;
             StopGame();
+        }
+
+        public void ChangeSceneResult()
+        {
             if (gameOver)
             {
                 manager.SwitchState("GameOver");
@@ -129,15 +138,16 @@ namespace Kanegon
             getScore.ResetPoint();
 
 
+            kanegonMotion._Running = true;
 
             canvas.gameObject.SetActive(true);
+            couponCode = false;
             gameOver = false;
             pause = false;
-            couponCode = false;
             healthPoint = 0;
             skillPoint = 0;
-            coin = 0;
             point = 0;
+            coin = 0;
         }
 
     }

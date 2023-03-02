@@ -9,7 +9,6 @@ namespace Kanegon
         #region Variables
         [SerializeField] private Skill skillCharacter;
         [SerializeField] private GetScore getScore;
-        [SerializeField] private OverState overState;
         [SerializeField] private GameState gameState;
         [SerializeField] private SpawnTrack spawnTrack;
         [SerializeField] private ParticleSystem itemEffect;
@@ -19,7 +18,7 @@ namespace Kanegon
         [SerializeField] private Transform transformParent;
         #endregion
 
-        //? Check gameover (By HP)
+        //? Check Game Over (By HP)
         private void Damaged()
         {
             if (gameState.healthPoint <= 0)
@@ -78,7 +77,7 @@ namespace Kanegon
 
         private void CoinEffect()
         {
-            GameObject coinObj = Instantiate(coinEffectObject, transformParent.position, Quaternion.identity, transformParent);
+            GameObject coinObj = Instantiate(coinEffectObject, transformParent.position, transformParent.transform.rotation, transformParent);
             coinEffect = coinEffectObject.GetComponent<ParticleSystem>();
             coinEffect.Play();
             Destroy(coinObj, coinEffect.main.duration);
@@ -86,7 +85,7 @@ namespace Kanegon
 
         private void ItemEffect()
         {
-            GameObject coinObj = Instantiate(itemEffectObject, transformParent.position, Quaternion.identity, transformParent);
+            GameObject coinObj = Instantiate(itemEffectObject, transformParent.position, transformParent.transform.rotation, transformParent);
             itemEffect = coinEffectObject.GetComponent<ParticleSystem>();
             itemEffect.Play();
             Destroy(coinObj, coinEffect.main.duration);

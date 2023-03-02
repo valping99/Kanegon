@@ -8,8 +8,10 @@ namespace Kanegon
     {
         #region Variables
         [Header("Component")]
-        [SerializeField] private List<GameObject> characterModel;
-        [SerializeField] private GameObject defaultCharacter;
+        [SerializeField] private GameObject blueAuraCharacter;
+        [SerializeField] private GameObject goldAuraCharacter;
+        [SerializeField] private GameObject redAuraCharacter;
+        private int numberAura = 0;
         [SerializeField] public List<float> scores;
         [SerializeField] private Transform transformParent;
 
@@ -20,110 +22,55 @@ namespace Kanegon
 
         #region Class
         //! Check point to change skin character
-        public void ChangeSkinCharacter(int currentPoint)
+        public void ChangeSkinCharacter(int currentPoint, bool itemEffect)
         {
-            if (currentPoint > scores[scores.Count - 1] && !maximumUpgradeCharacter)
+            if (itemEffect)
             {
-                foreach (Transform currentChar in transformParent.transform)
-                {
-                    if (currentChar.CompareTag("EffectCharacter"))
-                    {
-                        Vector3 newPos = currentChar.transform.position;
-                        Destroy(currentChar.gameObject);
-                        int maxUpgrade = characterModel.Count - 1;
-                        Instantiate(characterModel[maxUpgrade], newPos, Quaternion.identity, transformParent);
-                        maximumUpgradeCharacter = true;
-                        break;
-                    }
-                }
-
+                numberAura = 3;
             }
-            //! Change Bronze Character
-            if (!upgradeCharacter)
+            else if (currentPoint > scores[0] && currentPoint < scores[1])
             {
-                for (int i = 0; i < scores.Count; i++)
-                {
-                    if (currentPoint > scores[i])
-                    {
-                        foreach (Transform currentChar in transformParent.transform)
-                        {
-                            if (currentChar.CompareTag("Character"))
-                            {
-                                Vector3 newPos = currentChar.transform.position;
-                                Instantiate(characterModel[i], newPos, Quaternion.identity, transformParent);
-                                upgradeCharacter = true;
-                                break;
-                            }
-                        }
-                    }
-                }
+                numberAura = 1;
+            }
+            else if (currentPoint > scores[1])
+            {
+                numberAura = 2;
+            }
+            SetAuraCharacter();
+        }
+        private void SetAuraCharacter()
+        {
+            switch (numberAura)
+            {
+                case 1:
+                    blueAuraCharacter.gameObject.SetActive(true);
+                    goldAuraCharacter.gameObject.SetActive(false);
+                    redAuraCharacter.gameObject.SetActive(false);
+                    break;
+                case 2:
+                    blueAuraCharacter.gameObject.SetActive(false);
+                    goldAuraCharacter.gameObject.SetActive(true);
+                    redAuraCharacter.gameObject.SetActive(false);
+                    break;
+                case 3:
+                    blueAuraCharacter.gameObject.SetActive(false);
+                    goldAuraCharacter.gameObject.SetActive(false);
+                    redAuraCharacter.gameObject.SetActive(true);
+                    break;
+                default:
+                    blueAuraCharacter.gameObject.SetActive(false);
+                    goldAuraCharacter.gameObject.SetActive(false);
+                    redAuraCharacter.gameObject.SetActive(false);
+                    break;
             }
         }
-        // public void ChangeSkinCharacter(int currentPoint)
-        // {
-        //     if (currentPoint > scores[scores.Count - 1] && !maximumUpgradeCharacter)
-        //     {
-        //         foreach (Transform currentChar in transformParent.transform)
-        //         {
-        //             int maxUpgrade = characterModel.Count - 1;
-        //             Instantiate(characterModel[maxUpgrade], currentChar.transform.position, Quaternion.identity, transformParent);
-        //             maximumUpgradeCharacter = true;
-        //             break;
-        //         }
-
-        //     }
-        //     //! Change Bronze Character
-        //     if (!upgradeCharacter)
-        //     {
-        //         for (int i = 0; i < scores.Count; i++)
-        //         {
-        //             if (currentPoint > scores[i])
-        //             {
-        //                 foreach (Transform currentChar in transformParent.transform)
-        //                 {
-        //                     if (currentChar.CompareTag("EffectCharacter"))
-        //                     {
-        //                         Vector3 newPos = currentChar.transform.position;
-        //                         Destroy(currentChar.gameObject);
-        //                         Instantiate(characterModel[i], newPos, Quaternion.identity, transformParent);
-        //                         upgradeCharacter = true;
-        //                         break;
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
-
-        //! Set default character when start game
-        // public void ResetCharacter()
-        // {
-        //     upgradeCharacter = false;
-        //     maximumUpgradeCharacter = false;
-        //     foreach (Transform currentChar in transformParent.transform)
-        //     {
-        //         if (currentChar.CompareTag("Character"))
-        //         {
-        //             Vector3 newPos = currentChar.transform.position;
-        //             Destroy(currentChar.gameObject);
-        //             Instantiate(defaultCharacter, newPos, Quaternion.identity, transformParent);
-        //             break;
-        //         }
-        //     }
-        // }
 
         public void ResetCharacter()
         {
-            upgradeCharacter = false;
-            maximumUpgradeCharacter = false;
-            foreach (Transform currentChar in transformParent.transform)
-            {
-                if (currentChar.CompareTag("EffectCharacter"))
-                {
-                    Destroy(currentChar.gameObject);
-                    break;
-                }
-            }
+            numberAura = 0;
+            blueAuraCharacter.gameObject.SetActive(false);
+            goldAuraCharacter.gameObject.SetActive(false);
+            redAuraCharacter.gameObject.SetActive(false);
         }
         #endregion
     }
