@@ -30,6 +30,7 @@ namespace Kanegon
         Se_Collect_Item = 7,
         SE_Skill_Bar = 8,
         SE_StartGameOver = 9,
+        SE_TimeCountDown = 10,
         Se_Ui_Increase = 20,
         Se_Ui_Random = 21,
         Se_Ui_Reverse = 22,

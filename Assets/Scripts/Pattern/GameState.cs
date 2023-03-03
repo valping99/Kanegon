@@ -104,7 +104,7 @@ namespace Kanegon
         {
             if (gameOver)
             {
-                AudioManager.ActiveBGM(CueBGM.Bgm_Outgame);
+                // AudioManager.ActiveBGM(CueBGM.Bgm_Outgame);
                 gameMovement.xPositionIndex = 1;
                 manager.SwitchState("GameOver");
             }

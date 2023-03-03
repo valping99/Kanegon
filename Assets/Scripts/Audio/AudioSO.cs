@@ -102,6 +102,9 @@ namespace Kanegon
                 case CueSE.SE_StartGameOver:
                     playIndex = 10;
                     break;
+                case CueSE.SE_TimeCountDown:
+                    playIndex = 11;
+                    break;
                 case CueSE.Se_Ui_Increase:
                     playIndex = (playIndex + 1) % _AudioClips.Length;
                     break;
@@ -169,10 +172,7 @@ namespace Kanegon
             if (CueBgm == CueBGM.None)
             {
                 //TODO Stop BGM when start SE
-                if (CueSe == CueSE.Se_Result ) source.gameObject.tag = "SE_BGM";
-                // if (CueSe == CueSE.Bgm_Title || CueSe == CueSE.Se_Ui_Matching) source.gameObject.tag = "SE_OutGame";
-                // if (CueSe == CueSE.Se_Ui_StartGame) source.gameObject.tag = "SE_InGame";
-                // if (CueSe == CueSE.Se_Ui_StartGame) source.gameObject.tag = "SE_StartGame";
+                if (CueSe == CueSE.Se_Result) source.gameObject.tag = "SE_BGM";
                 //TODO
 
                 source.loop = false;
@@ -182,24 +182,15 @@ namespace Kanegon
             // ? Mathf.Pow(SEMITONES, Random.Range(semitones.x, semitones.y))
             // : Random.Range(volumn.x, volumn.y);
 
+            if (CueSe == CueSE.SE_TimeCountDown || CueSe == CueSE.SE_StartGameOver || CueSe == CueSE.Se_Hit_Obstacle)
+            {
+                source.gameObject.tag = "BGM_Resume";
+                source.loop = false;
+            }
             source.Play();
-
-            // #if UNITY_EDITOR
-            //             if (source != previewer)
-            //             {
-            //                 Destroy(source.gameObject, source.clip.length / source.pitch);
-            //             }
-            // #endif
 
             if (source.loop != true)
             {
-
-                // if (CueSe == CueSE.Se_Ui_StartGame)
-                // {
-                //     AudioSource _AudioSource = GameObject.FindGameObjectWithTag("BGM_Audio").GetComponent<AudioSource>();
-                //     _AudioSource.Stop();
-                //     AudioManagerSO._Instance.StartCoroutine(AudioManagerSO.ResumeAudioBGM(_AudioSource));
-                // }
                 Destroy(source.gameObject, source.clip.length / source.pitch);
             }
 

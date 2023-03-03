@@ -24,12 +24,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0d220433933272c4ebab597b5849cc91, type: 3}
   - {fileID: 8300000, guid: 1ed2a1f6f0aaf6b43b1bc6a50294f243, type: 3}
   - {fileID: 8300000, guid: 4f0a1a5dbcd0f5f4a9c2edcaa53b50e1, type: 3}
+  - {fileID: 8300000, guid: 7280daddb889d29408401d9506050703, type: 3}
   volumn: {x: 1, y: 1}
   pitch: {x: 0.5, y: 0.5}
   volumnInit: 0.5
   pitchInit: 1
-  playIndex: 1
-  CueBgm: 2
-  CueSe: 0
+  playIndex: 0
+  CueBgm: 1
+  CueSe: 10
   useSemitones: 0
   semitones: {x: 0, y: 0}

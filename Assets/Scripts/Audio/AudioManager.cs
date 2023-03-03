@@ -88,6 +88,19 @@ namespace Kanegon
         //     audio.Play();
         //     AudioManager.ActiveBGM(CueBGM.Bgm_Ingame);
         // }
+        //? Play BGM After active Sound Effect
+        public static IEnumerator ResumeAudioBGM(CueSE SEOrder, CueBGM BGMOrder)
+        {
+            AudioSource _AudioSource = GameObject.FindGameObjectWithTag("BGM_Audio").GetComponent<AudioSource>();
+            _AudioSource.Stop();
+
+            _SoundSFX.CueSe = SEOrder;
+            _SoundSFX?.Play();
+
+            AudioSource _SESource = GameObject.FindGameObjectWithTag("BGM_Resume").GetComponent<AudioSource>();
+            yield return new WaitForSeconds(_SESource.clip.length);
+            AudioManager.ActiveBGM(BGMOrder);
+        }
 
         //? Get BGM AudioSource
         void ChangeBGMAudio()

@@ -18,6 +18,7 @@ TagManager:
   - SE_BGM
   - Road
   - EffectCharacter
+  - BGM_Resume
   layers:
   - Default
   - TransparentFX

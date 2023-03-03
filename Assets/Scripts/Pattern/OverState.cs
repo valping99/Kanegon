@@ -14,12 +14,14 @@ namespace Kanegon
         [SerializeField] private GameState gameState;
         [SerializeField] private FinishGame finishGame;
         [SerializeField] private Coupon couponCode;
+        [SerializeField] private Movement gameMovement;
 
         [Header("Canvas")]
         [SerializeField] private Canvas canvas;
 
         [Header("GameObject")]
         [SerializeField] private GameObject couponScreen;
+        [SerializeField] private Transform obstacleParent;
 
         [Header("Button")]
         [SerializeField] private Button backToTop;
@@ -34,7 +36,8 @@ namespace Kanegon
         }
         public override void Tick()
         {
-
+            gameMovement.ChangePosition();
+            ClearObstacles();
         }
         public override void Enter(State from)
         {
@@ -56,8 +59,20 @@ namespace Kanegon
 
         private void LoadOut()
         {
-            AudioManager.ActiveBGM(CueBGM.Bgm_Title);
             manager.SwitchState("LoadOut");
+        }
+
+        private void ClearObstacles()
+        {
+            Transform[] allObstacles = obstacleParent.GetComponentsInChildren<Transform>();
+
+            if (allObstacles.Length > 1)
+            {
+                for (int i = 1; i < allObstacles.Length; i++)
+                {
+                    Destroy(allObstacles[i].gameObject);
+                }
+            }
         }
     }
 }

@@ -54,6 +54,7 @@ namespace Kanegon
             currentTime = timeCountDown;
             isCountDown = true;
             StartCoroutine(StartCountDown(timeCountDown));
+            StartCoroutine(AudioManager.ResumeAudioBGM(CueSE.SE_TimeCountDown, CueBGM.Bgm_Ingame));
         }
 
 

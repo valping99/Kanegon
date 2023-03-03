@@ -15545,8 +15545,10 @@ MonoBehaviour:
   gameState: {fileID: 470274367}
   finishGame: {fileID: 1210302740}
   couponCode: {fileID: 1210302741}
+  gameMovement: {fileID: 1733863954}
   canvas: {fileID: 1210302739}
   couponScreen: {fileID: 269122677}
+  obstacleParent: {fileID: 1882166260}
   backToTop: {fileID: 1231609119}
 --- !u!114 &1210302736
 MonoBehaviour:
@@ -19481,8 +19483,6 @@ MonoBehaviour:
   gamePlayCanvas: {fileID: 470274371}
   resultCanvas: {fileID: 1210302739}
   btn_Start: {fileID: 776789876}
-  obstacleParent: {fileID: 1882166260}
-  gameMovement: {fileID: 1733863954}
   itemManager: {fileID: 591582873}
   titleMotion: {fileID: 888922476}
   mainTitle: {fileID: 1563777835}

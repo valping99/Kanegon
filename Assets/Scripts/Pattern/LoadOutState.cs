@@ -12,8 +12,6 @@ namespace Kanegon
         [SerializeField] private Canvas gamePlayCanvas;
         [SerializeField] private Canvas resultCanvas;
         [SerializeField] private Button btn_Start;
-        [SerializeField] private Transform obstacleParent;
-        [SerializeField] private Movement gameMovement;
         [SerializeField] private ItemManager itemManager;
         [SerializeField] private TitleMotion titleMotion;
         [SerializeField] private MainTitle mainTitle;
@@ -28,8 +26,6 @@ namespace Kanegon
         }
         public override void Tick()
         {
-            ClearObstacles();
-            gameMovement.ChangePosition();
         }
         public override void Enter(State from)
         {
@@ -50,26 +46,12 @@ namespace Kanegon
             gamePlayCanvas.gameObject.SetActive(false);
             resultCanvas.gameObject.SetActive(false);
         }
-
-        private void ClearObstacles()
-        {
-            Transform[] allObstacles = obstacleParent.GetComponentsInChildren<Transform>();
-
-            if (allObstacles.Length > 1)
-            {
-                for (int i = 1; i < allObstacles.Length; i++)
-                {
-                    Destroy(allObstacles[i].gameObject);
-                }
-            }
-        }
         private void StartGame()
         {
             mainTitle.DisableButton();
             titleMotion.animationCamera.SetBool("FadeOut", false);
             mainTitle.StartGame();
             titleMotion.isRotateCamera = false;
-            AudioManager.ActiveBGM(CueBGM.Bgm_Ingame);
             manager.SwitchState("GamePlaying");
         }
     }
