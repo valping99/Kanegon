@@ -36,13 +36,13 @@ namespace Kanegon
             {
                 xPositionIndex--;
                 if (xPositionIndex < 0) xPositionIndex = 0;
-                AudioManager.ActiveSoundEffect(CueSE.Se_Move);
+                // AudioManager.ActiveSoundEffect(CueSE.Se_Move);
             }
             if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.X))
             {
                 xPositionIndex++;
                 if (xPositionIndex > xPos.Length - 1) xPositionIndex = xPos.Length - 1;
-                AudioManager.ActiveSoundEffect(CueSE.Se_Move);
+                // AudioManager.ActiveSoundEffect(CueSE.Se_Move);
             }
         }
 

@@ -11,6 +11,7 @@ namespace Kanegon
     {
         [SerializeField] private Image countDownImage;
         [SerializeField] private GameState gameState;
+        [SerializeField] private KanegonMotion animation;
 
         [SerializeField] private List<Sprite> listCountDownImage;
         [SerializeField] private int timeCountDown = 3;
@@ -42,6 +43,7 @@ namespace Kanegon
                     gameObject.SetActive(true);
                 }
                 gameState.GameStart();
+                animation._Running = true;
             }
         }
         public void GameCountDown()

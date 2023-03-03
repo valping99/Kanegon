@@ -47,8 +47,11 @@ namespace Kanegon
             globalStatus.DebugValue();
 
             //! Movement Script
-            if (!pause) gameMovement.InputController();
-            gameMovement.ChangePosition();
+            if (!pause)
+            {
+                gameMovement.InputController();
+                gameMovement.ChangePosition();
+            }
 
 
             //! Get Score Script
@@ -90,7 +93,6 @@ namespace Kanegon
 
         public void GameOver()
         {
-            AudioManager.ActiveBGM(CueBGM.Bgm_Outgame);
             kanegonMotion._Running = false;
             kanegonMotion._IdleStandby = true;
             gameOver = true;
@@ -102,6 +104,7 @@ namespace Kanegon
         {
             if (gameOver)
             {
+                AudioManager.ActiveBGM(CueBGM.Bgm_Outgame);
                 gameMovement.xPositionIndex = 1;
                 manager.SwitchState("GameOver");
             }
@@ -136,9 +139,6 @@ namespace Kanegon
             skillCharacter.skillEffect.gameObject.SetActive(false);
 
             getScore.ResetPoint();
-
-
-            kanegonMotion._Running = true;
 
             canvas.gameObject.SetActive(true);
             couponCode = false;
