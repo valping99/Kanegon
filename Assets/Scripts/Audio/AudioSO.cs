@@ -96,6 +96,9 @@ namespace Kanegon
                 case CueSE.Se_Skill_Button:
                     playIndex = 8;
                     break;
+                case CueSE.SE_Skill_Bar:
+                    playIndex = 9;
+                    break;
                 case CueSE.Se_Ui_Increase:
                     playIndex = (playIndex + 1) % _AudioClips.Length;
                     break;

@@ -29,6 +29,7 @@ namespace Kanegon
         public void OnPointerDown(PointerEventData eventData)
         {
             ButtonCallBack();
+            AudioManager.ActiveSoundEffect(CueSE.Se_Move);
         }
     }
 }

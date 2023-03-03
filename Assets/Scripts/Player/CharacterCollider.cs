@@ -72,7 +72,7 @@ namespace Kanegon
             if (other.gameObject.CompareTag("Damage"))
             {
                 AudioManager.ActiveSoundEffect(CueSE.Se_Hit_Obstacle);
-                Destroy(other.gameObject);
+                // Destroy(other.gameObject);
                 Damaged();
             }
         }

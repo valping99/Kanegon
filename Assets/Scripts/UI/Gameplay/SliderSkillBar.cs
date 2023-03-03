@@ -13,6 +13,7 @@ namespace Kanegon
         public Slider sliderLeft;
         public Slider sliderRight;
         public float numberToActiveSkill;
+        public bool fullSkillBar = false;
         [SerializeField] public Button skillButton;
         [SerializeField] private Sprite enableSkillButton;
         [SerializeField] private Sprite disableSkillButton;
@@ -31,11 +32,16 @@ namespace Kanegon
         {
             if (skillPoint >= numberToActiveSkill)
             {
+                // if (fullSkillBar)
+                // {
+                // AudioManager.ActiveSoundEffect(CueSE.SE_Skill_Bar);
                 skillButton.GetComponent<Button>().enabled = true;
                 skillButton.GetComponent<Image>().enabled = true;
                 skillCharacter.skillEffect.gameObject.SetActive(true);
                 skillCharacter.skillAnimation.SetBool("Effect", true);
                 skillCharacter.EffectSkillAnimation.SetBool("ActivitySkill", true);
+                fullSkillBar = false;
+                // }
             }
             else
             {

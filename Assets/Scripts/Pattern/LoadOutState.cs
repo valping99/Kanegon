@@ -37,7 +37,7 @@ namespace Kanegon
         }
         public override void Exit(State to)
         {
-            // loadOutCanvas.gameObject.SetActive(false);
+            loadOutCanvas.gameObject.SetActive(false);
         }
         private void InitializedCreate()
         {

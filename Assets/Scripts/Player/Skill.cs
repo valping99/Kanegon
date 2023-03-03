@@ -76,6 +76,7 @@ namespace Kanegon
         private void ActiveSkill()
         {
             skillButton.GetComponent<Button>().enabled = false;
+            AudioManager.ActiveSoundEffect(CueSE.SE_Skill_Bar);
             StartCoroutine(CountDownSkill());
         }
 
