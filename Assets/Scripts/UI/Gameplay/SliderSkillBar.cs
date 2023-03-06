@@ -15,8 +15,9 @@ namespace Kanegon
         public float numberToActiveSkill;
         public bool fullSkillBar = false;
         [SerializeField] public Button skillButton;
+        [SerializeField] private Image skillButtonImage;
+        [SerializeField] private Sprite defaultSkillButton;
         [SerializeField] private Sprite enableSkillButton;
-        [SerializeField] private Sprite disableSkillButton;
         [SerializeField] private Skill skillCharacter;
         #endregion
 
@@ -40,12 +41,14 @@ namespace Kanegon
                 skillCharacter.skillEffect.gameObject.SetActive(true);
                 skillCharacter.skillAnimation.SetBool("Effect", true);
                 skillCharacter.EffectSkillAnimation.SetBool("ActivitySkill", true);
+                skillButtonImage.sprite = enableSkillButton;
                 fullSkillBar = false;
                 // }
             }
             else
             {
                 skillButton.GetComponent<Button>().enabled = false;
+                skillButtonImage.sprite = defaultSkillButton;
                 // skillButton.image.sprite = disableSkillButton;
             }
         }

@@ -55,6 +55,7 @@ namespace Kanegon
             finishGame.SetRanking();
             finishGame.ResetScreen();
             couponCode.CheckMysteryBox(gameState.point);
+            AudioManager.ActiveSoundEffect(CueSE.Se_Result);
         }
 
         private void LoadOut()

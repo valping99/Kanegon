@@ -13,24 +13,25 @@ MonoBehaviour:
   m_Name: AudioSO
   m_EditorClassIdentifier: 
   _AudioClips:
-  - {fileID: 8300000, guid: 1c6e7938baf94fb46983c411385b83ae, type: 3}
-  - {fileID: 8300000, guid: 5144653b268ba2a459a66d3ba0ac0bdc, type: 3}
+  - {fileID: 8300000, guid: 9a1c295b091b4314a8f3e9b24a51cd4a, type: 3}
+  - {fileID: 8300000, guid: b5a45550b5c1b094da420cefdeda524a, type: 3}
   - {fileID: 8300000, guid: 6c7500e7f26acf34fb5f3d547637d224, type: 3}
-  - {fileID: 8300000, guid: 6c3c90c4f831df447958e88d4b61363c, type: 3}
-  - {fileID: 8300000, guid: 882270b1088316d459f0ae011da6fa59, type: 3}
-  - {fileID: 8300000, guid: 57bdc3fdcdda2014aaf9a0c7f32be2e5, type: 3}
-  - {fileID: 8300000, guid: e47c3abbb8be0e84ca1c105d49fdf179, type: 3}
+  - {fileID: 8300000, guid: 6e8be7e6dbda2914ba9d77d7077eb629, type: 3}
+  - {fileID: 8300000, guid: 610296d65caaa38439f1590d838e9993, type: 3}
+  - {fileID: 8300000, guid: ca61758aa6d567f4882b5297ed5d7f55, type: 3}
+  - {fileID: 8300000, guid: 1d4d77f08b3291c41ae94ffab15a64b3, type: 3}
   - {fileID: 8300000, guid: b36178ecbf1e3594ab9baa2d92154b0d, type: 3}
-  - {fileID: 8300000, guid: 0d220433933272c4ebab597b5849cc91, type: 3}
-  - {fileID: 8300000, guid: 1ed2a1f6f0aaf6b43b1bc6a50294f243, type: 3}
-  - {fileID: 8300000, guid: 4f0a1a5dbcd0f5f4a9c2edcaa53b50e1, type: 3}
-  - {fileID: 8300000, guid: 7280daddb889d29408401d9506050703, type: 3}
+  - {fileID: 8300000, guid: 752a83b279269474796a3a1e7ebecbf7, type: 3}
+  - {fileID: 8300000, guid: a2f9edeb5e079ec4ea897e2127919880, type: 3}
+  - {fileID: 8300000, guid: c3c34d9fd63db0042853aaeffcb3a3ae, type: 3}
+  - {fileID: 8300000, guid: efd099b6b39d88c4ab9b01beb4b03610, type: 3}
+  - {fileID: 8300000, guid: d0c964db54125cc4993e6c28f05fc568, type: 3}
   volumn: {x: 1, y: 1}
   pitch: {x: 0.5, y: 0.5}
   volumnInit: 0.5
   pitchInit: 1
-  playIndex: 0
-  CueBgm: 1
-  CueSe: 10
+  playIndex: 2
+  CueBgm: 3
+  CueSe: 0
   useSemitones: 0
   semitones: {x: 0, y: 0}

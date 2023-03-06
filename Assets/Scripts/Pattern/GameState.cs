@@ -85,6 +85,7 @@ namespace Kanegon
         }
         public override void Exit(State to)
         {
+            kanegonMotion._IdleStandby = true;
             canvas.gameObject.SetActive(false);
             skinCharacter.ResetCharacter();
             getScore.isBonus = false;
@@ -94,7 +95,6 @@ namespace Kanegon
         public void GameOver()
         {
             kanegonMotion._Running = false;
-            kanegonMotion._IdleStandby = true;
             gameOver = true;
             pause = true;
             StopGame();

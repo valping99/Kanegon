@@ -71,7 +71,8 @@ namespace Kanegon
             //! Collect Obstacle
             if (other.gameObject.CompareTag("Damage"))
             {
-                StartCoroutine(AudioManager.ResumeAudioBGM(CueSE.Se_Hit_Obstacle, CueBGM.Bgm_Outgame));
+                // StartCoroutine(AudioManager.ResumeAudioBGM(CueSE.Se_Hit_Obstacle, CueBGM.Bgm_Outgame));
+                AudioManager.ActiveSoundEffect(CueSE.Se_Hit_Obstacle);
                 // Destroy(other.gameObject);
                 Damaged();
             }

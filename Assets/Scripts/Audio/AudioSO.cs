@@ -105,6 +105,9 @@ namespace Kanegon
                 case CueSE.SE_TimeCountDown:
                     playIndex = 11;
                     break;
+                case CueSE.Se_Result:
+                    playIndex = 12;
+                    break;
                 case CueSE.Se_Ui_Increase:
                     playIndex = (playIndex + 1) % _AudioClips.Length;
                     break;
