@@ -14,6 +14,7 @@ namespace Kanegon
         [SerializeField] private KanegonMotion animation;
 
         [SerializeField] private List<Sprite> listCountDownImage;
+        [SerializeField] private Image countDownText;
         [SerializeField] private int timeCountDown = 3;
         [SerializeField] private float currentTime;
         [SerializeField] public bool isCountDown;
@@ -23,6 +24,7 @@ namespace Kanegon
 
         private IEnumerator StartCountDown(int seconds)
         {
+            countDownImage.gameObject.SetActive(true);
             foreach (GameObject gameObject in tapButtons)
             {
                 gameObject.SetActive(false);
@@ -37,15 +39,22 @@ namespace Kanegon
             if (count <= 0)
             {
                 isCountDown = false;
-                countDownObject.gameObject.SetActive(false);
                 foreach (GameObject gameObject in tapButtons)
                 {
                     gameObject.SetActive(true);
                 }
                 gameState.GameStart();
                 animation._Running = true;
+
+                countDownImage.gameObject.SetActive(false);
+                countDownText.gameObject.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                countDownText.gameObject.SetActive(false);
+                countDownObject.gameObject.SetActive(false);
             }
         }
+
+
         public void GameCountDown()
         {
             gameState.StopGame();
