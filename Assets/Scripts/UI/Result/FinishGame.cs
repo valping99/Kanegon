@@ -40,7 +40,7 @@ namespace Kanegon
         public void ShowResult()
         {
             numberScore.text = $"¥{getScore.point.ToString()}";
-            numberOfCoin.text = getScore.coin.ToString() + "$";
+            numberOfCoin.text = getScore.coin.ToString();
         }
 
         public void EnableMysteryBox()

@@ -15,6 +15,7 @@ namespace Kanegon
         [SerializeField] private ItemManager itemManager;
         [SerializeField] private TitleMotion titleMotion;
         [SerializeField] private MainTitle mainTitle;
+        [SerializeField] private Movement gameMovement;
 
         void Start()
         {
@@ -26,6 +27,7 @@ namespace Kanegon
         }
         public override void Tick()
         {
+            gameMovement.ChangePosition();
         }
         public override void Enter(State from)
         {
