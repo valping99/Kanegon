@@ -34,6 +34,7 @@ namespace Kanegon
             {
                 countDownImage.sprite = listCountDownImage[count - 1];
                 yield return new WaitForSeconds(1f);
+                Debug.Log(count);
                 count--;
             }
             if (count <= 0)
@@ -57,13 +58,13 @@ namespace Kanegon
 
         public void GameCountDown()
         {
+            countDownObject.gameObject.SetActive(true);
             gameState.StopGame();
             countDownImage.sprite = listCountDownImage[listCountDownImage.Count - 1];
-            countDownObject.gameObject.SetActive(true);
+            StartCoroutine(AudioManager.ResumeAudioBGM(CueSE.SE_TimeCountDown, CueBGM.Bgm_Ingame));
             currentTime = timeCountDown;
             isCountDown = true;
             StartCoroutine(StartCountDown(timeCountDown));
-            StartCoroutine(AudioManager.ResumeAudioBGM(CueSE.SE_TimeCountDown, CueBGM.Bgm_Ingame));
         }
 
 
