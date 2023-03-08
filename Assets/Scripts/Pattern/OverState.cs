@@ -14,7 +14,7 @@ namespace Kanegon
         [SerializeField] private GameState gameState;
         [SerializeField] private FinishGame finishGame;
         [SerializeField] private Coupon couponCode;
-        // [SerializeField] private Movement gameMovement;
+        [SerializeField] private Movement gameMovement;
 
         [Header("Canvas")]
         [SerializeField] private Canvas canvas;
@@ -36,6 +36,7 @@ namespace Kanegon
         }
         public override void Tick()
         {
+            gameMovement.ChangePosition();
             ClearObstacles();
         }
         public override void Enter(State from)

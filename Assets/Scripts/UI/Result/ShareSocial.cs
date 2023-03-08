@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,9 +26,8 @@ namespace Kanegon
         }
         public void ShareToTW()
         {
-            Uri.EscapeUriString("abc");
-            string address = Uri.EscapeUriString(TWITTER_ADDRESS+"?text="+WWW.EscapeURL(_MessageTwitter.ToString()));
-            Application.OpenURL(address) ;
+            Application.OpenURL(TWITTER_ADDRESS +
+               "?text=" + WWW.EscapeURL(_MessageTwitter.ToString())) ;
         }
     }
 }

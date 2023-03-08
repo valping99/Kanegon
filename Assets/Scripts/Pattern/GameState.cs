@@ -66,13 +66,16 @@ namespace Kanegon
             {
                 skillPoint = (int)skillBar.numberToActiveSkill;
             }
-            if (skillCharacter.activeSkill)
+            if (skillCharacter.activeSkill && pause == false)
             {
                 skillBar.CountDownSkill(skillCharacter.countDownSkill);
             }
             else
             {
-                skillBar.OnChangedSlider(skillPoint);
+                if (!pause)
+                {
+                    skillBar.OnChangedSlider(skillPoint);
+                }
                 skillBar.EnableSkill(skillPoint);
             }
         }
@@ -118,6 +121,8 @@ namespace Kanegon
                 trackManager.movement = false;
                 spawnManager.isGameStart = false;
                 spawnManager.SetDefaultLocation();
+                // skillCharacter.skillButton.GetComponent<Button>().enabled = false;
+                skillCharacter.GetComponent<Skill>().enabled = false;
             }
         }
         public void GameStart()
@@ -137,6 +142,9 @@ namespace Kanegon
             skillCharacter.activeSkill = false;
             skillCharacter.magnetSpeed = skillCharacter.baseSpeedMagnet;
             skillCharacter.skillEffect.gameObject.SetActive(false);
+
+            skillCharacter.GetComponent<Skill>().enabled = true;
+            // skillCharacter.skillButton.GetComponent<Button>().enabled = true;
 
             getScore.ResetPoint();
 

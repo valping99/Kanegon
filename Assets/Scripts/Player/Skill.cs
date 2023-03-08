@@ -14,7 +14,7 @@ namespace Kanegon
         [Header("Component")]
         [SerializeField] private GameObject playerCollider;
         [SerializeField] public GameObject skillEffect;
-        [SerializeField] private Button skillButton;
+        [SerializeField] public Button skillButton;
         [HideInInspector] public List<GameObject> magnetCoin;
         [SerializeField] public Animator skillAnimation;
         [SerializeField] public Animator EffectSkillAnimation;
