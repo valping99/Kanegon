@@ -16,6 +16,7 @@ namespace Kanegon
         public bool fullSkillBar = false;
         [SerializeField] public Button skillButton;
         [SerializeField] private Image skillButtonImage;
+        [SerializeField] private Animator _NotificationAnim;
         [SerializeField] private Sprite defaultSkillButton;
         [SerializeField] private Sprite enableSkillButton;
         [SerializeField] private Skill skillCharacter;
@@ -33,25 +34,24 @@ namespace Kanegon
         {
             if (skillPoint >= numberToActiveSkill)
             {
-                // if (fullSkillBar)
-                // {
-                // AudioManager.ActiveSoundEffect(CueSE.SE_Skill_Bar);
                 skillButton.GetComponent<Button>().enabled = true;
                 skillButton.GetComponent<Image>().enabled = true;
                 skillCharacter.skillEffect.gameObject.SetActive(true);
                 skillCharacter.skillAnimation.SetBool("Effect", true);
                 skillCharacter.EffectSkillAnimation.SetBool("ActivitySkill", true);
                 skillButtonImage.sprite = enableSkillButton;
-                fullSkillBar = false;
-                // }
+                // fullSkillBar = true;
+                _NotificationAnim.SetBool("Effect", true);
             }
             else
             {
                 skillButton.GetComponent<Button>().enabled = false;
                 skillButtonImage.sprite = defaultSkillButton;
+                _NotificationAnim.SetBool("Effect", false);
                 // skillButton.image.sprite = disableSkillButton;
             }
         }
+
 
         public void CountDownSkill(float timeCD)
         {
