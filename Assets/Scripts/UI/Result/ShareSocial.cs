@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,9 +27,9 @@ namespace Kanegon
         }
         public void ShareToTW()
         {
-            string nameParameter = "YOUR AWESOME GAME MESSAGE!";//this is limited in text length 
-            Application.OpenURL(TWITTER_ADDRESS +
-               "?text=" + WWW.EscapeURL(_MessageTwitter.ToString())) ;
+            Uri.EscapeUriString("abc");
+            string address = Uri.EscapeUriString(TWITTER_ADDRESS+"?text="+WWW.EscapeURL(_MessageTwitter.ToString()));
+            Application.OpenURL(address) ;
         }
     }
 }
