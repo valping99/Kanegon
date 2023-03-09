@@ -59,7 +59,7 @@ namespace Kanegon
             getScore.isSkill = skillCharacter.activeSkill;
 
             //! Skin Character
-            skinCharacter.ChangeSkinCharacter(point, getScore.isBonus);
+            skinCharacter.ChangeSkinCharacter(skillCharacter.activeSkill, getScore.isBonus);
 
             //! Skill Script
             if (skillPoint >= skillBar.numberToActiveSkill)
@@ -72,7 +72,7 @@ namespace Kanegon
             // }
             if (getScore.isBonus && pause == false)
             {
-                skillBar.CountDownSkill(getScore.bonusTimer);
+                skillBar.CountDownSkill(skillCharacter.countDownSkill);
             }
             else
             {
