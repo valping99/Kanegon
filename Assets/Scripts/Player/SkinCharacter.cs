@@ -21,7 +21,7 @@ namespace Kanegon
         #endregion
 
         #region Class
-        //! Check point to change skin character
+        //! Check point to change skin character (Backup)
         // public void ChangeSkinCharacter(int currentPoint, bool itemEffect)
         // {
         //     if (itemEffect)
@@ -40,18 +40,22 @@ namespace Kanegon
         // }
         public void ChangeSkinCharacter(bool activeSkill, bool itemEffect)
         {
-            if (itemEffect)
+            if (activeSkill && itemEffect)
             {
-                numberAura = 3;
+                numberAura = 2;
             }
-            else if (activeSkill)
+            else if(itemEffect)
             {
                 numberAura = 1;
             }
-            // else if (currentPoint > scores[1])
-            // {
-            //     numberAura = 2;
-            // }
+            else if (activeSkill)
+            {
+                numberAura = 3;
+            }
+            else
+            {
+                numberAura = 0;
+            }
             SetAuraCharacter();
         }
         private void SetAuraCharacter()

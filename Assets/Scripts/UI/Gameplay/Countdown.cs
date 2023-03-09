@@ -34,7 +34,6 @@ namespace Kanegon
             {
                 countDownImage.sprite = listCountDownImage[count - 1];
                 yield return new WaitForSeconds(1f);
-                Debug.Log(count);
                 count--;
             }
             if (count <= 0)
