@@ -18428,6 +18428,7 @@ MonoBehaviour:
   skillAnimation: {fileID: 800371357}
   _NotificationAnim: {fileID: 1303624544}
   EffectSkillAnimation: {fileID: 1419027251}
+  GetScore: {fileID: 470274366}
   skillPoint: 0
   countDownSkill: 15
   magnetSpeed: 5

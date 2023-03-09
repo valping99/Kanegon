@@ -59,7 +59,11 @@ namespace Kanegon
                 AudioManager.ActiveSoundEffect(CueSE.Se_Collect_Item);
                 itemManager.currentTimeCoolDown = itemManager.baseCoolDownItem;
                 ItemEffect();
-                StartCoroutine(getScore.BonusCoin());
+                // StartCoroutine(getScore.BonusCoin());
+
+                //? Change Skill To Item
+                    StartCoroutine(CountDownItem());
+                //?
             }
 
             //! Change position road
@@ -78,6 +82,15 @@ namespace Kanegon
             }
         }
 
+        private IEnumerator CountDownItem()
+        {   
+            skillCharacter.activeSkill = true;
+            // getScore.isBonus = true;
+            yield return new WaitForSeconds(getScore.bonusTimer);
+            skillCharacter.activeSkill = false;
+            // getScore.isBonus = false;
+        }
+
         private void CoinEffect()
         {
             GameObject coinObj = Instantiate(coinEffectObject, transformParent.position, transformParent.transform.rotation, transformParent);
@@ -86,7 +99,7 @@ namespace Kanegon
             Destroy(coinObj, coinEffect.main.duration);
         }
 
-        private void ItemEffect()
+        public void ItemEffect()
         {
             GameObject coinObj = Instantiate(itemEffectObject, transformParent.position, transformParent.transform.rotation, transformParent);
             itemEffect = coinEffectObject.GetComponent<ParticleSystem>();

@@ -19,6 +19,7 @@ namespace Kanegon
         [SerializeField] public Animator skillAnimation;
         [SerializeField] public Animator _NotificationAnim;
         [SerializeField] public Animator EffectSkillAnimation;
+        [SerializeField] public GetScore GetScore;
 
         [Header("Value")]
         [SerializeField] public const int k_CoinsLayerIndex = 8;
@@ -40,9 +41,9 @@ namespace Kanegon
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space) && skillButton.GetComponent<Button>().enabled == true && !activeSkill)
+            if (Input.GetKeyDown(KeyCode.Space) && skillButton.GetComponent<Button>().enabled == true/* && !activeSkill*/)
             {
-                ActiveSkill();
+                ActiveSkillByItem();
             }
             magnetSpeed += (baseSpeedMagnet / 100) * Time.deltaTime;
             for (int i = 0; i < magnetCoin.Count; i++)
@@ -71,28 +72,40 @@ namespace Kanegon
         private void Initialize()
         {
             activeSkill = false;
-            skillButton.onClick.AddListener(ActiveSkill);
+            skillButton.onClick.AddListener(ActiveSkillByItem);
         }
 
-        private void ActiveSkill()
+        public void ActiveSkill()
         {
             skillButton.GetComponent<Button>().enabled = false;
             AudioManager.ActiveSoundEffect(CueSE.SE_Skill_Bar);
-            StartCoroutine(CountDownSkill());
             _NotificationAnim.SetBool("Effect", true);
+            StartCoroutine(CountDownSkill());
         }
 
 
+        public void ActiveSkillByItem()
+        {
+            skillButton.GetComponent<Button>().enabled = false;
+            AudioManager.ActiveSoundEffect(CueSE.SE_Skill_Bar);
+            _NotificationAnim.SetBool("Effect", true);
+            // StartCoroutine(GetScore.BonusCoin());
+            StartCoroutine(CountDownSkill());
+        }
+
         private IEnumerator CountDownSkill()
         {
-            activeSkill = true;
+            // activeSkill = true;
+            GetScore.isBonus = true;
+            // yield return new WaitForSeconds(countDownSkill);
             yield return new WaitForSeconds(countDownSkill);
             _NotificationAnim.SetBool("Effect", false);
             skillButton.GetComponent<Image>().enabled = false;
             skillAnimation.SetBool("Effect", false);
             EffectSkillAnimation.SetBool("ActivitySkill", false);
             skillEffect.gameObject.SetActive(false);
-            activeSkill = false;
+            GetScore.isBonus = false;
+            // activeSkill = false;
             skillPoint = 0;
             gameState.skillPoint = skillPoint;
         }

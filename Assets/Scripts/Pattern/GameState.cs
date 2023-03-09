@@ -66,9 +66,13 @@ namespace Kanegon
             {
                 skillPoint = (int)skillBar.numberToActiveSkill;
             }
-            if (skillCharacter.activeSkill && pause == false)
+            // if (skillCharacter.activeSkill && pause == false)
+            // {
+            //     skillBar.CountDownSkill(skillCharacter.countDownSkill);
+            // }
+            if (getScore.isBonus && pause == false)
             {
-                skillBar.CountDownSkill(skillCharacter.countDownSkill);
+                skillBar.CountDownSkill(getScore.bonusTimer);
             }
             else
             {
