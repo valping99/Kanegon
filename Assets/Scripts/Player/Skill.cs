@@ -17,6 +17,7 @@ namespace Kanegon
         [SerializeField] public Button skillButton;
         [HideInInspector] public List<GameObject> magnetCoin;
         [SerializeField] public Animator skillAnimation;
+        [SerializeField] public Animator _NotificationAnim;
         [SerializeField] public Animator EffectSkillAnimation;
 
         [Header("Value")]
@@ -78,6 +79,7 @@ namespace Kanegon
             skillButton.GetComponent<Button>().enabled = false;
             AudioManager.ActiveSoundEffect(CueSE.SE_Skill_Bar);
             StartCoroutine(CountDownSkill());
+            _NotificationAnim.SetBool("Effect", true);
         }
 
 
@@ -85,6 +87,7 @@ namespace Kanegon
         {
             activeSkill = true;
             yield return new WaitForSeconds(countDownSkill);
+            _NotificationAnim.SetBool("Effect", false);
             skillButton.GetComponent<Image>().enabled = false;
             skillAnimation.SetBool("Effect", false);
             EffectSkillAnimation.SetBool("ActivitySkill", false);

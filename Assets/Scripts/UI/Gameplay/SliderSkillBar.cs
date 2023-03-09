@@ -41,17 +41,16 @@ namespace Kanegon
                 skillCharacter.EffectSkillAnimation.SetBool("ActivitySkill", true);
                 skillButtonImage.sprite = enableSkillButton;
                 // fullSkillBar = true;
-                _NotificationAnim.SetBool("Effect", true);
+                // _NotificationAnim.SetBool("Effect", true);
             }
             else
             {
                 skillButton.GetComponent<Button>().enabled = false;
                 skillButtonImage.sprite = defaultSkillButton;
-                _NotificationAnim.SetBool("Effect", false);
+                // _NotificationAnim.SetBool("Effect", false);
                 // skillButton.image.sprite = disableSkillButton;
             }
         }
-
 
         public void CountDownSkill(float timeCD)
         {

@@ -18426,6 +18426,7 @@ MonoBehaviour:
   skillButton: {fileID: 587618447}
   magnetCoin: []
   skillAnimation: {fileID: 800371357}
+  _NotificationAnim: {fileID: 1303624544}
   EffectSkillAnimation: {fileID: 1419027251}
   skillPoint: 0
   countDownSkill: 15
