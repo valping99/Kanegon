@@ -1,3 +1,4 @@
+using System;
 using System.Net.Mime;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace Kanegon
 
         private IEnumerator StartCountDown(int seconds)
         {
+            yield return new WaitForSeconds(.1f);
             countDownImage.gameObject.SetActive(true);
             foreach (GameObject gameObject in tapButtons)
             {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -89,6 +90,7 @@ namespace Kanegon
             kanegonMotion._IdleStandby = false;
             GameStart();
             countDown.GameCountDown();
+            Debug.Log(DateTime.Now);
         }
         public override void Exit(State to)
         {

@@ -30,8 +30,8 @@ MonoBehaviour:
   pitch: {x: 0.5, y: 0.5}
   volumnInit: 0.5
   pitchInit: 1
-  playIndex: 2
-  CueBgm: 3
+  playIndex: 0
+  CueBgm: 1
   CueSe: 0
   useSemitones: 0
   semitones: {x: 0, y: 0}
