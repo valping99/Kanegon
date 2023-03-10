@@ -28,10 +28,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d0c964db54125cc4993e6c28f05fc568, type: 3}
   volumn: {x: 1, y: 1}
   pitch: {x: 0.5, y: 0.5}
-  volumnInit: 0.5
+  volumnInit: 0.7
   pitchInit: 1
-  playIndex: 0
-  CueBgm: 1
-  CueSe: 0
+  playIndex: 4
+  CueBgm: 0
+  CueSe: 2
   useSemitones: 0
   semitones: {x: 0, y: 0}

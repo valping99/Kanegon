@@ -79,7 +79,6 @@ namespace Kanegon
         public void ActiveSkill()
         {
             skillButton.GetComponent<Button>().enabled = false;
-            AudioManager.ActiveSoundEffect(CueSE.SE_Skill_Bar);
             _NotificationAnim.SetBool("Effect", true);
             StartCoroutine(CountDownSkill());
         }
@@ -88,7 +87,6 @@ namespace Kanegon
         public void ActiveSkillByItem()
         {
             skillButton.GetComponent<Button>().enabled = false;
-            AudioManager.ActiveSoundEffect(CueSE.SE_Skill_Bar);
             _NotificationAnim.SetBool("Effect", true);
             skillParticle.gameObject.SetActive(false);
             // StartCoroutine(GetScore.BonusCoin());
@@ -98,8 +96,8 @@ namespace Kanegon
         private IEnumerator CountDownSkill()
         {
             // activeSkill = true;
+            AudioManager.ActiveSoundEffect(CueSE.Se_Skill_Button);
             GetScore.isBonus = true;
-            // yield return new WaitForSeconds(countDownSkill);
             yield return new WaitForSeconds(countDownSkill);
             _NotificationAnim.SetBool("Effect", false);
             skillButton.GetComponent<Image>().enabled = false;

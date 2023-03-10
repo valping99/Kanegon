@@ -16,10 +16,10 @@ namespace Kanegon
         public bool fullSkillBar = false;
         [SerializeField] public Button skillButton;
         [SerializeField] private Image skillButtonImage;
-        [SerializeField] private Animator _NotificationAnim;
         [SerializeField] private Sprite defaultSkillButton;
         [SerializeField] private Sprite enableSkillButton;
         [SerializeField] private Skill skillCharacter;
+        [SerializeField] private bool isFullSkillBar;
         #endregion
 
         public void OnChangedSlider(float skillPoint)
@@ -34,6 +34,11 @@ namespace Kanegon
         {
             if (skillPoint >= numberToActiveSkill)
             {
+                if (isFullSkillBar)
+                {
+                    AudioManager.ActiveSoundEffect(CueSE.SE_Skill_Bar);
+                    isFullSkillBar = false;
+                }
                 skillButton.GetComponent<Button>().enabled = true;
                 skillButton.GetComponent<Image>().enabled = true;
                 skillCharacter.skillEffect.gameObject.SetActive(true);
@@ -41,15 +46,12 @@ namespace Kanegon
                 skillCharacter.EffectSkillAnimation.SetBool("ActivitySkill", true);
                 skillButtonImage.sprite = enableSkillButton;
                 skillCharacter.skillParticle.gameObject.SetActive(true);
-                // fullSkillBar = true;
-                // _NotificationAnim.SetBool("Effect", true);
             }
             else
             {
                 skillButton.GetComponent<Button>().enabled = false;
                 skillButtonImage.sprite = defaultSkillButton;
-                // _NotificationAnim.SetBool("Effect", false);
-                // skillButton.image.sprite = disableSkillButton;
+                isFullSkillBar = true;
             }
         }
 

@@ -171,6 +171,7 @@ namespace Kanegon
             {
                 source.loop = true;
                 source.gameObject.tag = "BGM_Audio";
+                source.volume = volumnInit - 0.2f;
             }
             if (CueBgm == CueBGM.None)
             {
