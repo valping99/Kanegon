@@ -19,6 +19,7 @@ namespace Kanegon
         [SerializeField] public Animator skillAnimation;
         [SerializeField] public Animator _NotificationAnim;
         [SerializeField] public Animator EffectSkillAnimation;
+        [SerializeField] public ParticleSystem skillParticle;
         [SerializeField] public GetScore GetScore;
 
         [Header("Value")]
@@ -89,6 +90,7 @@ namespace Kanegon
             skillButton.GetComponent<Button>().enabled = false;
             AudioManager.ActiveSoundEffect(CueSE.SE_Skill_Bar);
             _NotificationAnim.SetBool("Effect", true);
+            skillParticle.gameObject.SetActive(false);
             // StartCoroutine(GetScore.BonusCoin());
             StartCoroutine(CountDownSkill());
         }

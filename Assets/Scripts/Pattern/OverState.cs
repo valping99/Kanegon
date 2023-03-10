@@ -19,12 +19,11 @@ namespace Kanegon
         [Header("Canvas")]
         [SerializeField] private Canvas canvas;
 
-        [Header("GameObject")]
+        [Header("Component")]
         [SerializeField] private GameObject couponScreen;
         [SerializeField] private Transform obstacleParent;
-
-        [Header("Button")]
         [SerializeField] private Button backToTop;
+        [SerializeField] private ParticleSystem confettiParticle;
         #endregion
         void Start()
         {
@@ -47,6 +46,9 @@ namespace Kanegon
         public override void Exit(State to)
         {
             canvas.gameObject.SetActive(false);
+            
+            confettiParticle.gameObject.SetActive(false);
+            confettiParticle.Stop();
         }
 
         private void ShowResult()
@@ -55,6 +57,8 @@ namespace Kanegon
             finishGame.SetRanking();
             finishGame.ResetScreen();
             couponCode.CheckMysteryBox(gameState.point);
+            confettiParticle.gameObject.SetActive(true);
+            confettiParticle.Play();
             AudioManager.ActiveSoundEffect(CueSE.Se_Result);
         }
 

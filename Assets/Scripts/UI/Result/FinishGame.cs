@@ -13,10 +13,9 @@ namespace Kanegon
         [SerializeField] private GetScore getScore;
         [SerializeField] private TextMeshProUGUI numberScore;
         [SerializeField] private Image rankImage;
-        // [SerializeField] private TextMeshProUGUI rankScore;
-        [SerializeField] private TextMeshProUGUI numberOfCoin;
-        [SerializeField] private List<Sprite> spriteImage;
         [SerializeField] public List<float> rankScoreNumber;
+        [SerializeField] private List<Sprite> spriteImage;
+        [SerializeField] private TextMeshProUGUI numberOfCoin;
         [SerializeField] private GameObject mysteryBoxScreen;
         [SerializeField] private GameObject showResultScreen;
         [SerializeField] private Button entryButton;

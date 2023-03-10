@@ -40,6 +40,7 @@ namespace Kanegon
                 skillCharacter.skillAnimation.SetBool("Effect", true);
                 skillCharacter.EffectSkillAnimation.SetBool("ActivitySkill", true);
                 skillButtonImage.sprite = enableSkillButton;
+                skillCharacter.skillParticle.gameObject.SetActive(true);
                 // fullSkillBar = true;
                 // _NotificationAnim.SetBool("Effect", true);
             }

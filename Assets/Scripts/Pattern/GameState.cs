@@ -98,6 +98,7 @@ namespace Kanegon
             canvas.gameObject.SetActive(false);
             skinCharacter.ResetCharacter();
             getScore.isBonus = false;
+            skillCharacter.skillParticle.gameObject.SetActive(false);
             spawnManager.GetComponent<ItemManager>().enabled = false;
         }
 
@@ -106,6 +107,7 @@ namespace Kanegon
             kanegonMotion._Running = false;
             gameOver = true;
             pause = true;
+            skillCharacter.skillButton.interactable = false;
             StopGame();
         }
 
@@ -148,6 +150,7 @@ namespace Kanegon
             skillCharacter.activeSkill = false;
             skillCharacter.magnetSpeed = skillCharacter.baseSpeedMagnet;
             skillCharacter.skillEffect.gameObject.SetActive(false);
+            skillCharacter.skillButton.interactable = true;
 
             skillCharacter.GetComponent<Skill>().enabled = true;
             // skillCharacter.skillButton.GetComponent<Button>().enabled = true;

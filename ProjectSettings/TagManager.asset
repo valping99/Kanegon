@@ -19,6 +19,7 @@ TagManager:
   - Road
   - EffectCharacter
   - BGM_Resume
+  - Target
   layers:
   - Default
   - TransparentFX
