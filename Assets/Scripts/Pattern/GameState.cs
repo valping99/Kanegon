@@ -28,6 +28,7 @@ namespace Kanegon
         [HideInInspector] public int point;
         [HideInInspector] public int skillPoint;
         [HideInInspector] public int healthPoint;
+        [HideInInspector] public bool isDead;
 
         [Tooltip("Check value")]
         [HideInInspector] public bool pause;
@@ -90,7 +91,6 @@ namespace Kanegon
             kanegonMotion._IdleStandby = false;
             GameStart();
             countDown.GameCountDown();
-            Debug.Log(DateTime.Now);
         }
         public override void Exit(State to)
         {
@@ -162,6 +162,7 @@ namespace Kanegon
             gameOver = false;
             pause = false;
             healthPoint = 0;
+            isDead = true;
             skillPoint = 0;
             point = 0;
             coin = 0;

@@ -17,12 +17,13 @@ namespace Kanegon
         [SerializeField] private GameObject coinEffectObject;
         [SerializeField] private GameObject itemEffectObject;
         [SerializeField] private Transform transformParent;
+        [SerializeField] private int healthPoint;
         #endregion
 
         //? Check Game Over (By HP)
         private void Damaged()
         {
-            if (gameState.healthPoint <= 0)
+            if (gameState.healthPoint <= 0 && gameState.isDead == true)
             {
                 spawnTrack.StopMovement();
                 gameState.GameOver();
@@ -62,7 +63,7 @@ namespace Kanegon
                 // StartCoroutine(getScore.BonusCoin());
 
                 //? Change Skill To Item
-                    StartCoroutine(CountDownItem());
+                StartCoroutine(CountDownItem());
                 //?
             }
 
@@ -83,7 +84,7 @@ namespace Kanegon
         }
 
         private IEnumerator CountDownItem()
-        {   
+        {
             skillCharacter.activeSkill = true;
             // getScore.isBonus = true;
             yield return new WaitForSeconds(getScore.bonusTimer);

@@ -97,6 +97,7 @@ namespace Kanegon
         {
             // activeSkill = true;
             AudioManager.ActiveSoundEffect(CueSE.Se_Skill_Button);
+            gameState.isDead = false;
             GetScore.isBonus = true;
             yield return new WaitForSeconds(countDownSkill);
             _NotificationAnim.SetBool("Effect", false);
@@ -107,6 +108,7 @@ namespace Kanegon
             GetScore.isBonus = false;
             // activeSkill = false;
             skillPoint = 0;
+            gameState.isDead = true;
             gameState.skillPoint = skillPoint;
         }
         #endregion

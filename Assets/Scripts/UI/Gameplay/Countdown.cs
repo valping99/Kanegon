@@ -59,10 +59,11 @@ namespace Kanegon
 
         public void GameCountDown()
         {
+            // yield return new WaitForSeconds(1f);
+            StartCoroutine(AudioManager.ResumeAudioBGM(CueSE.SE_TimeCountDown, CueBGM.Bgm_Ingame));
             countDownObject.gameObject.SetActive(true);
             gameState.StopGame();
             countDownImage.sprite = listCountDownImage[listCountDownImage.Count - 1];
-            StartCoroutine(AudioManager.ResumeAudioBGM(CueSE.SE_TimeCountDown, CueBGM.Bgm_Ingame));
             currentTime = timeCountDown;
             isCountDown = true;
             StartCoroutine(StartCountDown(timeCountDown));
