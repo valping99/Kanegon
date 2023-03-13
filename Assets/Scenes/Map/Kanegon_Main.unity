@@ -13342,8 +13342,8 @@ RectTransform:
   m_GameObject: {fileID: 961016069}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1515215078}
   m_RootOrder: 1
@@ -21811,9 +21811,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillCharacter: {fileID: 1414814383}
   itemManager: {fileID: 591582873}
+  blownUp: {fileID: 0}
   getScore: {fileID: 470274366}
   gameState: {fileID: 470274367}
   spawnTrack: {fileID: 1935284290}
+  trackManager: {fileID: 0}
   itemEffect: {fileID: 0}
   coinEffect: {fileID: 0}
   coinEffectObject: {fileID: 147642, guid: 685c97d007af49549b239b56b6d2000a, type: 3}
@@ -39729,7 +39731,7 @@ Transform:
   m_GameObject: {fileID: 4717052172829987268}
   m_LocalRotation: {x: 0.2164396, y: -0, z: -0, w: 0.97629607}
   m_LocalPosition: {x: 0, y: 1.2000122, z: -2.65}
-  m_LocalScale: {x: 0.15, y: 0.15000002, z: 0.15000002}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 0.12}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1480313004}

@@ -13,5 +13,7 @@ namespace Kanegon
                 Destroy(other.gameObject);
             }
         }
+
+        
     }
 }

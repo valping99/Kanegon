@@ -81,8 +81,8 @@ namespace Kanegon
                 if (!pause)
                 {
                     skillBar.OnChangedSlider(skillPoint);
+                    skillBar.EnableSkill(skillPoint);
                 }
-                skillBar.EnableSkill(skillPoint);
             }
         }
 
@@ -131,6 +131,7 @@ namespace Kanegon
                 spawnManager.SetDefaultLocation();
                 // skillCharacter.skillButton.GetComponent<Button>().enabled = false;
                 skillCharacter.GetComponent<Skill>().enabled = false;
+                skillCharacter.skillParticle.gameObject.SetActive(false);
             }
         }
         public void GameStart()
@@ -161,7 +162,7 @@ namespace Kanegon
             couponCode = false;
             gameOver = false;
             pause = false;
-            healthPoint = 0;
+            healthPoint = 1;
             isDead = true;
             skillPoint = 0;
             point = 0;

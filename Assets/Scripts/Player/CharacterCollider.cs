@@ -9,9 +9,11 @@ namespace Kanegon
         #region Variables
         [SerializeField] private Skill skillCharacter;
         [SerializeField] private ItemManager itemManager;
+        [SerializeField] private BlownUp blownUp;
         [SerializeField] private GetScore getScore;
         [SerializeField] private GameState gameState;
         [SerializeField] private SpawnTrack spawnTrack;
+        [SerializeField] private TrackManager trackManager;
         [SerializeField] private ParticleSystem itemEffect;
         [SerializeField] private ParticleSystem coinEffect;
         [SerializeField] private GameObject coinEffectObject;
@@ -23,14 +25,15 @@ namespace Kanegon
         //? Check Game Over (By HP)
         private void Damaged()
         {
-            if (gameState.healthPoint <= 0 && gameState.isDead == true)
+            if (gameState.isDead == true)
+            {
+                gameState.healthPoint -= 1;
+            }
+
+            if (gameState.healthPoint <= 0)
             {
                 spawnTrack.StopMovement();
                 gameState.GameOver();
-            }
-            else
-            {
-                gameState.healthPoint -= 1;
             }
         }
 
@@ -61,7 +64,7 @@ namespace Kanegon
                 gameState.skillPoint += (int)getScore.numberExtraCoin;
                 gameState.point += (int)getScore.pointExtraCoin;
                 if (getScore.isBonus) gameState.point += (int)getScore.bonusNumberBySkill;
-                if (getScore.isSkill)gameState.point += (int)(getScore.bonusNumber);
+                if (getScore.isSkill) gameState.point += (int)(getScore.bonusNumber);
                 for (var i = skillCharacter.magnetCoin.Count - 1; i > -1; i--)
                 {
                     if (skillCharacter.magnetCoin[i] == null)
@@ -93,7 +96,8 @@ namespace Kanegon
             //! Collect Obstacle
             if (other.gameObject.CompareTag("Damage"))
             {
-                // StartCoroutine(AudioManager.ResumeAudioBGM(CueSE.Se_Hit_Obstacle, CueBGM.Bgm_Outgame));
+                blownUp = other.GetComponent<BlownUp>();
+                blownUp.blownObject = other.gameObject;
                 AudioManager.ActiveSoundEffect(CueSE.Se_Hit_Obstacle);
                 // Destroy(other.gameObject);
                 Damaged();
@@ -103,10 +107,8 @@ namespace Kanegon
         private IEnumerator CountDownItem()
         {
             skillCharacter.activeSkill = true;
-            // getScore.isBonus = true;
             yield return new WaitForSeconds(getScore.bonusTimer);
             skillCharacter.activeSkill = false;
-            // getScore.isBonus = false;
         }
 
         private void CoinEffect()
@@ -124,7 +126,5 @@ namespace Kanegon
             itemEffect.Play();
             Destroy(coinObj, coinEffect.main.duration);
         }
-
-
     }
 }
