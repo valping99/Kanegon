@@ -4837,7 +4837,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &269122678
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4941,7 +4941,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &280897378
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6932,6 +6932,7 @@ MonoBehaviour:
   point: 0
   skillPoint: 0
   healthPoint: 0
+  isDead: 0
   pause: 0
   pauseGame: 0
   gameOver: 0
@@ -14679,7 +14680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1111667082
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21814,6 +21815,7 @@ MonoBehaviour:
   coinEffectObject: {fileID: 147642, guid: 685c97d007af49549b239b56b6d2000a, type: 3}
   itemEffectObject: {fileID: 187180, guid: 1ed56f4c486ff6141a344e5e5714e1b9, type: 3}
   transformParent: {fileID: 1509759983}
+  healthPoint: 0
 --- !u!65 &1718278211
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24738,7 +24740,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1903085591
 RectTransform:
   m_ObjectHideFlags: 0
