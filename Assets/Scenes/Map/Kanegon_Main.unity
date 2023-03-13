@@ -6899,6 +6899,8 @@ MonoBehaviour:
   bonusNumber: 20
   bonusNumberBySkill: 15
   bonusTimer: 15
+  pointExtraCoin: 100
+  numberExtraCoin: 5
   isBonus: 0
   isSkill: 0
   coin: 0
@@ -8206,6 +8208,8 @@ MonoBehaviour:
   trackManager: {fileID: 591582869}
   item: {fileID: 6031168158867906984, guid: 49d0df55566379f478652b50c75aede5, type: 3}
   coin: {fileID: 3986752744855251558, guid: 0463252984f29a94ca88b1766df5ac11, type: 3}
+  bonusCoin: {fileID: 3986752744855251558, guid: 62e9b899d204ad54ba2919e53ce12917, type: 3}
+  lastCoin: {fileID: 0}
   obstacle:
   - {fileID: 47795065003003739, guid: 3af499fbe1f79c94a9b4ac35b03eff58, type: 3}
   spawnLocation: {fileID: 1865355687}

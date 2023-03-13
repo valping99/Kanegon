@@ -20,6 +20,7 @@ TagManager:
   - EffectCharacter
   - BGM_Resume
   - Target
+  - BonusCoin
   layers:
   - Default
   - TransparentFX

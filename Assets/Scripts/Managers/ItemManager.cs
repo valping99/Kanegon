@@ -14,6 +14,8 @@ namespace Kanegon
         [Header("Gameobject")]
         [SerializeField] private GameObject item;
         [SerializeField] private GameObject coin;
+        [SerializeField] private GameObject bonusCoin;
+        [SerializeField] private GameObject lastCoin;
         [SerializeField] private List<GameObject> obstacle;
 
         [Header("Location")]
@@ -92,7 +94,8 @@ namespace Kanegon
                 }
                 else
                 {
-                    Instantiate(coin, spawnLocation.transform.position, Quaternion.identity, transformParent);
+                    GameObject newCoin = Instantiate(coin, spawnLocation.transform.position, Quaternion.identity, transformParent);
+                    lastCoin = newCoin;
                     totalCoinNumber++;
                     collectedCoinNumber++;
                 }
@@ -114,6 +117,8 @@ namespace Kanegon
                 rateToChangeLane = Random.Range(0, 100);
                 if (rateToChangeLane <= currentRate)
                 {
+                    Destroy(lastCoin.gameObject);
+                    Instantiate(bonusCoin, lastCoin.transform.position, Quaternion.identity, transformParent);
                     SetLaneLocation();
                     collectedCoinNumber = 0;
                     currentRate = baseValue;

@@ -22,6 +22,8 @@ namespace Kanegon
         [SerializeField] public float bonusNumber;
         [SerializeField] public float bonusNumberBySkill;
         [SerializeField] public float bonusTimer;
+        [SerializeField] public float pointExtraCoin;
+        [SerializeField] public float numberExtraCoin;
 
         [Tooltip("Check value")]
         [HideInInspector] public bool isBonus;

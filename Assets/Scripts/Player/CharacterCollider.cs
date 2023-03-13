@@ -42,9 +42,26 @@ namespace Kanegon
                 AudioManager.ActiveSoundEffect(CueSE.Se_Collect_Coin);
                 gameState.coin += 1;
                 gameState.skillPoint += 1;
-                if (getScore.isSkill) gameState.point += (int)getScore.bonusNumberBySkill;
-                if (getScore.isBonus) gameState.point += (int)(getScore.number + getScore.bonusNumber);
-                else gameState.point += (int)getScore.number;
+                gameState.point += (int)getScore.number;
+                if (getScore.isBonus) gameState.point += (int)getScore.bonusNumberBySkill;
+                if (getScore.isSkill) gameState.point += (int)(getScore.bonusNumber);
+                for (var i = skillCharacter.magnetCoin.Count - 1; i > -1; i--)
+                {
+                    if (skillCharacter.magnetCoin[i] == null)
+                        skillCharacter.magnetCoin.RemoveAt(i);
+                }
+                CoinEffect();
+                getScore.UpdateScore();
+            }
+            //! Collect Bonus Coin
+            if (other.gameObject.GetComponent<ItemsTrigger>() && other.gameObject.CompareTag("BonusCoin"))
+            {
+                AudioManager.ActiveSoundEffect(CueSE.Se_Collect_Coin);
+                gameState.coin += (int)getScore.numberExtraCoin;
+                gameState.skillPoint += (int)getScore.numberExtraCoin;
+                gameState.point += (int)getScore.pointExtraCoin;
+                if (getScore.isBonus) gameState.point += (int)getScore.bonusNumberBySkill;
+                if (getScore.isSkill)gameState.point += (int)(getScore.bonusNumber);
                 for (var i = skillCharacter.magnetCoin.Count - 1; i > -1; i--)
                 {
                     if (skillCharacter.magnetCoin[i] == null)
