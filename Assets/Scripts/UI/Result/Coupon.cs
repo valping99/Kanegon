@@ -14,14 +14,23 @@ namespace Kanegon
         [SerializeField] private Text _TextMessageCloseBox;
         [SerializeField] private Text _TextMessageOpenBox;
         [SerializeField] private Text _TextMessageLinkResult;
+        [SerializeField] public ParticleSystem confettiParticle;
 
         public void CheckMysteryBox(float point)
         {
             openBox.gameObject.SetActive(false);
             closeBox.gameObject.SetActive(false);
 
-            if (point >= pointToGetBox) openBox.gameObject.SetActive(true);
-            else closeBox.gameObject.SetActive(true);
+            if (point >= pointToGetBox)
+            {
+                openBox.gameObject.SetActive(true);
+                confettiParticle.gameObject.SetActive(true);
+                confettiParticle.Play();
+            }
+            else
+            {
+                closeBox.gameObject.SetActive(true);
+            }
             SetTextMessage();
         }
 

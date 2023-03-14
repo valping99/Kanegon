@@ -90,7 +90,7 @@ namespace Kanegon
         {
             kanegonMotion._IdleStandby = false;
             GameStart();
-            countDown.GameCountDown();
+            StartCoroutine(countDown.GameCountDown());
         }
         public override void Exit(State to)
         {
@@ -104,10 +104,10 @@ namespace Kanegon
 
         public void GameOver()
         {
+            skillCharacter.skillButton.interactable = false;
             kanegonMotion._Running = false;
             gameOver = true;
             pause = true;
-            skillCharacter.skillButton.interactable = false;
             StopGame();
         }
 
