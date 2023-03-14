@@ -22507,7 +22507,7 @@ MonoBehaviour:
   getScore: {fileID: 470274366}
   gameState: {fileID: 470274367}
   spawnTrack: {fileID: 1935284290}
-  trackManager: {fileID: 0}
+  trackManager: {fileID: 591582869}
   itemEffect: {fileID: 0}
   coinEffect: {fileID: 0}
   coinEffectObject: {fileID: 147642, guid: 685c97d007af49549b239b56b6d2000a, type: 3}

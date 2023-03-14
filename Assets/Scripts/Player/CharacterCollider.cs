@@ -20,6 +20,7 @@ namespace Kanegon
         [SerializeField] private GameObject itemEffectObject;
         [SerializeField] private Transform transformParent;
         [SerializeField] private int healthPoint;
+        [SerializeField] private bool isBlownLeft;
         #endregion
 
         //? Check Game Over (By HP)
@@ -96,11 +97,33 @@ namespace Kanegon
             //! Collect Obstacle
             if (other.gameObject.CompareTag("Damage"))
             {
-                blownUp = other.GetComponent<BlownUp>();
-                blownUp.blownObject = other.gameObject;
+                if (getScore.isBonus)
+                {
+                    blownUp = other.GetComponent<BlownUp>();
+                    blownUp.blownObject = other.gameObject;
+                    if (other.transform.position.x == trackManager.laneLocation[0])
+                    {
+                        blownUp.isBlownLeft = false;
+                    }
+                    else
+                    {
+                        blownUp.isBlownLeft = true;
+                    }
+                }
                 AudioManager.ActiveSoundEffect(CueSE.Se_Hit_Obstacle);
                 // Destroy(other.gameObject);
+                // BlowObstacle(other);
                 Damaged();
+            }
+        }
+
+        private void BlowObstacle(Collider other)
+        {
+            if (isBlownLeft)
+            {
+                other.gameObject.transform.localPosition = Vector3.Lerp(other.gameObject.transform.localPosition,
+                new Vector3(other.gameObject.transform.localPosition.x + 30f, 10f, other.gameObject.transform.localPosition.z + 30f),
+                10f * Time.deltaTime);
             }
         }
 
