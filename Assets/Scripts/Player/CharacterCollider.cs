@@ -26,12 +26,7 @@ namespace Kanegon
         //? Check Game Over (By HP)
         private void Damaged()
         {
-            if (gameState.isDead == true)
-            {
-                gameState.healthPoint -= 1;
-            }
-
-            if (gameState.healthPoint <= 0)
+            if (getScore.isBonus == false)
             {
                 spawnTrack.StopMovement();
                 gameState.GameOver();
