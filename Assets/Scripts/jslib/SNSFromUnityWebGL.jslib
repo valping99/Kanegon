@@ -24,7 +24,7 @@
             location.href = "https://line.me/R/share?text=" + message;
         } else {
             // PC
-            window.open("https://line.me/R/share?text=" + message, "_blank");
+            window.open("https://line.me/R/msg/text/?" + message, "_blank");
         }
     },
         FacebookFromUnity: function (rawMessage) {
