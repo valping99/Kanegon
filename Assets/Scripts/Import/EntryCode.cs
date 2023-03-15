@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 namespace Kanegon
 {
@@ -18,9 +19,12 @@ namespace Kanegon
         [JsonProperty("link")]
         public string link { get; set; }
 
+        [JsonProperty("msg")]
+        public string msg { get; set; }
+
         public override string ToString()
         {
-            return $"{type} | {entry_code} | {link}";
+            return $"{type} | {entry_code} | {link} | {msg}";
         }
     }
 
@@ -29,6 +33,8 @@ namespace Kanegon
         #region Variables
         [Header("Variables")]
         [SerializeField] private string _LinkDataFileName = "EntryCodeSetting.json";
+        [SerializeField] private Text _LinkMessage;
+        [SerializeField] private Text _EntryCodeMessage;
 
         [Header("Script")]
         [SerializeField] private LinkData linkData;
@@ -92,6 +98,12 @@ namespace Kanegon
                     }
                 }
             }
+        }
+
+        public void ChangeDate()
+        {
+            _LinkMessage.text = linkData.msg.ToString();
+            _EntryCodeMessage.text = linkData.entry_code.ToString();
         }
         #endregion
     }

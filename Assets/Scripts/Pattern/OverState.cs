@@ -15,6 +15,7 @@ namespace Kanegon
         [SerializeField] private FinishGame finishGame;
         [SerializeField] private Coupon couponCode;
         [SerializeField] private Movement gameMovement;
+        [SerializeField] private EntryCode entryCode;
 
         [Header("Canvas")]
         [SerializeField] private Canvas canvas;
@@ -51,6 +52,7 @@ namespace Kanegon
 
         private void ShowResult()
         {
+            entryCode.ChangeDate();
             finishGame.ShowResult();
             finishGame.SetRanking();
             finishGame.ResetScreen();
