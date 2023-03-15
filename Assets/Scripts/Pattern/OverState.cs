@@ -52,11 +52,11 @@ namespace Kanegon
 
         private void ShowResult()
         {
-            entryCode.ChangeDate();
             finishGame.ShowResult();
             finishGame.SetRanking();
             finishGame.ResetScreen();
             couponCode.CheckMysteryBox(gameState.point);
+            entryCode.ChangeDate();
             AudioManager.ActiveSoundEffect(CueSE.Se_Result);
         }
 

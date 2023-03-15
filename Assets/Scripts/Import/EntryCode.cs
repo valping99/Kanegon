@@ -102,8 +102,10 @@ namespace Kanegon
 
         public void ChangeDate()
         {
+#if !UNITY_EDITOR && UNITY_WEBGL
             _LinkMessage.text = linkData.msg.ToString();
             _EntryCodeMessage.text = linkData.entry_code.ToString();
+#endif
         }
         #endregion
     }
