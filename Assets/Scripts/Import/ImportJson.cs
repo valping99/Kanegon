@@ -37,8 +37,8 @@ namespace Kanegon
             getScore.number = importJson.settings.coinScore; //! Coin Score
 
             couponCode.pointToGetBox = importJson.settings.codeThresholdScore; //! Code Threshhold Score
-            skinCharacter.scores[0] = importJson.settings.kanegonBronzeScore; //! Kanegon Broznze Score
-            skinCharacter.scores[1] = importJson.settings.kanegonGoldScore; //! Kanegon Gold Score
+            // skinCharacter.scores[0] = importJson.settings.kanegonBronzeScore; //! Kanegon Broznze Score
+            // skinCharacter.scores[1] = importJson.settings.kanegonGoldScore; //! Kanegon Gold Score
 
             finishGame.rankScoreNumber[1] = importJson.settings.rankB; //! Rank S
             finishGame.rankScoreNumber[2] = importJson.settings.rankA; //! Rank A

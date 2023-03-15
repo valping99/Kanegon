@@ -21,8 +21,8 @@ public class ImportDataJson : ScriptableObject
         public float itemScoreBonusPerCoin;
         public int coinScore;
         public float codeThresholdScore;
-        public float kanegonBronzeScore;
-        public float kanegonGoldScore;
+        // public float kanegonBronzeScore;
+        // public float kanegonGoldScore;
         public int rankS;
         public int rankA;
         public int rankB;
@@ -33,7 +33,9 @@ public class ImportDataJson : ScriptableObject
         public float itemGenerateSuppressigTime;
         public float obstacleGenerateProbabilityBase;
         public float obstacleGenerateProbabilityAddPerSec;
-        
+        public float scoreAddedPerLargeCoin;
+        public float numberOfCoinsAcquiredPerLargeCoin;
+
     }
 
     public GameplaySettings settings;

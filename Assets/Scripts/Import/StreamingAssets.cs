@@ -12,6 +12,7 @@ namespace Kanegon
     {
         [Header("File name")]
         [SerializeField] private string _fileName = "UnityServicesProjectConfiguration.json";
+        [SerializeField] private LoadOutState loadOutState;
 
         [Header("Data ScriptableObject")]
         [SerializeField] private ImportDataJson dataJson;
@@ -33,7 +34,7 @@ namespace Kanegon
         void Start()
         {
             StartCoroutine(GetJson());
-            
+
             Debug.Log(DateTime.Now);
         }
 
@@ -48,7 +49,10 @@ namespace Kanegon
 
             if (www.result != UnityWebRequest.Result.Success)
             {
+#if !UNITY_EDITOR && UNITY_WEBGL
                 Debug.Log("GetJson failed" + www.error);
+                loadOutState.NullData("Unity Services Project Configuration");
+#endif
                 ImportData();
                 yield break;
             }
@@ -68,10 +72,12 @@ namespace Kanegon
             getScore.bonusTimer = data.itemTime;  //! Item time
             getScore.bonusNumber = data.itemScoreBonusPerCoin; //! Item Score Bonus
             getScore.number = data.coinScore; //! Coin Score
+            getScore.pointExtraCoin = data.scoreAddedPerLargeCoin; //! Extra point
+            getScore.numberExtraCoin = data.numberOfCoinsAcquiredPerLargeCoin; //! Extra coin
 
             couponCode.pointToGetBox = data.codeThresholdScore; //! Code Threshhold Score
-            skinCharacter.scores[0] = data.kanegonBronzeScore; //! Kanegon Broznze Score
-            skinCharacter.scores[1] = data.kanegonGoldScore; //! Kanegon Gold Score
+            // skinCharacter.scores[0] = data.kanegonBronzeScore; //! Kanegon Broznze Score
+            // skinCharacter.scores[1] = data.kanegonGoldScore; //! Kanegon Gold Score
 
             finishGame.rankScoreNumber[1] = data.rankB; //! Rank S
             finishGame.rankScoreNumber[2] = data.rankA; //! Rank A
@@ -100,10 +106,12 @@ namespace Kanegon
             getScore.bonusTimer = dataJson.settings.itemTime;  //! Item time
             getScore.bonusNumber = dataJson.settings.itemScoreBonusPerCoin; //! Item Score Bonus
             getScore.number = dataJson.settings.coinScore; //! Coin Score
+            getScore.pointExtraCoin = dataJson.settings.scoreAddedPerLargeCoin; //! Extra point
+            getScore.numberExtraCoin = dataJson.settings.numberOfCoinsAcquiredPerLargeCoin; //! Extra coin
 
             couponCode.pointToGetBox = dataJson.settings.codeThresholdScore; //! Code Threshhold Score
-            skinCharacter.scores[0] = dataJson.settings.kanegonBronzeScore; //! Kanegon Broznze Score
-            skinCharacter.scores[1] = dataJson.settings.kanegonGoldScore; //! Kanegon Gold Score
+            // skinCharacter.scores[0] = dataJson.settings.kanegonBronzeScore; //! Kanegon Broznze Score
+            // skinCharacter.scores[1] = dataJson.settings.kanegonGoldScore; //! Kanegon Gold Score
 
             finishGame.rankScoreNumber[1] = dataJson.settings.rankB; //! Rank S
             finishGame.rankScoreNumber[2] = dataJson.settings.rankA; //! Rank A
@@ -131,8 +139,8 @@ namespace Kanegon
         public float itemScoreBonusPerCoin;
         public int coinScore;
         public float codeThresholdScore;
-        public float kanegonBronzeScore;
-        public float kanegonGoldScore;
+        // public float kanegonBronzeScore;
+        // public float kanegonGoldScore;
         public int rankS;
         public int rankA;
         public int rankB;
@@ -143,6 +151,8 @@ namespace Kanegon
         public float itemGenerateSuppressigTime;
         public float obstacleGenerateProbabilityBase;
         public float obstacleGenerateProbabilityAddPerSec;
+        public float scoreAddedPerLargeCoin;
+        public float numberOfCoinsAcquiredPerLargeCoin;
 
     }
 }

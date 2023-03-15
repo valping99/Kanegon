@@ -54,5 +54,11 @@ namespace Kanegon
             titleMotion.isRotateCamera = false;
             manager.SwitchState("GamePlaying");
         }
+
+        public void NullData(string message)
+        {
+            Debug.Log($"Is empty {message} \n Please check again!");
+            manager.SwitchState("MissingData");
+        }
     }
 }

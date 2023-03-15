@@ -16,15 +16,13 @@ MonoBehaviour:
     runningSpeedBase: 1.2
     SpeedUpPerSec: 0.17
     slideMoveSpeed: 0.2
-    coinLimitSkillGuage: 60
+    coinLimitSkillGuage: 50
     skillTime: 10
     skillScoreBonusPerCoin: 20
     itemTime: 15
     itemScoreBonusPerCoin: 20
     coinScore: 40
     codeThresholdScore: 3000
-    kanegonBronzeScore: 3520
-    kanegonGoldScore: 7000
     rankS: 10000
     rankA: 3000
     rankB: 1000
@@ -35,3 +33,5 @@ MonoBehaviour:
     itemGenerateSuppressigTime: 20
     obstacleGenerateProbabilityBase: 0.1
     obstacleGenerateProbabilityAddPerSec: 0.1
+    scoreAddedPerLargeCoin: 100
+    numberOfCoinsAcquiredPerLargeCoin: 5
