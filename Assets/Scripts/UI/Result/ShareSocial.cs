@@ -11,6 +11,7 @@ namespace Kanegon
         [SerializeField] private string _MessageLine;
         [SerializeField] private string _MessageTwitter;
         [SerializeField] private string _MessageFacebook;
+        [SerializeField] public string linkEntryCode;
         [SerializeField] private GameState gameState;
 
         [DllImport("__Internal")]

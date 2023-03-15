@@ -19,6 +19,7 @@ namespace Kanegon
 
         [Header("Canvas")]
         [SerializeField] private Canvas canvas;
+        [SerializeField] private Canvas _HiddenCanvas;
 
         [Header("Component")]
         [SerializeField] private GameObject couponScreen;
@@ -41,11 +42,13 @@ namespace Kanegon
         public override void Enter(State from)
         {
             canvas.gameObject.SetActive(true);
+            _HiddenCanvas.gameObject.SetActive(true);
             ShowResult();
         }
         public override void Exit(State to)
         {
             canvas.gameObject.SetActive(false);
+            _HiddenCanvas.gameObject.SetActive(false);
             couponCode.confettiParticle.gameObject.SetActive(false);
             couponCode.confettiParticle.Stop();
         }
