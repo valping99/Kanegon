@@ -53,7 +53,7 @@ namespace Kanegon
             string point = gameState.point.ToString();
 #if !UNITY_EDITOR && UNITY_WEBGL
             // LineFromUnity(_MessageLine);
-            LinkFromUnity(_MessageLine.Replace("<score>", point));
+            LineFromUnity(_MessageLine.Replace("<score>", point));
             return;
 #endif
             Debug.Log("Share Line");
