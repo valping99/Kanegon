@@ -63,7 +63,7 @@ namespace Kanegon
         public void OnShareLink()
         {
 #if !UNITY_EDITOR && UNITY_WEBGL
-            LinkFromUnity(_MessageLine);
+            LinkFromUnity(linkEntryCode);
             return;
 #endif
             Debug.Log("Share Link");

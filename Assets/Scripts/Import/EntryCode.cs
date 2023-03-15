@@ -39,6 +39,7 @@ namespace Kanegon
         [Header("Script")]
         [SerializeField] private LinkData linkData;
         [SerializeField] private LoadOutState loadOutState;
+        [SerializeField] private ShareSocial shareSocial;
         #endregion
         void Start()
         {
@@ -103,6 +104,7 @@ namespace Kanegon
         public void ChangeDate()
         {
 #if !UNITY_EDITOR && UNITY_WEBGL
+            shareSocial.linkEntryCode = linkData.link.Replace("[@code]",linkData.entry_code);
             _LinkMessage.text = linkData.msg.ToString();
             _EntryCodeMessage.text = linkData.entry_code.ToString();
 #endif
