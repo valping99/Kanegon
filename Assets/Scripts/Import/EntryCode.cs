@@ -91,29 +91,22 @@ namespace Kanegon
                 {
                     Debug.Log($"Current time: {DateTime.Now}");
                     Debug.Log($"Json time: {currentItemDate}");
-                    if (DateTime.Now > currentItemDate)
+                    if (linkData == null && item.Value.type == "entory_code")
                     {
-                        isShareEntryCode = true;
                         linkData = item.Value;
                         Debug.Log(item.ToString());
                     }
-                    else
-                    {
-                        isShareEntryCode = false;
-                        linkData = item.Value;
-                        Debug.Log(item.ToString());
-                    }
-                    // if (linkData == null && item.Value.type == "entory_code")
-                    // {
-                    //     linkData = item.Value;
-                    //     Debug.Log(item.ToString());
-                    // }
 
-                    // if (linkData == null && item.Value.type == "link")
-                    // {
-                    //     linkData = item.Value;
-                    //     Debug.Log(item.ToString());
-                    // }
+                    if (linkData == null && item.Value.type == "link")
+                    {
+                        linkData = item.Value;
+                        Debug.Log(item.ToString());
+                    }
+                    Debug.Log("In link");
+                }
+                else
+                {
+                    Debug.Log("Out Link");
                 }
             }
         }
