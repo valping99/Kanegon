@@ -13,6 +13,8 @@ namespace Kanegon
         [SerializeField] private string _MessageFacebook;
         [SerializeField] public string linkEntryCode;
         [SerializeField] private GameState gameState;
+        private const string TWITTER_ADDRESS = "http://twitter.com/intent/tweet";
+        private const string TWEET_LANGUAGE = "en";
 
         [DllImport("__Internal")]
         private static extern void TweetFromUnity(string rawMessage);
@@ -36,6 +38,11 @@ namespace Kanegon
             return;
 #endif
             Debug.Log("ShareTwitter");
+        }
+
+        public void ShareTwitter()
+        {
+            Application.OpenURL($"{TWITTER_ADDRESS}?text={WWW.EscapeURL(_MessageTwitter.Replace("<Score>",gameState.point.ToString()))}");
         }
 
 

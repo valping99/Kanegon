@@ -88,6 +88,8 @@ namespace Kanegon
 
                 if (DateTime.Compare(DateTime.Now, currentItemDate) > 0)
                 {
+                    Debug.Log($"Current time: {DateTime.Now}");
+                    Debug.Log($"Json time: {currentItemDate}");
                     if (linkData == null && item.Value.type == "entory_code")
                     {
                         linkData = item.Value;
@@ -99,6 +101,10 @@ namespace Kanegon
                         linkData = item.Value;
                         Debug.Log(item.ToString());
                     }
+                    Debug.Log("In link");
+                }
+                else{
+                    Debug.Log("Out Link");
                 }
             }
         }
