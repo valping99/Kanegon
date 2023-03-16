@@ -64,9 +64,10 @@ namespace Kanegon
         {
 #if !UNITY_EDITOR && UNITY_WEBGL
             LinkFromUnity(linkEntryCode);
+            Debug.Log($"Link: {linkEntryCode}");
             return;
 #endif
-            Debug.Log($"Link: {linkEntryCode}");
+            Debug.Log($"Share Link");
         }
     }
 }

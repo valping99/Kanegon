@@ -109,6 +109,7 @@ namespace Kanegon
             shareSocial.linkEntryCode = linkData.link.Replace("[@code]",linkData.entry_code);
             _LinkMessage.text = linkData.msg.ToString();
             entryCode = linkData.entry_code.ToString();
+            Debug.Log($"Entry Code: {entryCode}");
 #endif
         }
         #endregion
