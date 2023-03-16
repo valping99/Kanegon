@@ -9710,7 +9710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _LinkDataFileName: EntryCodeSetting.json
   _LinkMessage: {fileID: 1417963042}
-  _EntryCodeMessage: {fileID: 1816650781}
+  _EntryCodeMessage: {fileID: 912283396}
   loadOutState: {fileID: 1563777829}
   shareSocial: {fileID: 0}
   coupon: {fileID: 0}
