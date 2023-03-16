@@ -40,6 +40,7 @@ namespace Kanegon
         [SerializeField] private LinkData linkData;
         [SerializeField] private LoadOutState loadOutState;
         [SerializeField] private ShareSocial shareSocial;
+        [SerializeField] private Coupon coupon;
         #endregion
         void Start()
         {
@@ -106,7 +107,7 @@ namespace Kanegon
 #if !UNITY_EDITOR && UNITY_WEBGL
             shareSocial.linkEntryCode = linkData.link.Replace("[@code]",linkData.entry_code);
             _LinkMessage.text = linkData.msg.ToString();
-            _EntryCodeMessage.text = linkData.entry_code.ToString();
+            _EntryCodeMessage.text = $"￥{coupon.pointToGetBox}以上を達成しました！\nクーポンコードをプレゼント！ {linkData.entry_code.ToString()}";
 #endif
         }
         #endregion
