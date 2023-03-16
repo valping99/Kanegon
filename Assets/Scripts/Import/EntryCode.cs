@@ -35,6 +35,7 @@ namespace Kanegon
         [SerializeField] private string _LinkDataFileName = "EntryCodeSetting.json";
         [SerializeField] private Text _LinkMessage;
         [SerializeField] private Text _EntryCodeMessage;
+        [SerializeField] public string entryCode;
 
         [Header("Script")]
         [SerializeField] private LinkData linkData;
@@ -107,7 +108,7 @@ namespace Kanegon
 #if !UNITY_EDITOR && UNITY_WEBGL
             shareSocial.linkEntryCode = linkData.link.Replace("[@code]",linkData.entry_code);
             _LinkMessage.text = linkData.msg.ToString();
-            _EntryCodeMessage.text = $"￥{coupon.pointToGetBox}以上を達成しました！\nクーポンコードをプレゼント！ {linkData.entry_code.ToString()}";
+            entryCode = linkData.entry_code.ToString();
 #endif
         }
         #endregion

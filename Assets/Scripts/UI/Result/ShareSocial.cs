@@ -66,7 +66,7 @@ namespace Kanegon
             LinkFromUnity(linkEntryCode);
             return;
 #endif
-            Debug.Log("Share Link");
+            Debug.Log($"Link: {linkEntryCode}");
         }
     }
 }
