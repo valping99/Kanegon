@@ -108,6 +108,9 @@ namespace Kanegon
                 case CueSE.Se_Result:
                     playIndex = 12;
                     break;
+                case CueSE.SE_Invincible:
+                    playIndex = 13;
+                    break;
                 case CueSE.Se_Ui_Increase:
                     playIndex = (playIndex + 1) % _AudioClips.Length;
                     break;

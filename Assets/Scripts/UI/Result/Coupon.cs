@@ -38,15 +38,15 @@ namespace Kanegon
             {
                 confettiParticle.gameObject.SetActive(true);
                 confettiParticle.Play();
-                openBox.gameObject.SetActive(true);
-                // if (entryCode.isShareEntryCode)
-                // {
-                //     openBox.gameObject.SetActive(true);
-                // }
-                // else
-                // {
-                //     openLink.gameObject.SetActive(true);
-                // }
+                // openBox.gameObject.SetActive(true);
+                if (entryCode.isShareEntryCode)
+                {
+                    openBox.gameObject.SetActive(true);
+                }
+                else
+                {
+                    openLink.gameObject.SetActive(true);
+                }
             }
             else
             {

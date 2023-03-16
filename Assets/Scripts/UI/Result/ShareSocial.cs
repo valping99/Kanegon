@@ -31,9 +31,10 @@ namespace Kanegon
 
         public void OnShareTwitter()
         {
-            string point = gameState.point.ToString();
 #if !UNITY_EDITOR && UNITY_WEBGL
-            TweetFromUnity(_MessageTwitter.Replace("<score>", point));
+            string messageTwitter = _MessageTwitter.Replace("#","%23");
+            string point = gameState.point.ToString();
+            TweetFromUnity(messageTwitter.Replace("<score>", point));
             // TweetFromUnity(_MessageTwitter);
             return;
 #endif

@@ -102,11 +102,6 @@ namespace Kanegon
                         linkData = item.Value;
                         Debug.Log(item.ToString());
                     }
-                    Debug.Log("In link");
-                }
-                else
-                {
-                    Debug.Log("Out Link");
                 }
             }
         }
@@ -116,9 +111,17 @@ namespace Kanegon
 #if !UNITY_EDITOR && UNITY_WEBGL
             _LinkMessage.text = linkData.msg.ToString();
             shareSocial.linkEntryCode = linkData.link.Replace("[@code]",linkData.entry_code.ToString());
-            Debug.Log(shareSocial.linkEntryCode);
             this.pointToGetBox = coupon.pointToGetBox;
             _EntryCodeMessage.text = $"￥{pointToGetBox}以上を達成しました！\nクーポンコードをプレゼント！ {linkData.entry_code.ToString()}";
+            
+            if (linkData.type == "entory_code")
+            {
+                isShareEntryCode = true;
+            }
+            else
+            {
+                isShareEntryCode = false;
+            }
 #endif
         }
         #endregion

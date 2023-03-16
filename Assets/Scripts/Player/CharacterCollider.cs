@@ -104,8 +104,12 @@ namespace Kanegon
                     {
                         blownUp.isBlownLeft = true;
                     }
+                    AudioManager.ActiveSoundEffect(CueSE.SE_Invincible);
                 }
-                AudioManager.ActiveSoundEffect(CueSE.Se_Hit_Obstacle);
+                else
+                {
+                    AudioManager.ActiveSoundEffect(CueSE.Se_Hit_Obstacle);
+                }
                 // Destroy(other.gameObject);
                 // BlowObstacle(other);
                 Damaged();

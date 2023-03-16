@@ -58,8 +58,8 @@ namespace Kanegon
             finishGame.ShowResult();
             finishGame.SetRanking();
             finishGame.ResetScreen();
-            couponCode.CheckMysteryBox(gameState.point);
             entryCode.ChangeDate();
+            couponCode.CheckMysteryBox(gameState.point);
             AudioManager.ActiveSoundEffect(CueSE.Se_Result);
         }
 
