@@ -16,6 +16,7 @@ namespace Kanegon
         [SerializeField] private FinishGame finishGame;
         [SerializeField] private Coupon couponCode;
         [SerializeField] private Movement characterMovement;
+        [SerializeField] private EntryCode entryCode;
         // Start is called before the first frame update
         void Start()
         {
@@ -37,6 +38,7 @@ namespace Kanegon
             getScore.number = importJson.settings.coinScore; //! Coin Score
 
             couponCode.pointToGetBox = importJson.settings.codeThresholdScore; //! Code Threshhold Score
+            entryCode.pointToGetBox = importJson.settings.codeThresholdScore; //! Code Threshhold Score
             // skinCharacter.scores[0] = importJson.settings.kanegonBronzeScore; //! Kanegon Broznze Score
             // skinCharacter.scores[1] = importJson.settings.kanegonGoldScore; //! Kanegon Gold Score
 

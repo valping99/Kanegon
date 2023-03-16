@@ -27,6 +27,7 @@ namespace Kanegon
         [SerializeField] private FinishGame finishGame;
         [SerializeField] private Coupon couponCode;
         [SerializeField] private Movement characterMovement;
+        [SerializeField] private EntryCode entryCode;
 
         [Header("Global status container")]
         public static float baseSpeed;
@@ -76,6 +77,7 @@ namespace Kanegon
             getScore.numberExtraCoin = data.numberOfCoinsAcquiredPerLargeCoin; //! Extra coin
 
             couponCode.pointToGetBox = data.codeThresholdScore; //! Code Threshhold Score
+            entryCode.pointToGetBox = data.codeThresholdScore; //! Code Threshhold Score
             // skinCharacter.scores[0] = data.kanegonBronzeScore; //! Kanegon Broznze Score
             // skinCharacter.scores[1] = data.kanegonGoldScore; //! Kanegon Gold Score
 
@@ -110,6 +112,7 @@ namespace Kanegon
             getScore.numberExtraCoin = dataJson.settings.numberOfCoinsAcquiredPerLargeCoin; //! Extra coin
 
             couponCode.pointToGetBox = dataJson.settings.codeThresholdScore; //! Code Threshhold Score
+            entryCode.pointToGetBox = dataJson.settings.codeThresholdScore; //! Code Threshhold Score
             // skinCharacter.scores[0] = dataJson.settings.kanegonBronzeScore; //! Kanegon Broznze Score
             // skinCharacter.scores[1] = dataJson.settings.kanegonGoldScore; //! Kanegon Gold Score
 
