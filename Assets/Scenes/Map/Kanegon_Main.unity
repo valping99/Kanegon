@@ -9713,6 +9713,7 @@ MonoBehaviour:
   _LinkMessage: {fileID: 1417963042}
   _EntryCodeMessage: {fileID: 912283396}
   pointToGetBox: 0
+  isShareEntryCode: 0
   loadOutState: {fileID: 1563777829}
   shareSocial: {fileID: 1210302742}
   coupon: {fileID: 1210302741}
@@ -16894,6 +16895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entryCode: {fileID: 638487390}
   openBox: {fileID: 280897377}
+  openLink: {fileID: 1111667081}
   closeBox: {fileID: 1903085590}
   _TextMessageCloseBox: {fileID: 1201502821}
   _TextMessageOpenBox: {fileID: 912283396}
