@@ -49,7 +49,7 @@ namespace Kanegon
                     if (skillCharacter.magnetCoin[i] == null)
                         skillCharacter.magnetCoin.RemoveAt(i);
                 }
-                CoinEffect();
+                CoinEffect(other.transform);
                 getScore.UpdateScore();
             }
             //! Collect Bonus Coin
@@ -66,7 +66,7 @@ namespace Kanegon
                     if (skillCharacter.magnetCoin[i] == null)
                         skillCharacter.magnetCoin.RemoveAt(i);
                 }
-                CoinEffect();
+                CoinEffect(other.transform);
                 getScore.UpdateScore();
             }
 
@@ -133,9 +133,9 @@ namespace Kanegon
             skillCharacter.activeSkill = false;
         }
 
-        private void CoinEffect()
+        private void CoinEffect(Transform trans)
         {
-            GameObject coinObj = Instantiate(coinEffectObject, transformParent.position, transformParent.transform.rotation, transformParent);
+            GameObject coinObj = Instantiate(coinEffectObject, trans.position, trans.transform.rotation, trans);
             coinEffect = coinEffectObject.GetComponent<ParticleSystem>();
             coinEffect.Play();
             Destroy(coinObj, coinEffect.main.duration);

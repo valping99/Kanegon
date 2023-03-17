@@ -16,6 +16,7 @@ namespace Kanegon
 
         [Tooltip("Get Object")]
         [SerializeField] private GameObject player;
+        [SerializeField] private RectTransform movementLocation;
         private Rigidbody rb;
 
         private bool firstJump = false;
@@ -51,14 +52,17 @@ namespace Kanegon
             if (xPositionIndex == 0)
             {
                 player.transform.localPosition = Vector3.Lerp(player.transform.localPosition, new Vector3(-1.5f, 0, 0), leftRightSpeed * Time.deltaTime);
+                movementLocation.localPosition = new Vector3(-220,0,0);
             }
             else if (xPositionIndex == xPos.Length - 1)
             {
                 player.transform.localPosition = Vector3.Lerp(player.transform.localPosition, new Vector3(1.5f, 0, 0), leftRightSpeed * Time.deltaTime);
+                movementLocation.localPosition = new Vector3(220,0,0);
             }
             else
             {
                 player.transform.localPosition = Vector3.Lerp(player.transform.localPosition, new Vector3(0, 0, 0), leftRightSpeed * Time.deltaTime);
+                movementLocation.localPosition = new Vector3(0,0,0);
             }
         }
         #endregion
