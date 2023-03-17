@@ -37,6 +37,7 @@ namespace Kanegon
         [SerializeField] private Text _EntryCodeMessage;
         [SerializeField] public float pointToGetBox;
         [SerializeField] public bool isShareEntryCode;
+        [SerializeField] public bool isNullEntryCode;
 
         [Header("Script")]
         [SerializeField] private LinkData linkData;
@@ -46,6 +47,7 @@ namespace Kanegon
         #endregion
         void Start()
         {
+            isNullEntryCode = false;
             StartCoroutine(GetLinkDataJson());
         }
         #region EntryCode
@@ -91,28 +93,36 @@ namespace Kanegon
                 {
                     Debug.Log($"Current time: {DateTime.Now}");
                     Debug.Log($"Json time: {currentItemDate}");
-                    if (linkData == null && item.Value.type == "entory_code")
+
+                    if (linkData == null && item.Value.type == "entory_code" || item.Value.type == "link")
                     {
                         linkData = item.Value;
                         Debug.Log(item.ToString());
+                    }
+                    else
+                    {
+                        Debug.Log("Null");
+                        isNullEntryCode = true;
+                        break;
                     }
 
-                    if (linkData == null && item.Value.type == "link")
-                    {
-                        linkData = item.Value;
-                        Debug.Log(item.ToString());
-                    }
+                    // if (linkData == null && item.Value.type == "link")
+                    // {
+                    //     linkData = item.Value;
+                    //     Debug.Log(item.ToString());
+                    // }
                 }
             }
         }
 
         public void ChangeDate()
         {
+            // _EntryCodeMessage.text = $"￥{pointToGetBox}以上を達成しました！\nクーポンコードをプレゼント！ {linkData.entry_code.ToString()}";
 #if !UNITY_EDITOR && UNITY_WEBGL
-            _LinkMessage.text = linkData.msg.ToString();
+            _EntryCodeMessage.text = $"￥{pointToGetBox}{linkData.msg}{linkData.entry_code.ToString()}";
+            _LinkMessage.text = $"￥{pointToGetBox}{linkData.msg.ToString()}";
             shareSocial.linkEntryCode = linkData.link.Replace("[@code]",linkData.entry_code.ToString());
             this.pointToGetBox = coupon.pointToGetBox;
-            _EntryCodeMessage.text = $"￥{pointToGetBox}以上を達成しました！\nクーポンコードをプレゼント！ {linkData.entry_code.ToString()}";
             
             if (linkData.type == "entory_code")
             {

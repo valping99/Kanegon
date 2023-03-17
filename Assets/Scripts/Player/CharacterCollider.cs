@@ -19,6 +19,7 @@ namespace Kanegon
         [SerializeField] private GameObject coinEffectObject;
         [SerializeField] private GameObject itemEffectObject;
         [SerializeField] private Transform transformParent;
+        [SerializeField] private Transform Obstacles;
         [SerializeField] private int healthPoint;
         [SerializeField] private bool isBlownLeft;
         #endregion
@@ -135,7 +136,7 @@ namespace Kanegon
 
         private void CoinEffect(Transform trans)
         {
-            GameObject coinObj = Instantiate(coinEffectObject, trans.position, trans.transform.rotation, trans);
+            GameObject coinObj = Instantiate(coinEffectObject, trans.position, trans.transform.rotation, Obstacles);
             coinEffect = coinEffectObject.GetComponent<ParticleSystem>();
             coinEffect.Play();
             Destroy(coinObj, coinEffect.main.duration);

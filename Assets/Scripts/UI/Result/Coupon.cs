@@ -34,7 +34,7 @@ namespace Kanegon
             closeBox.gameObject.SetActive(false);
             openLink.gameObject.SetActive(false);
 
-            if (point >= pointToGetBox)
+            if (point >= pointToGetBox && entryCode.isNullEntryCode == false)
             {
                 confettiParticle.gameObject.SetActive(true);
                 confettiParticle.Play();
@@ -57,9 +57,10 @@ namespace Kanegon
 
         private void SetTextMessage()
         {
-            _TextMessageCloseBox.text = $"￥{pointToGetBox}以上を達成すると\n素敵な情報やクーポンコードが\n手に入るよ！".ToString();
+            _TextMessageCloseBox.text = $"￥{pointToGetBox}以上を達成すると\n素敵な情報やクーポンコードが\n貰えるよ！\nもう一度チャレンジしよう".ToString();
+            // _TextMessageCloseBox.text = $"￥{pointToGetBox}以上を達成すると\n素敵な情報やクーポンコードが\n手に入るよ！".ToString();
             // _TextMessageOpenBox.text = $"￥{pointToGetBox}以上を達成しました！\nクーポンコードをプレゼント！ {entryCode.entryCode}".ToString();
-            _TextMessageLinkResult.text = $"￥{pointToGetBox}以上を達成しました！\n\nお得な情報をご案内。\n連携ページで確認しよう！".ToString();
+            // _TextMessageLinkResult.text = $"￥{pointToGetBox}以上を達成しました！\n\nお得な情報をご案内。\n連携ページで確認しよう！".ToString();
         }
         #endregion
     }
