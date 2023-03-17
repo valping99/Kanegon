@@ -17,6 +17,7 @@ namespace Kanegon
         [SerializeField] private GameObject openBox;
         [SerializeField] private GameObject openLink;
         [SerializeField] private GameObject closeBox;
+        [SerializeField] private GameObject btnBackToTitle;
         [SerializeField] private Text _TextMessageCloseBox;
         [SerializeField] private Text _TextMessageOpenBox;
         [SerializeField] private Text _TextMessageLinkResult;
@@ -34,18 +35,26 @@ namespace Kanegon
             closeBox.gameObject.SetActive(false);
             openLink.gameObject.SetActive(false);
 
-            if (point >= pointToGetBox && entryCode.isNullEntryCode == false)
+            if (point >= pointToGetBox)
             {
                 confettiParticle.gameObject.SetActive(true);
                 confettiParticle.Play();
                 // openBox.gameObject.SetActive(true);
-                if (entryCode.isShareEntryCode)
+                if (entryCode.isNullEntryCode == false)
                 {
-                    openBox.gameObject.SetActive(true);
+                    btnBackToTitle.gameObject.SetActive(false);
+                    if (entryCode.isShareEntryCode)
+                    {
+                        openBox.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        openLink.gameObject.SetActive(true);
+                    }
                 }
                 else
                 {
-                    openLink.gameObject.SetActive(true);
+                    btnBackToTitle.gameObject.SetActive(true);
                 }
             }
             else

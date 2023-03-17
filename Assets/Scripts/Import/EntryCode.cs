@@ -94,10 +94,12 @@ namespace Kanegon
                     Debug.Log($"Current time: {DateTime.Now}");
                     Debug.Log($"Json time: {currentItemDate}");
 
-                    if (linkData == null && item.Value.type == "entory_code" || item.Value.type == "link")
+                    if (linkData == null && item.Value.type == "entory_code" || linkData == null && item.Value.type == "link")
                     {
                         linkData = item.Value;
                         Debug.Log(item.ToString());
+                        isNullEntryCode = false;
+                        break;
                     }
                     else
                     {
@@ -119,18 +121,21 @@ namespace Kanegon
         {
             // _EntryCodeMessage.text = $"￥{pointToGetBox}以上を達成しました！\nクーポンコードをプレゼント！ {linkData.entry_code.ToString()}";
 #if !UNITY_EDITOR && UNITY_WEBGL
-            _EntryCodeMessage.text = $"￥{pointToGetBox}{linkData.msg}{linkData.entry_code.ToString()}";
-            _LinkMessage.text = $"￥{pointToGetBox}{linkData.msg.ToString()}";
-            shareSocial.linkEntryCode = linkData.link.Replace("[@code]",linkData.entry_code.ToString());
-            this.pointToGetBox = coupon.pointToGetBox;
-            
-            if (linkData.type == "entory_code")
+            if (!isNullEntryCode)
             {
-                isShareEntryCode = true;
-            }
-            else
-            {
-                isShareEntryCode = false;
+                _EntryCodeMessage.text = $"￥{pointToGetBox}{linkData.msg}{linkData.entry_code.ToString()}";
+                _LinkMessage.text = $"￥{pointToGetBox}{linkData.msg.ToString()}";
+                shareSocial.linkEntryCode = linkData.link.Replace("[@code]", linkData.entry_code.ToString());
+                this.pointToGetBox = coupon.pointToGetBox;
+
+                if (linkData.type == "entory_code")
+                {
+                    isShareEntryCode = true;
+                }
+                else
+                {
+                    isShareEntryCode = false;
+                }
             }
 #endif
         }

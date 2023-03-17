@@ -25,10 +25,12 @@ namespace Kanegon
         [SerializeField] private GameObject couponScreen;
         [SerializeField] private Transform obstacleParent;
         [SerializeField] private Button backToTop;
+        [SerializeField] private Button backToTopEntry;
         #endregion
         void Start()
         {
             backToTop.onClick.AddListener(LoadOut);
+            backToTopEntry.onClick.AddListener(LoadOut);
         }
         public override string GetName()
         {
