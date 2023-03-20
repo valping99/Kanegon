@@ -76,7 +76,6 @@ namespace Kanegon
 #if !UNITY_EDITOR && UNITY_WEBGL
             CouponButton();
             LinkFromUnity(linkEntryCode);
-            Debug.Log($"Link: {linkEntryCode}");
             return;
 #endif
             Debug.Log($"Share Link");
