@@ -1,119 +1,213 @@
 <!DOCTYPE html>
 <html lang="en-us">
+  <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-NB588K5");
+  </script>
+  <!-- End Google Tag Manager -->
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Kaiju_Run</title>
-	
-	<style>
-		html,
-		body {
-			background: #171717;
-			width: 100%;
-			height: 100%;
-			overflow: visible;
-			padding: 0;
-			margin: 0;
-		}
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Kaiju_Run</title>
 
-		div#gameContainer {
-			background: transparent !important;
-			position: absolute;
-		}
+    <style>
+      html,
+      body {
+        background: #171717;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        padding: 0;
+        margin: 0;
+      }
 
-		div#gameContainer canvas {
-			position: absolute;
-		}
+      div#gameContainer {
+        background: transparent !important;
+        position: absolute;
+      }
 
-		div#gameContainer canvas[data-pixel-art="true"] {
-			position: absolute;
-			image-rendering: optimizeSpeed;
-			image-rendering: -webkit-crisp-edges;
-			image-rendering: -moz-crisp-edges;
-			image-rendering: -o-crisp-edges;
-			image-rendering: crisp-edges;
-			image-rendering: -webkit-optimize-contrast;
-			image-rendering: optimize-contrast;
-			image-rendering: pixelated;
-			-ms-interpolation-mode: nearest-neighbor;
-		}
-	</style>
-</head>
+      div#gameContainer canvas {
+        position: absolute;
+      }
 
-<body>
-	<div id="gameContainer">
-		<canvas id="unity-canvas" data-pixel-art=""></canvas>
-		<script src="Build/docs.loader.js"></script>
-		<script>
-			var canvas = document.querySelector("#unity-canvas");
-			var config = {
-				dataUrl: "Build/docs.data",
-				frameworkUrl: "Build/docs.framework.js",
-				codeUrl: "Build/docs.wasm",
-				streamingAssetsUrl: "StreamingAssets",
-				companyName: "DefaultCompany",
-				productName: "Kaiju_Run",
-				productVersion: "0.1",
-			};
-			var scaleToFit;
-			try {
-				scaleToFit = !!JSON.parse("");
-			} catch (e) {
-				scaleToFit = true;
-			}
-			var img = document.createElement("img");
-			img.src = "Logo.png";
-			img.style.width="100%";
-			img.style.paddingTop = "100px";
-			var src = document.getElementById("gameContainer");
-			src.appendChild(img);
-			function progressHandler(progress) {
-				var percent = progress * 100 + '%';
-				canvas.style.background = 'linear-gradient(to right, #BA0000, #BA0000 ' + percent + ', #444444 ' + percent + ', #444444) no-repeat center';
-				canvas.style.backgroundSize = '80% 1rem';
-			}
-			function onResize() {
-				var container = canvas.parentElement;
-				var w;
-				var h;
+      div#gameContainer canvas[data-pixel-art="true"] {
+        position: absolute;
+        image-rendering: optimizeSpeed;
+        image-rendering: -webkit-crisp-edges;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: -o-crisp-edges;
+        image-rendering: crisp-edges;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: optimize-contrast;
+        image-rendering: pixelated;
+        -ms-interpolation-mode: nearest-neighbor;
+      }
+    </style>
+  </head>
 
-				if (scaleToFit) {
-					w = window.innerWidth;
-					h = window.innerHeight;
+  <body>
+    <div id="gameContainer">
+      <canvas id="unity-canvas" data-pixel-art=""></canvas>
+      <script src="Build/docs.loader.js"></script>
+      <script>
+        var canvas = document.querySelector("#unity-canvas");
+        var config = {
+          dataUrl: "Build/docs.data",
+          frameworkUrl: "Build/docs.framework.js",
+          codeUrl: "Build/docs.wasm",
+          streamingAssetsUrl: "StreamingAssets",
+          companyName: "DefaultCompany",
+          productName: "Kaiju_Run",
+          productVersion: "0.1",
+        };
+        var scaleToFit;
+        try {
+          scaleToFit = !!JSON.parse("");
+        } catch (e) {
+          scaleToFit = true;
+        }
+        var img = document.createElement("img");
+        img.src = "Logo.png";
+        img.style.width = "100%";
+        img.style.paddingTop = "100px";
+        var src = document.getElementById("gameContainer");
+        src.appendChild(img);
+        function progressHandler(progress) {
+          var percent = progress * 100 + "%";
+          canvas.style.background =
+            "linear-gradient(to right, #BA0000, #BA0000 " +
+            percent +
+            ", #444444 " +
+            percent +
+            ", #444444) no-repeat center";
+          canvas.style.backgroundSize = "80% 1rem";
+        }
+        function onResize() {
+          var container = canvas.parentElement;
+          var w;
+          var h;
 
-					var r = 768 / 432;
+          if (scaleToFit) {
+            w = window.innerWidth;
+            h = window.innerHeight;
 
-					if (w * r > window.innerHeight) {
-						w = Math.min(w, Math.ceil(h / r));
-					}
-					h = Math.floor(w * r);
-				} else {
-					w = 432;
-					h = 768;
-				}
+            var r = 768 / 432;
 
-				container.style.width = canvas.style.width = w + "px";
-				container.style.height = canvas.style.height = h + "px";
-				container.style.top = Math.floor((window.innerHeight - h) / 2) + "px";
-				container.style.left = Math.floor((window.innerWidth - w) / 2) + "px";
-			}
-			createUnityInstance(canvas, config, progressHandler).then(function (instance) {
-				canvas = instance.Module.canvas;
-				onResize();
-			});
-			window.addEventListener('resize', onResize);
-			onResize();
+            if (w * r > window.innerHeight) {
+              w = Math.min(w, Math.ceil(h / r));
+            }
+            h = Math.floor(w * r);
+          } else {
+            w = 432;
+            h = 768;
+          }
 
-			if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-				// Mobile device style: fill the whole browser client area with the game canvas:
-				const meta = document.createElement('meta');
-				meta.name = 'viewport';
-				meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-				document.getElementsByTagName('head')[0].appendChild(meta);
-			}
-		</script>
-	</div>
-</body>
+          container.style.width = canvas.style.width = w + "px";
+          container.style.height = canvas.style.height = h + "px";
+          container.style.top = Math.floor((window.innerHeight - h) / 2) + "px";
+          container.style.left = Math.floor((window.innerWidth - w) / 2) + "px";
+        }
 
+        createUnityInstance(canvas, config, progressHandler).then(function (
+          instance
+        ) {
+          canvas = instance.Module.canvas;
+          onResize();
+        });
+        window.addEventListener("resize", onResize);
+        onResize();
+
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+          // Mobile device style: fill the whole browser client area with the game canvas:
+          const meta = document.createElement("meta");
+          meta.name = "viewport";
+          meta.content =
+            "width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes";
+          document.getElementsByTagName("head")[0].appendChild(meta);
+        }
+
+		
+        //? Data Layer
+        function DisplayScreenFunc() {
+          dataLayer.push({
+            event: "kanegon_start_page",
+          });
+		  console.log("DataLayer: kanegon_start_page");
+        }
+
+        function StartButtonFunc() {
+          dataLayer.push({
+            event: "kanegon_run_start",
+          });
+		  console.log("DataLayer: kanegon_run_start");
+        }
+
+        function DisplayGameOverFunc() {
+          dataLayer.push({
+            event: "kanegon_game_over",
+            play_time: '秒数',
+          });
+		  console.log("DataLayer: kanegon_game_over");
+        }
+
+        function ResultScreenFunc() {
+          dataLayer.push({
+            event: "kanegon_result",
+          });
+		  console.log("DataLayer: kanegon_result");
+        }
+
+        function NextButtonFunc() {
+          dataLayer.push({
+            event: "kanegon_result_next_click",
+          });
+		  console.log("DataLayer: kanegon_result_next_click");
+        }
+
+        function CouponDisplayScreenFunc() {
+          dataLayer.push({
+            event: "coupon_get",
+          });
+		  console.log("DataLayer: coupon_get");
+        }
+
+        function CouponButtonFunc() {
+          dataLayer.push({
+            event: "kanegon_coupon_input",
+          });
+		  console.log("DataLayer: kanegon_coupon_input");
+        }
+
+        function BackToTitleFunc() {
+          dataLayer.push({
+            event: "to_kanegon_run_title",
+          });
+		  console.log("DataLayer: to_kanegon_run_title");
+        }
+
+        //? End Data Layer
+      </script>
+    </div>
+  </body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe
+      src="https://www.googletagmanager.com/ns.html?id=GTM-NB588K5"
+      height="0"
+      width="0"
+      style="display: none; visibility: hidden"
+    >
+    </iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
 </html>

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Runtime.InteropServices;
 
 namespace Kanegon
 {
     public class LoadOutState : State
     {
+        #region Unity Variables
         [SerializeField] private Canvas loadOutCanvas;
         [SerializeField] private Canvas gamePlayCanvas;
         [SerializeField] private Canvas resultCanvas;
@@ -15,6 +17,16 @@ namespace Kanegon
         [SerializeField] private ItemManager itemManager;
         [SerializeField] private TitleMotion titleMotion;
         [SerializeField] private MainTitle mainTitle;
+        #endregion
+
+        #region Import JS function
+
+        [DllImport("__Internal")]
+        private static extern void DisplayScreen();
+
+        [DllImport("__Internal")]
+        private static extern void StartButton();
+        #endregion
 
         void Start()
         {
@@ -45,9 +57,16 @@ namespace Kanegon
             loadOutCanvas.gameObject.SetActive(true);
             gamePlayCanvas.gameObject.SetActive(false);
             resultCanvas.gameObject.SetActive(false);
+#if !UNITY_EDITOR && UNITY_WEBGL
+            DisplayScreen();
+#endif
+
         }
         private void StartGame()
         {
+#if !UNITY_EDITOR && UNITY_WEBGL
+            StartButton();
+#endif
             mainTitle.DisableButton();
             titleMotion.animationCamera.SetBool("FadeOut", false);
             mainTitle.StartGame();

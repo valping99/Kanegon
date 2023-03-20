@@ -123,7 +123,7 @@ namespace Kanegon
 #if !UNITY_EDITOR && UNITY_WEBGL
             if (!isNullEntryCode)
             {
-                _EntryCodeMessage.text = $"￥{pointToGetBox}{linkData.msg}\n{linkData.entry_code.ToString()}";
+                _EntryCodeMessage.text = $"￥{pointToGetBox}以上を達成しました！\n{linkData.msg}\n{linkData.entry_code.ToString()}";
                 _LinkMessage.text = $"￥{pointToGetBox}{linkData.msg.ToString()}";
                 shareSocial.linkEntryCode = linkData.link.Replace("[@code]", linkData.entry_code.ToString());
                 this.pointToGetBox = coupon.pointToGetBox;

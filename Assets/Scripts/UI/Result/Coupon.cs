@@ -60,6 +60,14 @@ namespace Kanegon
             else
             {
                 closeBox.gameObject.SetActive(true);
+                if (entryCode.isNullEntryCode == false)
+                {
+                    btnBackToTitle.gameObject.SetActive(false);
+                }
+                else
+                {
+                    btnBackToTitle.gameObject.SetActive(true);
+                }
             }
             SetTextMessage();
         }
