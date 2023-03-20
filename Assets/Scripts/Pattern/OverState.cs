@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices;
 
 namespace Kanegon
 {
@@ -26,6 +27,16 @@ namespace Kanegon
         [SerializeField] private Transform obstacleParent;
         [SerializeField] private Button backToTop;
         [SerializeField] private Button backToTopEntry;
+        #endregion
+
+
+        #region Import JS function
+
+        [DllImport("__Internal")]
+        private static extern void ResultScreen();
+
+        [DllImport("__Internal")]
+        private static extern void BackToTitle();
         #endregion
         void Start()
         {
@@ -57,6 +68,9 @@ namespace Kanegon
 
         private void ShowResult()
         {
+#if !UNITY_EDITOR && UNITY_WEBGL
+    ResultScreen();
+#endif
             finishGame.ShowResult();
             finishGame.SetRanking();
             finishGame.ResetScreen();
@@ -67,6 +81,9 @@ namespace Kanegon
 
         private void LoadOut()
         {
+#if !UNITY_EDITOR && UNITY_WEBGL
+    BackToTitle();
+#endif
             manager.SwitchState("LoadOut");
         }
 

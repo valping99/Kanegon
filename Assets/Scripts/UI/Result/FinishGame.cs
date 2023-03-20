@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Runtime.InteropServices;
 
 namespace Kanegon
 {
@@ -19,6 +20,14 @@ namespace Kanegon
         [SerializeField] private GameObject mysteryBoxScreen;
         [SerializeField] private GameObject showResultScreen;
         [SerializeField] private Button entryButton;
+        #endregion
+
+        #region Import JS function
+        [DllImport("__Internal")]
+        private static extern void NextButton();
+
+        [DllImport("__Internal")]
+        private static extern void CouponDisplayScreen();
         #endregion
 
         #region Unity_Method
@@ -44,6 +53,10 @@ namespace Kanegon
 
         public void EnableMysteryBox()
         {
+#if !UNITY_EDITOR && UNITY_WEBGL
+            NextButton();
+            CouponDisplayScreen();
+#endif
             showResultScreen.gameObject.SetActive(false);
             mysteryBoxScreen.gameObject.SetActive(true);
         }

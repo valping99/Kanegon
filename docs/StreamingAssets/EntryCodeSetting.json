@@ -6,10 +6,10 @@
 	"msg":"テキストボックスに表示する\nテキストです"
 	},
 	"2022-02-05-13:00": {
-	"type":"entory_code",
+	"type":"link",
 	"entry_code": "asdfgh",
 	"link": "https://imagination.m-78.jp/contents/xxxxxxxx?coupon=[@code]",
-	"msg":"テキストボックスに表示する\nテキストです"
+	"msg":"Test Message\n Link"
 	},
 	"2022-02-08-08:20": {
 	"type":"link",

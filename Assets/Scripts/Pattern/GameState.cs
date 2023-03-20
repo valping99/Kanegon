@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Runtime.InteropServices;
 
 namespace Kanegon
 {
@@ -35,6 +36,13 @@ namespace Kanegon
         [HideInInspector] public bool pauseGame;
         [HideInInspector] public bool gameOver;
         [HideInInspector] public bool couponCode;
+        #endregion
+
+
+        #region Import JS function
+
+        [DllImport("__Internal")]
+        private static extern void DisplayGameOver();
         #endregion
 
         public override string GetName()
@@ -104,6 +112,9 @@ namespace Kanegon
 
         public void GameOver()
         {
+#if !UNITY_EDITOR && UNITY_WEBGL
+            DisplayGameOver();
+#endif
             skillCharacter.skillButton.interactable = false;
             kanegonMotion._Running = false;
             gameOver = true;

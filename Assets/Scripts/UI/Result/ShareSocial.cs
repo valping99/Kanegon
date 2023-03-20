@@ -28,6 +28,9 @@ namespace Kanegon
         [DllImport("__Internal")]
         private static extern void LinkFromUnity(string rawMessage);
 
+        [DllImport("__Internal")]
+        private static extern void CouponButton();
+
 
         public void OnShareTwitter()
         {
@@ -71,6 +74,7 @@ namespace Kanegon
         public void OnShareLink()
         {
 #if !UNITY_EDITOR && UNITY_WEBGL
+            CouponButton();
             LinkFromUnity(linkEntryCode);
             Debug.Log($"Link: {linkEntryCode}");
             return;
