@@ -1,24 +1,16 @@
 {	
-	"2024-02-09-12:00": {
+	"2023-03-25-12:00": {
 	"type":"entory_code",
-	"entry_code": "123123123",
+	"entry_code":"123123123",
 	"link": "https://imagination.m-78.jp/coupon/[@code]/",
-	"msg":"テキストボックスに表示する\nテキストです"
+	"msg":"テストデータです\n自由にメッセージを記入可能"
 	},
-	"2022-02-05-13:00": {
+	"2023-03-17-08:20": {
 	"type":"link",
-	"entry_code": "asdfgh",
-	"link": "https://imagination.m-78.jp/contents/xxxxxxxx?coupon=[@code]",
-	"msg":"Test \nMessage\n Link"
+	"link":"http://google.com",
+	"msg":"テストデータです\n自由にメッセージを記入可能"
 	},
-	"2022-02-08-08:20": {
-	"type":"link",
-	"link": "http://hfiuelsah",
-	"msg":"テキストボックスに表示する\nテキストです"
-	},
-	"2022-02-08-08:20": {
-	"type":"none",
-	"link": "http://hfiuelsah",
-	"msg":"テキストボックスに表示する\nテキストです"
+	"2023-03-08-08:20": {
+	"type":"none"
 	}
-}	
+}

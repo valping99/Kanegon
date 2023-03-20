@@ -96,6 +96,11 @@ namespace Kanegon
 
                     if (linkData == null && item.Value.type == "entory_code" || linkData == null && item.Value.type == "link")
                     {
+                        if (item.Value.entry_code == null)
+                        {
+                            item.Value.entry_code = "Null";
+                            Debug.Log("Empty");
+                        }
                         linkData = item.Value;
                         Debug.Log(item.ToString());
                         isNullEntryCode = false;
