@@ -7,6 +7,7 @@ namespace Kanegon
     public class CharacterCollider : MonoBehaviour
     {
         #region Variables
+        [Header("Script")]
         [SerializeField] private Skill skillCharacter;
         [SerializeField] private ItemManager itemManager;
         [SerializeField] private BlownUp blownUp;
@@ -14,12 +15,21 @@ namespace Kanegon
         [SerializeField] private GameState gameState;
         [SerializeField] private SpawnTrack spawnTrack;
         [SerializeField] private TrackManager trackManager;
+
+        [Space]
+        [Header("Components")]
         [SerializeField] private ParticleSystem itemEffect;
         [SerializeField] private ParticleSystem coinEffect;
         [SerializeField] private GameObject coinEffectObject;
         [SerializeField] private GameObject itemEffectObject;
+        [SerializeField] private GameObject coinPopupEffect;
         [SerializeField] private Transform transformParent;
         [SerializeField] private Transform Obstacles;
+        [SerializeField] private Transform coinEffectParent;
+        [SerializeField] private Animator animatorCoinEffect;
+
+        [Space]
+        [Header("Variables")]
         [SerializeField] private int healthPoint;
         [SerializeField] private bool isBlownLeft;
         #endregion
@@ -50,7 +60,8 @@ namespace Kanegon
                     if (skillCharacter.magnetCoin[i] == null)
                         skillCharacter.magnetCoin.RemoveAt(i);
                 }
-                CoinEffect(other.transform);
+                StartCoroutine(CoinEffect());
+                // CoinEffect(other.transform);
                 getScore.UpdateScore();
             }
             //! Collect Bonus Coin
@@ -67,7 +78,7 @@ namespace Kanegon
                     if (skillCharacter.magnetCoin[i] == null)
                         skillCharacter.magnetCoin.RemoveAt(i);
                 }
-                CoinEffect(other.transform);
+                StartCoroutine(CoinEffect());
                 getScore.UpdateScore();
             }
 
@@ -134,12 +145,21 @@ namespace Kanegon
             skillCharacter.activeSkill = false;
         }
 
-        private void CoinEffect(Transform trans)
+        //! Backup coin effect
+        // private void CoinEffect(Transform trans)
+        // {
+        //     GameObject coinObj = Instantiate(coinEffectObject, trans.position, trans.transform.rotation, Obstacles);
+        //     coinEffect = coinEffectObject.GetComponent<ParticleSystem>();
+        //     coinEffect.Play();
+        //     Destroy(coinObj, coinEffect.main.duration);
+        // }
+        private IEnumerator CoinEffect()
         {
-            GameObject coinObj = Instantiate(coinEffectObject, trans.position, trans.transform.rotation, Obstacles);
-            coinEffect = coinEffectObject.GetComponent<ParticleSystem>();
-            coinEffect.Play();
-            Destroy(coinObj, coinEffect.main.duration);
+            GameObject coinObj = Instantiate(coinPopupEffect, coinEffectParent.position, Quaternion.identity, coinEffectParent);
+            animatorCoinEffect = coinObj.GetComponent<Animator>();
+            animatorCoinEffect.SetBool("EnableEffect",true);
+            yield return new WaitForSeconds(0.25f);
+            Destroy(coinObj);
         }
 
         public void ItemEffect()
