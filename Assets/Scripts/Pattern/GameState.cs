@@ -154,6 +154,7 @@ namespace Kanegon
             //! Track Manager Script
             trackManager.movement = true;
             trackManager.Initialized();
+            gameMovement.xPositionIndex = 1;
 
             //! Skill Script
             skillBar.sliderLeft.value = 0;
