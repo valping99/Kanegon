@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4330240536177373404}
   - component: {fileID: -7279224424829516921}
   - component: {fileID: 2359992290319475090}
+  - component: {fileID: 6495808364875094835}
   m_Layer: 8
   m_Name: Coin_Effect
   m_TagString: Coin
@@ -67,6 +68,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!225 &6495808364875094835
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3986752744855251558}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &7256333707724699941
 PrefabInstance:
   m_ObjectHideFlags: 0
