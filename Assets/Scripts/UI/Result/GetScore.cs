@@ -80,6 +80,8 @@ namespace Kanegon
             {
                 numberSlot[i].text = defaultVal.ToString();
             }
+            point = 0;
+            coin = 0;
         }
     }
 }
