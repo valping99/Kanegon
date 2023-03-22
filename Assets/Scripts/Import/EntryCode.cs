@@ -88,7 +88,6 @@ namespace Kanegon
             {
                 DateTime currentItemDate = DateTime.Parse(item.Key);
                 if (currentItemDate == null) return;
-
                 if (DateTime.Compare(DateTime.Now, currentItemDate) > 0)
                 {
                     Debug.Log($"Current time: {DateTime.Now}");
