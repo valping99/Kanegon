@@ -47,7 +47,7 @@ namespace Kanegon
         #region Class
         public void ShowResult()
         {
-            numberScore.text = $"¥{getScore.point.ToString("n0")}";
+            numberScore.text = $"{getScore.point.ToString("n0")}pt";
             numberOfCoin.text = getScore.coin.ToString();
         }
 
