@@ -37,6 +37,7 @@ namespace Kanegon
                 if (isFullSkillBar)
                 {
                     AudioManager.ActiveSoundEffect(CueSE.SE_Skill_Bar);
+                    skillCharacter.skillImage.raycastTarget = true;
                     isFullSkillBar = false;
                 }
                 skillButton.GetComponent<Button>().enabled = true;

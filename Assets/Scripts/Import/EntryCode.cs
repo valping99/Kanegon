@@ -129,8 +129,8 @@ namespace Kanegon
             {
                 string msgLink = linkData.msg.ToString();
                 string convertMsgLink = msgLink.Replace("￥n","\n");
-                _EntryCodeMessage.text = $"￥{pointToGetBox}以上を達成しました！\n{convertMsgLink}\n{linkData.entry_code.ToString()}";
-                _LinkMessage.text = $"￥{pointToGetBox}{convertMsgLink}";
+                _EntryCodeMessage.text = $"{pointToGetBox}pt以上を達成しました！\n{convertMsgLink}\n{linkData.entry_code.ToString()}";
+                _LinkMessage.text = $"{pointToGetBox}pt以上を達成しました！\n{convertMsgLink}";
                 shareSocial.linkEntryCode = linkData.link.Replace("[@code]", linkData.entry_code.ToString());
                 this.pointToGetBox = coupon.pointToGetBox;
 

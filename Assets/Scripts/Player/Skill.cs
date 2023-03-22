@@ -12,6 +12,7 @@ namespace Kanegon
         [SerializeField] private GameState gameState;
 
         [Header("Component")]
+        [SerializeField] public Image skillImage;
         [SerializeField] private GameObject playerCollider;
         [SerializeField] public GameObject skillEffect;
         [SerializeField] public Button skillButton;
@@ -87,6 +88,7 @@ namespace Kanegon
         public void ActiveSkillByItem()
         {
             skillButton.GetComponent<Button>().enabled = false;
+            skillImage.raycastTarget = false;
             _NotificationAnim.SetBool("Effect", true);
             skillParticle.gameObject.SetActive(false);
             // StartCoroutine(GetScore.BonusCoin());

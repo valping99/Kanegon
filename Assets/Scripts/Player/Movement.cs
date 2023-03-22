@@ -52,12 +52,12 @@ namespace Kanegon
             if (xPositionIndex == 0)
             {
                 player.transform.localPosition = Vector3.Lerp(player.transform.localPosition, new Vector3(-1.5f, 0, 0), leftRightSpeed * Time.deltaTime);
-                movementLocation.localPosition = new Vector3(-220,0,0);
+                movementLocation.localPosition = new Vector3(-112,0,0);
             }
             else if (xPositionIndex == xPos.Length - 1)
             {
                 player.transform.localPosition = Vector3.Lerp(player.transform.localPosition, new Vector3(1.5f, 0, 0), leftRightSpeed * Time.deltaTime);
-                movementLocation.localPosition = new Vector3(220,0,0);
+                movementLocation.localPosition = new Vector3(112,0,0);
             }
             else
             {
