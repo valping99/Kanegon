@@ -85,7 +85,6 @@ namespace Kanegon
         }
         private void ImportLinkData(Dictionary<string, LinkData> data)
         {
-
             foreach (var item in data)
             {
                 DateTime currentItemDate = DateTime.Parse(item.Key).ToUniversalTime();
