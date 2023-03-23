@@ -1,9 +1,30 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <!-- Google Tag Manager -->
+  <script>
+          (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(
+        window,
+        document,
+        "script",
+        "dataLayer",
+        "imagination.m-78.jp" === document.domain
+          ? "GTM-NB588K5"
+          : "GTM-WZWHP46"
+      );
+  </script>
+  <!-- End Google Tag Manager -->
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>{{{ PRODUCT_NAME }}}</title>
 	<style>
 		html,
@@ -67,10 +88,21 @@
 			} catch (e) {
 				scaleToFit = true;
 			}
+      var img = document.createElement("img");
+      img.src = "Logo.png";
+      img.style.width = "100%";
+      img.style.paddingTop = "100px";
+      var src = document.getElementById("gameContainer");
+      src.appendChild(img);
 			function progressHandler(progress) {
-				var percent = progress * 100 + '%';
-				canvas.style.background = 'linear-gradient(to right, white, white ' + percent + ', transparent ' + percent + ', transparent) no-repeat center';
-				canvas.style.backgroundSize = '100% 1rem';
+          var percent = progress * 100 + "%";
+          canvas.style.background =
+            "linear-gradient(to right, #BA0000, #BA0000 " +
+            percent +
+            ", #444444 " +
+            percent +
+            ", #444444) no-repeat center";
+          canvas.style.backgroundSize = "80% 1rem";
 			}
 			function onResize() {
 				var container = canvas.parentElement;
@@ -97,7 +129,10 @@
 				container.style.top = Math.floor((window.innerHeight - h) / 2) + "px";
 				container.style.left = Math.floor((window.innerWidth - w) / 2) + "px";
 			}
-			createUnityInstance(canvas, config, progressHandler).then(function (instance) {
+
+        createUnityInstance(canvas, config, progressHandler).then(function (
+          instance
+        ) {
 				canvas = instance.Module.canvas;
 				onResize();
 			});
@@ -106,13 +141,83 @@
 
 			if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
 				// Mobile device style: fill the whole browser client area with the game canvas:
-				const meta = document.createElement('meta');
-				meta.name = 'viewport';
-				meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-				document.getElementsByTagName('head')[0].appendChild(meta);
+          const meta = document.createElement("meta");
+          meta.name = "viewport";
+          meta.content =
+            "width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes";
+          document.getElementsByTagName("head")[0].appendChild(meta);
+        }
+
+        //? Data Layer
+        function DisplayScreenFunc() {
+          dataLayer.push({
+            event: "kanegon_start_page",
+          });
+          console.log("DataLayer: kanegon_start_page");
+        }
+
+        function StartButtonFunc() {
+          dataLayer.push({
+            event: "kanegon_run_start",
+          });
+          console.log("DataLayer: kanegon_run_start");
+        }
+
+        function DisplayGameOverFunc(play_time) {
+          dataLayer.push({
+            event: "kanegon_game_over",
+            play_time,
+          });
+          console.log("DataLayer: kanegon_game_over");
+        }
+
+        function ResultScreenFunc() {
+          dataLayer.push({
+            event: "kanegon_result",
+          });
+          console.log("DataLayer: kanegon_result");
+        }
+
+        function NextButtonFunc() {
+          dataLayer.push({
+            event: "kanegon_result_next_click",
+          });
+          console.log("DataLayer: kanegon_result_next_click");
+        }
+
+        function CouponDisplayScreenFunc() {
+          dataLayer.push({
+            event: "coupon_get",
+          });
+          console.log("DataLayer: coupon_get");
+        }
+
+        function CouponButtonFunc() {
+          dataLayer.push({
+            event: "kanegon_coupon_input",
+          });
+          console.log("DataLayer: kanegon_coupon_input");
+        }
+
+        function BackToTitleFunc() {
+          dataLayer.push({
+            event: "to_kanegon_run_title",
+          });
+          console.log("DataLayer: to_kanegon_run_title");
 			}
+      //? End Data Layer
 		</script>
 	</div>
 </body>
-
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe
+      src="https://www.googletagmanager.com/ns.html?id=GTM-NB588K5"
+      height="0"
+      width="0"
+      style="display: none; visibility: hidden"
+    >
+    </iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
 </html>

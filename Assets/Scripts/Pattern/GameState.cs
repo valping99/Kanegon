@@ -42,7 +42,7 @@ namespace Kanegon
         #region Import JS function
 
         [DllImport("__Internal")]
-        private static extern void DisplayGameOver();
+        private static extern void DisplayGameOver(float dateTime);
         #endregion
 
         public override string GetName()
@@ -113,7 +113,9 @@ namespace Kanegon
         public void GameOver()
         {
 #if !UNITY_EDITOR && UNITY_WEBGL
-            DisplayGameOver();
+            var time = spawnManager.currentTime;
+            Debug.Log($"GameState::GameOver::{time}");
+            DisplayGameOver(time);
 #endif
             skillCharacter.skillButton.interactable = false;
             kanegonMotion._Running = false;

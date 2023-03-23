@@ -7,8 +7,9 @@ mergeInto(LibraryManager.library, {
         window.StartButtonFunc();
     },
 
-    DisplayGameOver: function () {
-        window.DisplayGameOverFunc();
+    DisplayGameOver: function (dateTime) {
+        console.log(dateTime)
+        window.DisplayGameOverFunc(dateTime);
     },
 
     ResultScreen: function () {

@@ -85,20 +85,22 @@ namespace Kanegon
         }
         private void ImportLinkData(Dictionary<string, LinkData> data)
         {
+
             foreach (var item in data)
             {
-                DateTime currentItemDate = DateTime.Parse(item.Key).ToUniversalTime();
+                DateTime currentItemDate = DateTime.ParseExact(item.Key, "yyyy-MM-dd-HH:mm", CultureInfo.InvariantCulture);
                 if (currentItemDate == null) return;
                 if (DateTime.Compare(DateTime.Now, currentItemDate) > 0)
                 {
                     Debug.Log($"Current time: {DateTime.Now}");
-                    Debug.Log($"Json time: {currentItemDate}");
+                    Debug.Log($"Json time: {currentItemDate.ToString("yyyy-MM-dd-HH:mm")}");
 
                     if (linkData == null && item.Value.type == "entory_code" || linkData == null && item.Value.type == "link")
                     {
                         if (item.Value.entry_code == null)
                         {
                             item.Value.entry_code = "Null";
+                            Debug.Log("Empty");
                         }
                         linkData = item.Value;
                         Debug.Log(item.ToString());
@@ -107,16 +109,23 @@ namespace Kanegon
                     }
                     else
                     {
-                        Debug.Log("Type: None");
+                        Debug.Log("Null");
                         isNullEntryCode = true;
                         break;
                     }
+
+                    // if (linkData == null && item.Value.type == "link")
+                    // {
+                    //     linkData = item.Value;
+                    //     Debug.Log(item.ToString());
+                    // }
                 }
             }
         }
 
         public void ChangeDate()
         {
+            // _EntryCodeMessage.text = $"￥{pointToGetBox}以上を達成しました！\nクーポンコードをプレゼント！ {linkData.entry_code.ToString()}";
 #if !UNITY_EDITOR && UNITY_WEBGL
             if (!isNullEntryCode)
             {
