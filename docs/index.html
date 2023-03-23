@@ -12,7 +12,15 @@
         j.async = true;
         j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
         f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-NB588K5");
+      })(
+        window,
+        document,
+        "script",
+        "dataLayer",
+        "imagination.m-78.jp" === document.domain
+          ? "GTM-NB588K5"
+          : "GTM-WZWHP46"
+      );
     </script>
     <!-- End Google Tag Manager -->
     <meta charset="utf-8" />
@@ -75,6 +83,11 @@
         } catch (e) {
           scaleToFit = true;
         }
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+          // Mobile device style: fill the whole browser client area with the game canvas:
+         style.style.width = window.innerWidth + "px";
+         style.style.height = window.innerHeight + "px";
+        }
         var img = document.createElement("img");
         img.src = "Logo.png";
         img.style.width = "100%";
@@ -135,63 +148,62 @@
           document.getElementsByTagName("head")[0].appendChild(meta);
         }
 
-		
         //? Data Layer
         function DisplayScreenFunc() {
           dataLayer.push({
             event: "kanegon_start_page",
           });
-		  console.log("DataLayer: kanegon_start_page");
+          console.log("DataLayer: kanegon_start_page");
         }
 
         function StartButtonFunc() {
           dataLayer.push({
             event: "kanegon_run_start",
           });
-		  console.log("DataLayer: kanegon_run_start");
+          console.log("DataLayer: kanegon_run_start");
         }
 
         function DisplayGameOverFunc() {
           dataLayer.push({
             event: "kanegon_game_over",
-            play_time: '秒数',
+            play_time: "秒数",
           });
-		  console.log("DataLayer: kanegon_game_over");
+          console.log("DataLayer: kanegon_game_over");
         }
 
         function ResultScreenFunc() {
           dataLayer.push({
             event: "kanegon_result",
           });
-		  console.log("DataLayer: kanegon_result");
+          console.log("DataLayer: kanegon_result");
         }
 
         function NextButtonFunc() {
           dataLayer.push({
             event: "kanegon_result_next_click",
           });
-		  console.log("DataLayer: kanegon_result_next_click");
+          console.log("DataLayer: kanegon_result_next_click");
         }
 
         function CouponDisplayScreenFunc() {
           dataLayer.push({
             event: "coupon_get",
           });
-		  console.log("DataLayer: coupon_get");
+          console.log("DataLayer: coupon_get");
         }
 
         function CouponButtonFunc() {
           dataLayer.push({
             event: "kanegon_coupon_input",
           });
-		  console.log("DataLayer: kanegon_coupon_input");
+          console.log("DataLayer: kanegon_coupon_input");
         }
 
         function BackToTitleFunc() {
           dataLayer.push({
             event: "to_kanegon_run_title",
           });
-		  console.log("DataLayer: to_kanegon_run_title");
+          console.log("DataLayer: to_kanegon_run_title");
         }
 
         //? End Data Layer
