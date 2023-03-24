@@ -4433,7 +4433,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ad9ed7c9dcf6b334090ec55a063a4e35, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7993ca4c0e3aea44d8a52692b46a461f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -22890,6 +22890,9 @@ MonoBehaviour:
   tutorialButton: {fileID: 961016071}
   nextTutorial: {fileID: 254656080}
   imageTutorial: {fileID: 2064692931}
+  imageButton: {fileID: 254656081}
+  nextButton: {fileID: 21300000, guid: 7993ca4c0e3aea44d8a52692b46a461f, type: 3}
+  backButton: {fileID: 21300000, guid: ad9ed7c9dcf6b334090ec55a063a4e35, type: 3}
   currentSheet: 0
 --- !u!114 &1563777835
 MonoBehaviour:

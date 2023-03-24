@@ -15,6 +15,9 @@ namespace Kanegon
         [SerializeField] private Button tutorialButton;
         [SerializeField] private Button nextTutorial;
         [SerializeField] private Image imageTutorial;
+        [SerializeField] private Image imageButton;
+        [SerializeField] private Sprite nextButton;
+        [SerializeField] private Sprite backButton;
         [SerializeField] private int currentSheet;
         #endregion
         void Start()
@@ -33,6 +36,7 @@ namespace Kanegon
             tutorialGameObject.gameObject.SetActive(true);
             imageTutorial.sprite = listTutorial[0];
             currentSheet = 0;
+            CheckTutorialSheet();
         }
 
         private void NextTutorial()
@@ -49,6 +53,19 @@ namespace Kanegon
                     oj.gameObject.SetActive(true);
                 }
                 tutorialGameObject.gameObject.SetActive(false);
+            }
+            CheckTutorialSheet();
+        }
+
+        private void CheckTutorialSheet()
+        {
+            if (currentSheet < listTutorial.Count - 1)
+            {
+                imageButton.sprite = nextButton;
+            }
+            else
+            {
+                imageButton.sprite = backButton;
             }
         }
     }
