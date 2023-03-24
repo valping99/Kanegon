@@ -22885,6 +22885,7 @@ MonoBehaviour:
   - {fileID: 1515215077}
   listTutorial:
   - {fileID: 21300000, guid: 8ff28cfdd4b4d1547932adf7aac92a20, type: 3}
+  - {fileID: 21300000, guid: 53ebc8e15e2fbee469bb0ec2de12f889, type: 3}
   tutorialGameObject: {fileID: 1603932709}
   tutorialButton: {fileID: 961016071}
   nextTutorial: {fileID: 254656080}
