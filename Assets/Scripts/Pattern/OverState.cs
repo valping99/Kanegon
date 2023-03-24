@@ -74,8 +74,8 @@ namespace Kanegon
             finishGame.ShowResult();
             finishGame.SetRanking();
             finishGame.ResetScreen();
-            entryCode.ChangeDate();
             couponCode.CheckMysteryBox(gameState.point);
+            entryCode.GetDataInJson();
             AudioManager.ActiveSoundEffect(CueSE.Se_Result);
         }
 

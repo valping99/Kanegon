@@ -24,9 +24,12 @@ namespace Kanegon
         [JsonProperty("msg")]
         public string msg { get; set; }
 
+        [JsonProperty("score_unachieved_link")]
+        public string score_unachieved_link { get; set; }
+
         public override string ToString()
         {
-            return $"{type} | {entry_code} | {link} | {msg}";
+            return $"{type} | {entry_code} | {link} | {msg} | {score_unachieved_link}";
         }
     }
 
@@ -123,7 +126,7 @@ namespace Kanegon
             }
         }
 
-        public void ChangeDate()
+        public void GetDataInJson()
         {
             // _EntryCodeMessage.text = $"￥{pointToGetBox}以上を達成しました！\nクーポンコードをプレゼント！ {linkData.entry_code.ToString()}";
 #if !UNITY_EDITOR && UNITY_WEBGL
@@ -131,9 +134,16 @@ namespace Kanegon
             {
                 string msgLink = linkData.msg.ToString();
                 string convertMsgLink = msgLink.Replace("￥n","\n");
+                if (coupon.isGetCoupon == false)
+                {
+                    shareSocial.linkEntryCode = linkData.score_unachieved_link.ToString();
+                }
+                else
+                {
+                    shareSocial.linkEntryCode = linkData.link.Replace("[@code]", linkData.entry_code.ToString());
+                }
                 _EntryCodeMessage.text = $"{pointToGetBox}pt以上を達成しました！\n{convertMsgLink}\n{linkData.entry_code.ToString()}";
                 _LinkMessage.text = $"{pointToGetBox}pt以上を達成しました！\n{convertMsgLink}";
-                shareSocial.linkEntryCode = linkData.link.Replace("[@code]", linkData.entry_code.ToString());
                 this.pointToGetBox = coupon.pointToGetBox;
 
                 if (linkData.type == "entory_code")
@@ -146,6 +156,7 @@ namespace Kanegon
                 }
             }
 #endif
+            coupon.CheckEntryCode();
         }
         #endregion
     }

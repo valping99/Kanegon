@@ -25,6 +25,7 @@ namespace Kanegon
 
         [Header("Variables")]
         [SerializeField] public float pointToGetBox;
+        [SerializeField] public bool isGetCoupon;
         #endregion
 
 
@@ -37,9 +38,23 @@ namespace Kanegon
 
             if (point >= pointToGetBox)
             {
+                isGetCoupon = true;
                 confettiParticle.gameObject.SetActive(true);
                 confettiParticle.Play();
-                // openBox.gameObject.SetActive(true);
+                btnBackToTitle.gameObject.SetActive(true);
+            }
+            else
+            {
+                isGetCoupon = false;
+                closeBox.gameObject.SetActive(true);
+            }
+            SetTextMessage();
+        }
+
+        public void CheckEntryCode()
+        {
+            if (isGetCoupon)
+            {
                 if (entryCode.isNullEntryCode == false)
                 {
                     btnBackToTitle.gameObject.SetActive(false);
@@ -59,7 +74,6 @@ namespace Kanegon
             }
             else
             {
-                closeBox.gameObject.SetActive(true);
                 if (entryCode.isNullEntryCode == false)
                 {
                     btnBackToTitle.gameObject.SetActive(false);
@@ -69,7 +83,6 @@ namespace Kanegon
                     btnBackToTitle.gameObject.SetActive(true);
                 }
             }
-            SetTextMessage();
         }
 
         private void SetTextMessage()
