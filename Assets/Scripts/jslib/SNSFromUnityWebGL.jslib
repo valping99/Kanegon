@@ -1,6 +1,6 @@
 ﻿mergeInto(LibraryManager.library, {
   TweetFromUnity: function (rawMessage) {
-    var message = Pointer_stringify(rawMessage);
+    var message = UTF8ToString(rawMessage);
     var mobilePattern = /android|iphone|ipad|ipod/i;
 
     var ua = window.navigator.userAgent.toLowerCase();
@@ -25,7 +25,7 @@
     }
   },
   LineFromUnity: function (rawMessage) {
-    var message = Pointer_stringify(rawMessage);
+    var message = UTF8ToString(rawMessage);
     var mobilePattern = /android|iphone|ipad|ipod/i;
 
     var ua = window.navigator.userAgent.toLowerCase();
@@ -76,7 +76,7 @@
     }
   },
   LinkFromUnity: function (rawMessage) {
-    var message = Pointer_stringify(rawMessage);
+    var message = UTF8ToString(rawMessage);
     var mobilePattern = /android|iphone|ipad|ipod/i;
 
     var ua = window.navigator.userAgent.toLowerCase();
@@ -86,7 +86,13 @@
       (ua.indexOf("macintosh") !== -1 && "ontouchend" in document)
     ) {
       // Mobile
-      location.href = message;
+      // location.href = message;
+      var a = document.createElement("a");
+      a.href = message;
+      a.target = "_top";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
     } else {
       // PC
       window.open(message, "_blank");
