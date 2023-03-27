@@ -1,6 +1,7 @@
 ﻿mergeInto(LibraryManager.library, {
   TweetFromUnity: function (rawMessage) {
-    var message = UTF8ToString(rawMessage);
+    var message = Pointer_stringify(rawMessage);
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     var mobilePattern = /android|iphone|ipad|ipod/i;
 
     var ua = window.navigator.userAgent.toLowerCase();
@@ -9,21 +10,27 @@
       ua.search(mobilePattern) !== -1 ||
       (ua.indexOf("macintosh") !== -1 && "ontouchend" in document)
     ) {
-      // Mobile
-      // location.href = "twitter://post?message=" + message;
       var a = document.createElement("a");
+
       a.href = "twitter://post?message=" + message;
       a.target = "_top";
       document.body.appendChild(a);
-      a.click();
-      a.remove();
-      // delete a tag
 
+      setTimeout(() => {
+        a.href = "https://twitter.com/intent/tweet?text=" + message;
+        a.click();
+        a.remove();
+      }, 800);
+
+      a.click();
+      setTimeout(() => {
+        if (a) a.remove();
+      }, 5000);
     } else {
-      // PC
       window.open("https://twitter.com/intent/tweet?text=" + message, "_blank");
     }
   },
+
   LineFromUnity: function (rawMessage) {
     var message = UTF8ToString(rawMessage);
     var mobilePattern = /android|iphone|ipad|ipod/i;
@@ -35,7 +42,7 @@
       (ua.indexOf("macintosh") !== -1 && "ontouchend" in document)
     ) {
       // location.href = "https://line.me/R/share?text=" + message;
-      
+
       // Mobile
       var a = document.createElement("a");
       a.href = "https://line.me/R/share?text=" + message;
@@ -98,6 +105,4 @@
       window.open(message, "_blank");
     }
   },
-
-  
 });
