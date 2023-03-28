@@ -10,25 +10,16 @@
       ua.search(mobilePattern) !== -1 ||
       (ua.indexOf("macintosh") !== -1 && "ontouchend" in document)
     ) {
-      var a = document.createElement("a");
-
-      a.href = "twitter://post?message=" + message;
-      a.target = "_top";
-      document.body.appendChild(a);
-
-      setTimeout(() => {
-        a.href = "https://twitter.com/intent/tweet?text=" + message;
-        a.click();
-        a.remove();
-      }, 800);
-
-      a.click();
-      setTimeout(() => {
-        if (a) a.remove();
-      }, 5000);
+      setupSocialInteraction(
+        "https://twitter.com/intent/tweet?text=" + message
+      );
     } else {
       window.open("https://twitter.com/intent/tweet?text=" + message, "_blank");
     }
+  },
+
+  ClosePopup: function (data) {
+    window.dispatchEvent(new Event(Pointer_stringify(data)));
   },
 
   LineFromUnity: function (rawMessage) {
@@ -44,13 +35,10 @@
       // location.href = "https://line.me/R/share?text=" + message;
 
       // Mobile
-      var a = document.createElement("a");
-      a.href = "https://line.me/R/share?text=" + message;
-      a.target = "_top";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      // delete a tag
+      setupSocialInteraction(
+        "https://line.me/R/share?text=" + message
+      );
+      
     } else {
       // PC
       window.open("https://line.me/R/msg/text/?" + message, "_blank");
@@ -67,13 +55,10 @@
       (ua.indexOf("macintosh") !== -1 && "ontouchend" in document)
     ) {
       // Mobile
-      var a = document.createElement("a");
-      a.href = "https://www.facebook.com/sharer/sharer.php?u=" + message;
-      a.target = "_top";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      // delete a tag
+      
+      setupSocialInteraction(
+        "https://www.facebook.com/sharer/sharer.php?u=" + message
+      );
     } else {
       // PC
       window.open(
@@ -96,7 +81,7 @@
       // location.href = message;
       var a = document.createElement("a");
       a.href = message;
-      a.target = "_top";
+      a.target = "_blank";
       document.body.appendChild(a);
       a.click();
       a.remove();

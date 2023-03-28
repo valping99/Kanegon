@@ -13,6 +13,7 @@ namespace Kanegon
         [SerializeField] private string _MessageFacebook;
         [SerializeField] public string linkEntryCode;
         [SerializeField] private GameState gameState;
+        [SerializeField] private Popup popupObject;
         private const string TWITTER_ADDRESS = "http://twitter.com/intent/tweet";
         private const string TWEET_LANGUAGE = "en";
 
@@ -35,6 +36,7 @@ namespace Kanegon
         public void OnShareTwitter()
         {
 #if !UNITY_EDITOR && UNITY_WEBGL
+            popupObject.OpenPopUp();
             string messageTwitter = _MessageTwitter.Replace("#","%23");
             string point = gameState.point.ToString();
             TweetFromUnity(messageTwitter.Replace("<score>", point));
@@ -46,13 +48,14 @@ namespace Kanegon
 
         public void ShareTwitter()
         {
-            Application.OpenURL($"{TWITTER_ADDRESS}?text={WWW.EscapeURL(_MessageTwitter.Replace("<Score>",gameState.point.ToString()))}");
+            Application.OpenURL($"{TWITTER_ADDRESS}?text={WWW.EscapeURL(_MessageTwitter.Replace("<Score>", gameState.point.ToString()))}");
         }
 
 
         public void OnShareFacebook()
         {
 #if !UNITY_EDITOR && UNITY_WEBGL
+            popupObject.OpenPopUp();
             FacebookFromUnity(_MessageFacebook);
             return;
 #endif
@@ -64,6 +67,7 @@ namespace Kanegon
         {
             string point = gameState.point.ToString();
 #if !UNITY_EDITOR && UNITY_WEBGL
+            popupObject.OpenPopUp();
             // LineFromUnity(_MessageLine);
             LineFromUnity(_MessageLine.Replace("<score>", point));
             return;
@@ -80,5 +84,6 @@ namespace Kanegon
 #endif
             Debug.Log($"Share Link");
         }
+
     }
 }
