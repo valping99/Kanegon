@@ -18,6 +18,9 @@ namespace Kanegon
         private const string TWEET_LANGUAGE = "en";
 
         [DllImport("__Internal")]
+        private static extern bool IsMobile();
+
+        [DllImport("__Internal")]
         private static extern void TweetFromUnity(string rawMessage);
 
         [DllImport("__Internal")]
@@ -36,7 +39,10 @@ namespace Kanegon
         public void OnShareTwitter()
         {
 #if !UNITY_EDITOR && UNITY_WEBGL
-            popupObject.OpenPopUp();
+            if (IsMobile())
+            {
+                popupObject.OpenPopUp();
+            }
             string messageTwitter = _MessageTwitter.Replace("#","%23");
             string point = gameState.point.ToString();
             TweetFromUnity(messageTwitter.Replace("<score>", point));
@@ -55,7 +61,10 @@ namespace Kanegon
         public void OnShareFacebook()
         {
 #if !UNITY_EDITOR && UNITY_WEBGL
-            popupObject.OpenPopUp();
+            if (IsMobile())
+            {
+                popupObject.OpenPopUp();
+            }
             FacebookFromUnity(_MessageFacebook);
             return;
 #endif
@@ -67,7 +76,10 @@ namespace Kanegon
         {
             string point = gameState.point.ToString();
 #if !UNITY_EDITOR && UNITY_WEBGL
-            popupObject.OpenPopUp();
+            if (IsMobile())
+            {
+                popupObject.OpenPopUp();
+            }
             // LineFromUnity(_MessageLine);
             LineFromUnity(_MessageLine.Replace("<score>", point));
             return;
