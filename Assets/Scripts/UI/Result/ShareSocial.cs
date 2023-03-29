@@ -89,6 +89,8 @@ namespace Kanegon
 
         public void OnShareLink()
         {
+            
+            AudioManager.ActiveSoundEffect(CueSE.Se_Click_Button);
 #if !UNITY_EDITOR && UNITY_WEBGL
             CouponButton();
             LinkFromUnity(linkEntryCode);

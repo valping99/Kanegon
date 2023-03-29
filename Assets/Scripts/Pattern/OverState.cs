@@ -81,7 +81,6 @@ namespace Kanegon
 
         private void LoadOut()
         {
-            AudioManager.ActiveSoundEffect(CueSE.Se_Click_Button);
 #if !UNITY_EDITOR && UNITY_WEBGL
             BackToTitle();
 #endif
