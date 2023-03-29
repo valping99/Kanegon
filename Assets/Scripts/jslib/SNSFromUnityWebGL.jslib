@@ -81,7 +81,7 @@
       // location.href = message;
       var a = document.createElement("a");
       a.href = message;
-      a.target = "_blank";
+      a.target = "_top";
       document.body.appendChild(a);
       a.click();
       a.remove();
