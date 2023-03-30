@@ -46,7 +46,6 @@ namespace Kanegon
             else
             {
                 isGetCoupon = false;
-                closeBox.gameObject.SetActive(true);
             }
             SetTextMessage();
         }
@@ -74,13 +73,21 @@ namespace Kanegon
             }
             else
             {
-                if (entryCode.isNullEntryCode == false)
+                if (entryCode.isNoScoreType == false)
                 {
-                    btnBackToTitle.gameObject.SetActive(false);
+                    if (entryCode.isNullEntryCode == false)
+                    {
+                        btnBackToTitle.gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        btnBackToTitle.gameObject.SetActive(true);
+                    }
+                    closeBox.gameObject.SetActive(true);
                 }
                 else
                 {
-                    btnBackToTitle.gameObject.SetActive(true);
+                    openLink.gameObject.SetActive(true);
                 }
             }
         }

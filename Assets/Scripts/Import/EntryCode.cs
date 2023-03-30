@@ -43,6 +43,7 @@ namespace Kanegon
         [SerializeField] public float pointToGetBox;
         [SerializeField] public bool isShareEntryCode;
         [SerializeField] public bool isNullEntryCode;
+        [SerializeField] public bool isNoScoreType;
 
         [Header("Script")]
         [SerializeField] private LinkData linkData;
@@ -53,6 +54,7 @@ namespace Kanegon
         void Start()
         {
             isNullEntryCode = false;
+            isNoScoreType = false;
             StartCoroutine(GetLinkDataJson());
         }
         #region EntryCode
@@ -95,26 +97,60 @@ namespace Kanegon
                 if (currentItemDate == null) return;
                 if (DateTime.Compare(DateTime.Now, currentItemDate) > 0)
                 {
-                    Debug.Log($"Current time: {DateTime.Now}");
-                    Debug.Log($"Json time: {currentItemDate.ToString("yyyy-MM-dd-HH:mm")}");
-
-                    if (linkData == null && item.Value.type == "entory_code" || linkData == null && item.Value.type == "link")
+                    // if (linkData == null && item.Value.type == "entory_code" || linkData == null && item.Value.type == "link")
+                    // {
+                    //     if (item.Value.entry_code == null)
+                    //     {
+                    //         item.Value.entry_code = "Null";
+                    //         Debug.Log("Empty");
+                    //     }
+                    //     linkData = item.Value;
+                    //     Debug.Log(item.ToString());
+                    //     isNullEntryCode = false;
+                    //     break;
+                    // }
+                    // else
+                    // {
+                    //     Debug.Log("Null");
+                    //     isNullEntryCode = true;
+                    //     break;
+                    // }
+                    if (linkData == null)
                     {
-                        if (item.Value.entry_code == null)
+                        Debug.Log($"Current time: {DateTime.Now}");
+                        Debug.Log($"Json time: {currentItemDate.ToString("yyyy-MM-dd-HH:mm")}");
+                        switch (item.Value.type)
                         {
-                            item.Value.entry_code = "Null";
-                            Debug.Log("Empty");
+                            case "entory_code":
+                                linkData = item.Value;
+                                Debug.Log(item.ToString());
+                                isNullEntryCode = false;
+                                break;
+                            case "link":
+                                if (item.Value.entry_code == null)
+                                {
+                                    item.Value.entry_code = "Null";
+                                }
+                                linkData = item.Value;
+                                Debug.Log(item.ToString());
+                                isNullEntryCode = false;
+                                break;
+                            case "noscore_link":
+                                if (item.Value.entry_code == null && item.Value.score_unachieved_link == null)
+                                {
+                                    item.Value.entry_code = "Null";
+                                    item.Value.score_unachieved_link = "Null";
+                                }
+                                linkData = item.Value;
+                                Debug.Log(item.ToString());
+                                isNullEntryCode = false;
+                                isNoScoreType = true;
+                                break;
+                            default:
+                                isNullEntryCode = true;
+                                break;
                         }
-                        linkData = item.Value;
-                        Debug.Log(item.ToString());
-                        isNullEntryCode = false;
-                        break;
-                    }
-                    else
-                    {
-                        Debug.Log("Null");
-                        isNullEntryCode = true;
-                        break;
+
                     }
 
                     // if (linkData == null && item.Value.type == "link")
@@ -134,16 +170,24 @@ namespace Kanegon
             {
                 string msgLink = linkData.msg.ToString();
                 string convertMsgLink = msgLink.Replace("￥n","\n");
-                if (coupon.isGetCoupon == false)
+                if (isNoScoreType)
                 {
-                    shareSocial.linkEntryCode = linkData.score_unachieved_link.ToString();
+                    shareSocial.linkEntryCode = linkData.link.ToString();
+                    _LinkMessage.text = $"{linkData.msg.ToString()}";
                 }
                 else
                 {
-                    shareSocial.linkEntryCode = linkData.link.Replace("[@code]", linkData.entry_code.ToString());
+                    if (coupon.isGetCoupon == false)
+                    {
+                        shareSocial.linkEntryCode = linkData.score_unachieved_link.ToString();
+                    }
+                    else
+                    {
+                        shareSocial.linkEntryCode = linkData.link.Replace("[@code]", linkData.entry_code.ToString());
+                    }
+                    _EntryCodeMessage.text = $"{pointToGetBox}pt以上を達成しました！\n{convertMsgLink}\n{linkData.entry_code.ToString()}";
+                    _LinkMessage.text = $"{pointToGetBox}pt以上を達成しました！\n{convertMsgLink}";
                 }
-                _EntryCodeMessage.text = $"{pointToGetBox}pt以上を達成しました！\n{convertMsgLink}\n{linkData.entry_code.ToString()}";
-                _LinkMessage.text = $"{pointToGetBox}pt以上を達成しました！\n{convertMsgLink}";
                 this.pointToGetBox = coupon.pointToGetBox;
 
                 if (linkData.type == "entory_code")

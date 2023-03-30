@@ -11877,6 +11877,7 @@ MonoBehaviour:
   pointToGetBox: 0
   isShareEntryCode: 0
   isNullEntryCode: 0
+  isNoScoreType: 0
   loadOutState: {fileID: 1563777829}
   shareSocial: {fileID: 1210302742}
   coupon: {fileID: 1210302741}
@@ -18708,7 +18709,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1210302734
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18896,11 +18897,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _MessageLine: "\u30AB\u30CD\u30B4\u30F3\u30E9\u30F3\u3067\u30B9\u30B3\u30A2<score>pt\u7372\u5F97\uFF01TSUBURAYA
-    IMAGINATION\u3067\u30C1\u30E3\u30F3\u30EC\u30F3\u30B8\uFF01\u3000https://imagination.m-78.jp/contents/d2ViL05ld3NfMDA1ND"
+    IMAGINATION\u3067\u30C1\u30E3\u30F3\u30EC\u30F3\u30B8\uFF01\u3000https://imagination.m-78.jp/contents/d2ViL05ld3NfMDA1NDQ"
   _MessageTwitter: "\u30AB\u30CD\u30B4\u30F3\u30E9\u30F3\u3067\u30B9\u30B3\u30A2<score>pt\u7372\u5F97\uFF01TSUBURAYA
     IMAGINATION\u3067\u30C1\u30E3\u30EC\u30F3\u30B8\uFF01#\u30A6\u30EB\u30C8\u30E9\u30B5\u30D6\u30B9\u30AF
-    #\u30C4\u30D6\u30A4\u30DE\u3000https://imagination.m-78.jp/contents/d2ViL05ld3NfMDA1NDA"
-  _MessageFacebook: https://imagination.m-78.jp
+    #\u30C4\u30D6\u30A4\u30DE\u3000https://imagination.m-78.jp/contents/d2ViL05ld3NfMDA1NDQ"
+  _MessageFacebook: https://imagination.m-78.jp/contents/d2ViL05ld3NfMDA1NDQ
   linkEntryCode: 
   gameState: {fileID: 470274367}
   popupObject: {fileID: 661078452}

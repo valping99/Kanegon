@@ -182,21 +182,21 @@
 
         //? Data Layer
         function DisplayScreenFunc() {
-          dataLayer.push({
+          window.parent.dataLayer.push({
             event: "kanegon_start_page",
           });
           console.log("DataLayer: kanegon_start_page");
         }
 
         function StartButtonFunc() {
-          dataLayer.push({
+          window.parent.dataLayer.push({
             event: "kanegon_run_start",
           });
           console.log("DataLayer: kanegon_run_start");
         }
 
         function DisplayGameOverFunc(play_time) {
-          dataLayer.push({
+          window.parent.dataLayer.push({
             event: "kanegon_game_over",
             play_time,
           });
@@ -204,35 +204,35 @@
         }
 
         function ResultScreenFunc() {
-          dataLayer.push({
+          window.parent.dataLayer.push({
             event: "kanegon_result",
           });
           console.log("DataLayer: kanegon_result");
         }
 
         function NextButtonFunc() {
-          dataLayer.push({
+          window.parent.dataLayer.push({
             event: "kanegon_result_next_click",
           });
           console.log("DataLayer: kanegon_result_next_click");
         }
 
         function CouponDisplayScreenFunc() {
-          dataLayer.push({
+          window.parent.dataLayer.push({
             event: "kanegon_coupon_get",
           });
           console.log("DataLayer: kanegon_coupon_get");
         }
 
         function CouponButtonFunc() {
-          dataLayer.push({
+          window.parent.dataLayer.push({
             event: "kanegon_coupon_input",
           });
           console.log("DataLayer: kanegon_coupon_input");
         }
 
         function BackToTitleFunc() {
-          dataLayer.push({
+          window.parent.dataLayer.push({
             event: "to_kanegon_run_title",
           });
           console.log("DataLayer: to_kanegon_run_title");

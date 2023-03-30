@@ -1,18 +1,23 @@
 {
-	"2023-03-23-16:55": {
-		"type": "entory_code",
-		"entry_code": "hayata",
-		"link": "https://imagination.m-78.jp/coupon/[@code]/",
-		"msg": "テストデータです\n自由にメッセージを記入可能",
-		"score_unachieved_link": "https://imagination.m-78.jp/"
-	},
-	"2023-03-22-07:20": {
-		"type": "link",
-		"link": "https://google.com",
-		"msg": "テストデータです\n自由にメッセージを記入可能",
-		"score_unachieved_link": "https://imagination.m-78.jp/"
-	},
-	"2000-01-01-00:00": {
-		"type": "none"
-	}
+    "2023-03-31-16:55": {
+        "type": "entory_code",
+        "entry_code": "hayata",
+        "link": "https://imagination.m-78.jp/coupon/[@code]/",
+        "msg": "テストデータです\n自由にメッセージを記入可能",
+        "score_unachieved_link": "https://imagination.m-78.jp/"
+    },
+    "2023-03-31-07:20": {
+        "type": "link",
+        "link": "https://google.com",
+        "msg": "テストデータです\n自由にメッセージを記入可能",
+        "score_unachieved_link": "https://imagination.m-78.jp/"
+    },
+    "2023-03-31-08:00": {
+        "type": "noscore_link",
+        "link": "https://google.com",
+        "msg": "テストデータです\n自由にメッセージを記入可能"
+    },
+    "2000-01-01-00:00": {
+        "type": "none"
+    }
 }
