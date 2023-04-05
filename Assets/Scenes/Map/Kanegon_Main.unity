@@ -4989,7 +4989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &280897378
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14702,7 +14702,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh94068
+  m_Name: pb_Mesh71314
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15652,7 +15652,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 6e64556f2ec65e04aa21e9dfdfd2c5a8, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 4
     m_MaxSize: 300
     m_Alignment: 4
@@ -15661,8 +15661,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uFFE53000\u4EE5\u4E0A\u3092\u9054\u6210\u3057\u307E\u3057\u305F\uFF01\n\u30AF\u30FC\u30DD\u30F3\u30B3\u30FC\u30C9\u3092\u30D7\u30EC\u30BC\u30F3\u30C8\uFF01
-    asdhjkawhfkjc"
+  m_Text: "\uFFE53000\u4EE5\u4E0A\u3092\u9054\u6210\u3057\u307E\u3057\u305F\uFF01\n\u30C6\u30B9\u30C8\u30C7\u30FC\u30BF\u3067\u3059\n\u81EA\u7531\u306B\u30E1\u30C3\u30BB\u30FC\u30B8\u3092\u8A18\u5165\u53EF\u80FD\nhayata"
 --- !u!222 &912283397
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18342,7 +18341,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 6e64556f2ec65e04aa21e9dfdfd2c5a8, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 4
     m_MaxSize: 300
     m_Alignment: 4
@@ -18709,7 +18708,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1210302734
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21407,7 +21406,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 6e64556f2ec65e04aa21e9dfdfd2c5a8, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 300
     m_Alignment: 4
@@ -21637,7 +21636,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1429875494
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23182,7 +23181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1563777828
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28969,7 +28968,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh91820
+  m_Name: pb_Mesh69056
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
