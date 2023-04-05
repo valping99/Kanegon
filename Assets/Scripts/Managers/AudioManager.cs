@@ -67,17 +67,8 @@ namespace Kanegon
         //? Active Sound Effect
         public static void ActiveSoundEffect(CueSE SEOrder)
         {
-            // _SoundSFX.volumnInit = GlobalConfig.SoundConfiguration.GetSeVolume();
             _SoundSFX.CueBgm = CueBGM.None;
             _SoundSFX.CueSe = SEOrder;
-
-            //?????
-            // if (SEOrder == CueSE.Se_Ui_StartGame)
-            // {
-            //     AudioSource _AudioSource = GameObject.FindGameObjectWithTag("BGM_Audio").GetComponent<AudioSource>();
-            //     _AudioSource.Stop();
-            //     _Instance.StartCoroutine(ResumeAudioBGM(_AudioSource));
-            // }
 
             _SoundSFX?.Play();
         }
@@ -106,7 +97,6 @@ namespace Kanegon
         void ChangeBGMAudio()
         {
             _AudioSource = GameObject.FindGameObjectWithTag("BGM_Audio").GetComponent<AudioSource>();
-            // _AudioSource.volume = GlobalConfig.SoundConfiguration.GetBgmVolume();
         }
     }
 }

@@ -10,19 +10,24 @@ namespace Kanegon
 {
     public class Countdown : MonoBehaviour
     {
-        [SerializeField] private Image countDownImage;
-        [SerializeField] private GameState gameState;
-        [SerializeField] private KanegonMotion animation;
-
-        [SerializeField] private List<Sprite> listCountDownImage;
-        [SerializeField] private Image countDownText;
+        #region Variables
+        [Tooltip("Variables")]
         [SerializeField] private int timeCountDown = 3;
         [SerializeField] private float currentTime;
         [SerializeField] public bool isCountDown;
+        [Tooltip("Components")]
+
         [SerializeField] public GameObject countDownObject;
+        [SerializeField] private Image countDownText;
+        [SerializeField] private Image countDownImage;
+        [SerializeField] private List<Sprite> listCountDownImage;
         [SerializeField] public List<GameObject> tapButtons;
-
-
+        
+        [Tooltip("Scripts")]
+        [SerializeField] private GameState gameState;
+        [SerializeField] private KanegonMotion animation;
+        #endregion
+        #region Function
         private IEnumerator StartCountDown(int seconds)
         {
             yield return new WaitForSeconds(.1f);
@@ -69,6 +74,6 @@ namespace Kanegon
             StartCoroutine(StartCountDown(timeCountDown));
         }
 
-
+        #endregion
     }
 }

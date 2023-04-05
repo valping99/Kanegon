@@ -61,7 +61,6 @@ namespace Kanegon
                         skillCharacter.magnetCoin.RemoveAt(i);
                 }
                 StartCoroutine(CoinEffect());
-                // CoinEffect(other.transform);
                 getScore.UpdateScore();
             }
             //! Collect Bonus Coin
@@ -88,7 +87,6 @@ namespace Kanegon
                 AudioManager.ActiveSoundEffect(CueSE.Se_Collect_Item);
                 itemManager.currentTimeCoolDown = itemManager.baseCoolDownItem;
                 ItemEffect();
-                // StartCoroutine(getScore.BonusCoin());
 
                 //? Change Skill To Item
                 StartCoroutine(CountDownItem());
@@ -122,8 +120,6 @@ namespace Kanegon
                 {
                     AudioManager.ActiveSoundEffect(CueSE.Se_Hit_Obstacle);
                 }
-                // Destroy(other.gameObject);
-                // BlowObstacle(other);
                 Damaged();
             }
         }
@@ -144,15 +140,6 @@ namespace Kanegon
             yield return new WaitForSeconds(getScore.bonusTimer);
             skillCharacter.activeSkill = false;
         }
-
-        //! Backup coin effect
-        // private void CoinEffect(Transform trans)
-        // {
-        //     GameObject coinObj = Instantiate(coinEffectObject, trans.position, trans.transform.rotation, Obstacles);
-        //     coinEffect = coinEffectObject.GetComponent<ParticleSystem>();
-        //     coinEffect.Play();
-        //     Destroy(coinObj, coinEffect.main.duration);
-        // }
         private IEnumerator CoinEffect()
         {
             GameObject coinObj = Instantiate(coinPopupEffect, coinEffectParent.position, Quaternion.identity, coinEffectParent);

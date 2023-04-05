@@ -36,12 +36,6 @@ namespace Kanegon
         {
             entryButton.onClick.AddListener(EnableMysteryBox);
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
         #endregion
 
         #region Class

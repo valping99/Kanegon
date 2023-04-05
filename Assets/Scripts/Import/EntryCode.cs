@@ -97,24 +97,6 @@ namespace Kanegon
                 if (currentItemDate == null) return;
                 if (DateTime.Compare(DateTime.Now, currentItemDate) > 0)
                 {
-                    // if (linkData == null && item.Value.type == "entory_code" || linkData == null && item.Value.type == "link")
-                    // {
-                    //     if (item.Value.entry_code == null)
-                    //     {
-                    //         item.Value.entry_code = "Null";
-                    //         Debug.Log("Empty");
-                    //     }
-                    //     linkData = item.Value;
-                    //     Debug.Log(item.ToString());
-                    //     isNullEntryCode = false;
-                    //     break;
-                    // }
-                    // else
-                    // {
-                    //     Debug.Log("Null");
-                    //     isNullEntryCode = true;
-                    //     break;
-                    // }
                     if (linkData == null)
                     {
                         Debug.Log($"Current time: {DateTime.Now}");
@@ -150,14 +132,7 @@ namespace Kanegon
                                 isNullEntryCode = true;
                                 break;
                         }
-
                     }
-
-                    // if (linkData == null && item.Value.type == "link")
-                    // {
-                    //     linkData = item.Value;
-                    //     Debug.Log(item.ToString());
-                    // }
                 }
             }
         }
