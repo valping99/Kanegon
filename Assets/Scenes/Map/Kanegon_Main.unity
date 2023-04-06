@@ -4989,7 +4989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &280897378
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9653,21 +9653,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c574e0606fa498d4f8bfbb960c00c1b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countDownImage: {fileID: 1796334804}
-  gameState: {fileID: 470274367}
-  animation: {fileID: 919132148824352714}
-  listCountDownImage:
-  - {fileID: 21300000, guid: ee64795b67ec73745b5305cbb0ddaba5, type: 3}
-  - {fileID: 21300000, guid: 035bb75ca229f2444a0c60f04de88995, type: 3}
-  - {fileID: 21300000, guid: 3ea0680b7db8b144eb882223e1ee58dd, type: 3}
-  countDownText: {fileID: 1155566882}
   timeCountDown: 3
   currentTime: 0
   isCountDown: 0
   countDownObject: {fileID: 184844418}
+  countDownText: {fileID: 1155566882}
+  countDownImage: {fileID: 1796334804}
+  listCountDownImage:
+  - {fileID: 21300000, guid: ee64795b67ec73745b5305cbb0ddaba5, type: 3}
+  - {fileID: 21300000, guid: 035bb75ca229f2444a0c60f04de88995, type: 3}
+  - {fileID: 21300000, guid: 3ea0680b7db8b144eb882223e1ee58dd, type: 3}
   tapButtons:
   - {fileID: 1504595795}
   - {fileID: 286243474}
+  gameState: {fileID: 470274367}
+  animation: {fileID: 919132148824352714}
 --- !u!95 &470274373
 Animator:
   serializedVersion: 5
@@ -18708,7 +18708,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1210302734
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23181,7 +23181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1563777828
 RectTransform:
   m_ObjectHideFlags: 0
